@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <BasePath>$(MSBuildThisFileDirectory)..\</BasePath>
+    <BuildPath>$(BasePath)\..\builds\</BuildPath>
+    <CommonPath>$(BasePath)\common\</CommonPath>
+    <ThirdPartyPath>$(BasePath)3rdparty\</ThirdPartyPath>
+    <SoundsPath>$(ThirdPartyPath)sounds\</SoundsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <QtInstall>5.15.2_msvc2019</QtInstall>
+    <OpenSSLPath>$(ThirdPartyPath)openssl-1.1.1l\</OpenSSLPath>
+    <OpenSSLIncludePath>$(OpenSSLPath)x86\include\</OpenSSLIncludePath>
+    <OpenSSLLibraryPath>$(OpenSSLPath)x86\lib\</OpenSSLLibraryPath>
+    <OpenSSLLibraryNames>libcrypto.lib;libssl.lib</OpenSSLLibraryNames>
+    <OpenSSLBinaryPath>$(OpenSSLPath)x86\bin\</OpenSSLBinaryPath>
+    <LeptonicaPath>$(ThirdPartyPath)leptonica\</LeptonicaPath>
+    <LeptonicaIncludePath>$(LeptonicaPath)include\</LeptonicaIncludePath>
+    <LeptonicaLibraryPath>$(LeptonicaPath)lib\x86\debug\</LeptonicaLibraryPath>
+    <LeptonicaLibraryNames>leptonica-1.83.1d.lib</LeptonicaLibraryNames>
+    <LeptonicaBinaryPath>$(LeptonicaPath)bin\x86\debug\</LeptonicaBinaryPath>
+    <TesseractPath>$(ThirdPartyPath)tesseract\</TesseractPath>
+    <TesseractIncludePath>$(TesseractPath)include\</TesseractIncludePath>
+    <TesseractLibraryPath>$(TesseractPath)lib\x86\debug\</TesseractLibraryPath>
+    <TesseractLibraryNames>tesseract53d.lib</TesseractLibraryNames>
+    <TesseractBinaryPath>$(TesseractPath)bin\x86\debug\</TesseractBinaryPath>
+    <ZLibPath>$(ThirdPartyPath)zlib\</ZLibPath>
+    <ZLibIncludePath>$(ZLibPath)include\</ZLibIncludePath>
+    <ZLibLibraryPath>$(ZLibPath)lib\x86\debug\</ZLibLibraryPath>
+    <ZLibLibraryNames>zlibd.lib</ZLibLibraryNames>
+    <ZLibBinaryPath>$(ZLibPath)bin\x86\debug\</ZLibBinaryPath>
+    <X264Path>$(ThirdPartyPath)x264\</X264Path>
+    <X264IncludePath>$(X264Path)include\</X264IncludePath>
+    <X264LibraryPath>$(X264Path)lib\x86\</X264LibraryPath>
+    <X264LibraryNames>libx264.lib</X264LibraryNames>
+    <X264BinaryPath>$(X264Path)bin\x86\debug\</X264BinaryPath>
+    <FFMpegPath>$(ThirdPartyPath)ffmpeg-4.2\</FFMpegPath>
+    <FFMpegIncludePath>$(FFMpegPath)include\</FFMpegIncludePath>
+    <FFMpegLibraryPath>$(FFMpegPath)lib\</FFMpegLibraryPath>
+    <FFMpegLibraryNames>avutil.lib</FFMpegLibraryNames>
+    <FFMpegBinaryPath>$(FFMpegPath)bin\</FFMpegBinaryPath>
+    <LamePath>$(ThirdPartyPath)lame-3.100\</LamePath>
+    <LameIncludePath>$(LamePath)include\</LameIncludePath>
+    <LameLibraryPath>$(LamePath)lib\</LameLibraryPath>
+    <LameLibraryNames>mp3lame.dll.lib</LameLibraryNames>
+    <LameBinaryPath>$(LamePath)bin\</LameBinaryPath>
+    <TagLibPath>$(ThirdPartyPath)taglib\x86\</TagLibPath>
+    <TagLibIncludePath>$(TagLibPath)include\</TagLibIncludePath>
+    <TagLibLibraryPath>$(TagLibPath)lib\</TagLibLibraryPath>
+    <TagLibLibraryNames>tag.lib;tag_c.lib</TagLibLibraryNames>
+    <TagLibBinaryPath>$(TagLibPath)bin\debug\</TagLibBinaryPath>
+    <VMProtectPath>$(ThirdPartyPath)vmprotect\</VMProtectPath>
+    <VMProtectIncludePath>$(VMProtectPath)include\c\</VMProtectIncludePath>
+    <VMProtectLibraryPath>$(VMProtectPath)lib\windows\</VMProtectLibraryPath>
+    <VMProtectLibraryNames>VMProtectSDK32.lib</VMProtectLibraryNames>
+    <VMProtectBinaryPath>$(VMProtectPath)lib\windows\</VMProtectBinaryPath>
+    <WideVineBinaryPath>$(ThirdPartyPath)widevinecdm\</WideVineBinaryPath>
+    <MP4DecryptBinaryPath>$(ThirdPartyPath)mp4decrypt\win32\</MP4DecryptBinaryPath>
+    <FPCalcBinaryPath>$(ThirdPartyPath)chromaprint-fpcalc-1.5.0-windows-i686\</FPCalcBinaryPath>
+    <WatchdogBinaryPath>$(ThirdPartyPath)watchdog\</WatchdogBinaryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <QtInstall>5.15.2_msvc2019</QtInstall>
+    <OpenSSLPath>$(ThirdPartyPath)openssl-1.1.1l\</OpenSSLPath>
+    <OpenSSLIncludePath>$(OpenSSLPath)x86\include\</OpenSSLIncludePath>
+    <OpenSSLLibraryPath>$(OpenSSLPath)x86\lib\</OpenSSLLibraryPath>
+    <OpenSSLLibraryNames>libcrypto.lib;libssl.lib</OpenSSLLibraryNames>
+    <OpenSSLBinaryPath>$(OpenSSLPath)x86\bin\</OpenSSLBinaryPath>
+    <LeptonicaPath>$(ThirdPartyPath)leptonica\</LeptonicaPath>
+    <LeptonicaIncludePath>$(LeptonicaPath)include\</LeptonicaIncludePath>
+    <LeptonicaLibraryPath>$(LeptonicaPath)lib\x86\release\</LeptonicaLibraryPath>
+    <LeptonicaLibraryNames>leptonica-1.83.1.lib</LeptonicaLibraryNames>
+    <LeptonicaBinaryPath>$(LeptonicaPath)bin\x86\release\</LeptonicaBinaryPath>
+    <TesseractPath>$(ThirdPartyPath)tesseract\</TesseractPath>
+    <TesseractIncludePath>$(TesseractPath)include\</TesseractIncludePath>
+    <TesseractLibraryPath>$(TesseractPath)lib\x86\release\</TesseractLibraryPath>
+    <TesseractLibraryNames>tesseract53.lib</TesseractLibraryNames>
+    <TesseractBinaryPath>$(TesseractPath)bin\x86\release\</TesseractBinaryPath>
+    <ZLibPath>$(ThirdPartyPath)zlib\</ZLibPath>
+    <ZLibIncludePath>$(ZLibPath)include\</ZLibIncludePath>
+    <ZLibLibraryPath>$(ZLibPath)lib\x86\release\</ZLibLibraryPath>
+    <ZLibLibraryNames>zlib.lib</ZLibLibraryNames>
+    <ZLibBinaryPath>$(ZLibPath)bin\x86\release\</ZLibBinaryPath>
+    <X264Path>$(ThirdPartyPath)x264\</X264Path>
+    <X264IncludePath>$(X264Path)include\</X264IncludePath>
+    <X264LibraryPath>$(X264Path)lib\x86\</X264LibraryPath>
+    <X264LibraryNames>libx264.lib</X264LibraryNames>
+    <X264BinaryPath>$(X264Path)bin\x86\release\</X264BinaryPath>
+    <FFMpegPath>$(ThirdPartyPath)ffmpeg-4.2\</FFMpegPath>
+    <FFMpegIncludePath>$(FFMpegPath)include\</FFMpegIncludePath>
+    <FFMpegLibraryPath>$(FFMpegPath)lib\</FFMpegLibraryPath>
+    <FFMpegLibraryNames>avutil.lib</FFMpegLibraryNames>
+    <FFMpegBinaryPath>$(FFMpegPath)bin\</FFMpegBinaryPath>
+    <LamePath>$(ThirdPartyPath)lame-3.100\</LamePath>
+    <LameIncludePath>$(LamePath)include\</LameIncludePath>
+    <LameLibraryPath>$(LamePath)lib\</LameLibraryPath>
+    <LameLibraryNames>mp3lame.dll.lib</LameLibraryNames>
+    <LameBinaryPath>$(LamePath)bin\</LameBinaryPath>
+    <TagLibPath>$(ThirdPartyPath)taglib\x86\</TagLibPath>
+    <TagLibIncludePath>$(TagLibPath)include\</TagLibIncludePath>
+    <TagLibLibraryPath>$(TagLibPath)lib\</TagLibLibraryPath>
+    <TagLibLibraryNames>tag.lib;tag_c.lib</TagLibLibraryNames>
+    <TagLibBinaryPath>$(TagLibPath)bin\release\</TagLibBinaryPath>
+    <VMProtectPath>$(ThirdPartyPath)vmprotect\</VMProtectPath>
+    <VMProtectIncludePath>$(VMProtectPath)include\c\</VMProtectIncludePath>
+    <VMProtectLibraryPath>$(VMProtectPath)lib\windows\</VMProtectLibraryPath>
+    <VMProtectLibraryNames>VMProtectSDK32.lib</VMProtectLibraryNames>
+    <VMProtectBinaryPath>$(VMProtectPath)lib\windows\</VMProtectBinaryPath>
+    <WideVineBinaryPath>$(ThirdPartyPath)widevinecdm\</WideVineBinaryPath>
+    <MP4DecryptBinaryPath>$(ThirdPartyPath)mp4decrypt\win32\</MP4DecryptBinaryPath>
+    <FPCalcBinaryPath>$(ThirdPartyPath)chromaprint-fpcalc-1.5.0-windows-i686\</FPCalcBinaryPath>
+    <WatchdogBinaryPath>$(ThirdPartyPath)watchdog\</WatchdogBinaryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>6.7.2_msvc2019_64</QtInstall>
+    <OpenSSLPath>$(ThirdPartyPath)openssl\</OpenSSLPath>
+    <OpenSSLIncludePath>$(OpenSSLPath)include\x64\</OpenSSLIncludePath>
+    <OpenSSLLibraryPath>$(OpenSSLPath)lib\x64\release\</OpenSSLLibraryPath>
+    <OpenSSLLibraryNames>libcrypto.lib;libssl.lib</OpenSSLLibraryNames>
+    <OpenSSLBinaryPath>$(OpenSSLPath)bin\x64\release\</OpenSSLBinaryPath>
+    <LeptonicaPath>$(ThirdPartyPath)tesseract-4.1\</LeptonicaPath>
+    <LeptonicaIncludePath>$(LeptonicaPath)include\</LeptonicaIncludePath>
+    <LeptonicaLibraryPath>$(LeptonicaPath)lib\x64\</LeptonicaLibraryPath>
+    <LeptonicaLibraryNames>leptonica-1.81.1.lib</LeptonicaLibraryNames>
+    <LeptonicaBinaryPath>$(LeptonicaPath)bin\x64\</LeptonicaBinaryPath>
+    <TesseractPath>$(ThirdPartyPath)tesseract-4.1\</TesseractPath>
+    <TesseractIncludePath>$(TesseractPath)include\</TesseractIncludePath>
+    <TesseractLibraryPath>$(TesseractPath)lib\x64\</TesseractLibraryPath>
+    <TesseractLibraryNames>tesseract41.lib</TesseractLibraryNames>
+    <TesseractBinaryPath>$(TesseractPath)bin\x64\</TesseractBinaryPath>
+    <ZLibPath>$(ThirdPartyPath)zlib-1.2.11\</ZLibPath>
+    <ZLibIncludePath>$(ZLibPath)include\</ZLibIncludePath>
+    <ZLibLibraryPath>$(ZLibPath)lib\x64\</ZLibLibraryPath>
+    <ZLibLibraryNames>zlib.lib</ZLibLibraryNames>
+    <ZLibBinaryPath>$(ZLibPath)bin\x64\</ZLibBinaryPath>
+    <X264Path>$(ThirdPartyPath)x264-0.163\</X264Path>
+    <X264IncludePath>$(X264Path)include\</X264IncludePath>
+    <X264LibraryPath>$(X264Path)lib\x64\</X264LibraryPath>
+    <X264LibraryNames>libx264.lib</X264LibraryNames>
+    <X264BinaryPath>$(X264Path)bin\x64\</X264BinaryPath>
+    <FFMpegPath>$(ThirdPartyPath)ffmpeg-4.4\</FFMpegPath>
+    <FFMpegIncludePath>$(FFMpegPath)include\</FFMpegIncludePath>
+    <FFMpegLibraryPath>$(FFMpegPath)lib\</FFMpegLibraryPath>
+    <FFMpegLibraryNames>avutil.lib</FFMpegLibraryNames>
+    <FFMpegBinaryPath>$(FFMpegPath)bin\</FFMpegBinaryPath>
+    <LamePath>$(ThirdPartyPath)lame-3.101\</LamePath>
+    <LameIncludePath>$(LamePath)include\</LameIncludePath>
+    <LameLibraryPath>$(LamePath)lib\x64\</LameLibraryPath>
+    <LameLibraryNames>libmp3lame.lib</LameLibraryNames>
+    <LameBinaryPath>$(LamePath)bin\x64\</LameBinaryPath>
+    <TagLibPath>$(ThirdPartyPath)taglib\x64\</TagLibPath>
+    <TagLibIncludePath>$(TagLibPath)include\</TagLibIncludePath>
+    <TagLibLibraryPath>$(TagLibPath)lib\</TagLibLibraryPath>
+    <TagLibLibraryNames>tag.lib;tag_c.lib</TagLibLibraryNames>
+    <TagLibBinaryPath>$(TagLibPath)bin\debug\</TagLibBinaryPath>
+    <VMProtectPath>$(ThirdPartyPath)vmprotect\</VMProtectPath>
+    <VMProtectIncludePath>$(VMProtectPath)include\c\</VMProtectIncludePath>
+    <VMProtectLibraryPath>$(VMProtectPath)lib\windows\</VMProtectLibraryPath>
+    <VMProtectLibraryNames>VMProtectSDK64.lib</VMProtectLibraryNames>
+    <VMProtectBinaryPath>$(VMProtectPath)lib\windows\</VMProtectBinaryPath>
+    <WideVineBinaryPath>$(ThirdPartyPath)widevinecdm\</WideVineBinaryPath>
+    <MP4DecryptBinaryPath>$(ThirdPartyPath)mp4decrypt\win32\</MP4DecryptBinaryPath>
+    <FPCalcBinaryPath>$(ThirdPartyPath)chromaprint-fpcalc-1.5.1-windows-x86_64\</FPCalcBinaryPath>
+    <WinSystemBinaryPath>$(ThirdPartyPath)winsystem\</WinSystemBinaryPath>
+    <WatchdogBinaryPath>$(ThirdPartyPath)watchdog\</WatchdogBinaryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>6.7.2_msvc2019_64</QtInstall>
+    <OpenSSLPath>$(ThirdPartyPath)openssl\</OpenSSLPath>
+    <OpenSSLIncludePath>$(OpenSSLPath)include\x64\</OpenSSLIncludePath>
+    <OpenSSLLibraryPath>$(OpenSSLPath)lib\x64\release\</OpenSSLLibraryPath>
+    <OpenSSLLibraryNames>libcrypto.lib;libssl.lib</OpenSSLLibraryNames>
+    <OpenSSLBinaryPath>$(OpenSSLPath)bin\x64\release\</OpenSSLBinaryPath>
+    <LeptonicaPath>$(ThirdPartyPath)tesseract-4.1\</LeptonicaPath>
+    <LeptonicaIncludePath>$(LeptonicaPath)include\</LeptonicaIncludePath>
+    <LeptonicaLibraryPath>$(LeptonicaPath)lib\x64\</LeptonicaLibraryPath>
+    <LeptonicaLibraryNames>leptonica-1.81.1.lib</LeptonicaLibraryNames>
+    <LeptonicaBinaryPath>$(LeptonicaPath)bin\x64\</LeptonicaBinaryPath>
+    <TesseractPath>$(ThirdPartyPath)tesseract-4.1\</TesseractPath>
+    <TesseractIncludePath>$(TesseractPath)include\</TesseractIncludePath>
+    <TesseractLibraryPath>$(TesseractPath)lib\x64\</TesseractLibraryPath>
+    <TesseractLibraryNames>tesseract41.lib</TesseractLibraryNames>
+    <TesseractBinaryPath>$(TesseractPath)bin\x64\</TesseractBinaryPath>
+    <ZLibPath>$(ThirdPartyPath)zlib-1.2.11\</ZLibPath>
+    <ZLibIncludePath>$(ZLibPath)include\</ZLibIncludePath>
+    <ZLibLibraryPath>$(ZLibPath)lib\x64\</ZLibLibraryPath>
+    <ZLibLibraryNames>zlib.lib</ZLibLibraryNames>
+    <ZLibBinaryPath>$(ZLibPath)bin\x64\</ZLibBinaryPath>
+    <X264Path>$(ThirdPartyPath)x264-0.163\</X264Path>
+    <X264IncludePath>$(X264Path)include\</X264IncludePath>
+    <X264LibraryPath>$(X264Path)lib\x64\</X264LibraryPath>
+    <X264LibraryNames>libx264.lib</X264LibraryNames>
+    <X264BinaryPath>$(X264Path)bin\x64\</X264BinaryPath>
+    <FFMpegPath>$(ThirdPartyPath)ffmpeg-4.4\</FFMpegPath>
+    <FFMpegIncludePath>$(FFMpegPath)include\</FFMpegIncludePath>
+    <FFMpegLibraryPath>$(FFMpegPath)lib\</FFMpegLibraryPath>
+    <FFMpegLibraryNames>avutil.lib</FFMpegLibraryNames>
+    <FFMpegBinaryPath>$(FFMpegPath)bin\</FFMpegBinaryPath>
+    <LamePath>$(ThirdPartyPath)lame-3.101\</LamePath>
+    <LameIncludePath>$(LamePath)include\</LameIncludePath>
+    <LameLibraryPath>$(LamePath)lib\x64\</LameLibraryPath>
+    <LameLibraryNames>libmp3lame.lib</LameLibraryNames>
+    <LameBinaryPath>$(LamePath)bin\x64\</LameBinaryPath>
+    <TagLibPath>$(ThirdPartyPath)taglib\x64\</TagLibPath>
+    <TagLibIncludePath>$(TagLibPath)include\</TagLibIncludePath>
+    <TagLibLibraryPath>$(TagLibPath)lib\</TagLibLibraryPath>
+    <TagLibLibraryNames>tag.lib;tag_c.lib</TagLibLibraryNames>
+    <TagLibBinaryPath>$(TagLibPath)bin\release\</TagLibBinaryPath>
+    <VMProtectPath>$(ThirdPartyPath)vmprotect\</VMProtectPath>
+    <VMProtectIncludePath>$(VMProtectPath)include\c\</VMProtectIncludePath>
+    <VMProtectLibraryPath>$(VMProtectPath)lib\windows\</VMProtectLibraryPath>
+    <VMProtectLibraryNames>VMProtectSDK64.lib</VMProtectLibraryNames>
+    <VMProtectBinaryPath>$(VMProtectPath)lib\windows\</VMProtectBinaryPath>
+    <WideVineBinaryPath>$(ThirdPartyPath)widevinecdm\</WideVineBinaryPath>
+    <MP4DecryptBinaryPath>$(ThirdPartyPath)mp4decrypt\win32\</MP4DecryptBinaryPath>
+    <FPCalcBinaryPath>$(ThirdPartyPath)chromaprint-fpcalc-1.5.1-windows-x86_64\</FPCalcBinaryPath>
+    <WinSystemBinaryPath>$(ThirdPartyPath)winsystem\</WinSystemBinaryPath>
+    <WatchdogBinaryPath>$(ThirdPartyPath)watchdog\</WatchdogBinaryPath>
+  </PropertyGroup>  
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="BasePath">
+      <Value>$(BasePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CommonPath">
+      <Value>$(CommonPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ThirdPartyPath">
+      <Value>$(ThirdPartyPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="SoundsPath">
+      <Value>$(SoundsPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenSSLPath">
+      <Value>$(OpenSSLPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenSSLIncludePath">
+      <Value>$(OpenSSLIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenSSLLibraryPath">
+      <Value>$(OpenSSLLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenSSLLibraryNames">
+      <Value>$(OpenSSLLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenSSLBinaryPath">
+      <Value>$(OpenSSLBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LeptonicaPath">
+      <Value>$(LeptonicaPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LeptonicaIncludePath">
+      <Value>$(LeptonicaIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LeptonicaLibraryPath">
+      <Value>$(LeptonicaLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LeptonicaLibraryNames">
+      <Value>$(LeptonicaLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LeptonicaBinaryPath">
+      <Value>$(LeptonicaBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TesseractPath">
+      <Value>$(TesseractPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TesseractIncludePath">
+      <Value>$(TesseractIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TesseractLibraryPath">
+      <Value>$(TesseractLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TesseractLibraryNames">
+      <Value>$(TesseractLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TesseractBinaryPath">
+      <Value>$(TesseractBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ZLibPath">
+      <Value>$(ZLibPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ZLibIncludePath">
+      <Value>$(ZLibIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ZLibLibraryPath">
+      <Value>$(ZLibLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ZLibLibraryNames">
+      <Value>$(ZLibLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ZLibBinaryPath">
+      <Value>$(ZLibBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="X264Path">
+      <Value>$(X264Path)</Value>
+    </BuildMacro>
+    <BuildMacro Include="X264IncludePath">
+      <Value>$(X264IncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="X264LibraryPath">
+      <Value>$(X264LibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="X264LibraryNames">
+      <Value>$(X264LibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="X264BinaryPath">
+      <Value>$(X264BinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FFMpegPath">
+      <Value>$(FFMpegPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FFMpegIncludePath">
+      <Value>$(FFMpegIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FFMpegLibraryPath">
+      <Value>$(FFMpegLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FFMpegLibraryNames">
+      <Value>$(FFMpegLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FFMpegBinaryPath">
+      <Value>$(FFMpegBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LamePath">
+      <Value>$(LamePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LameIncludePath">
+      <Value>$(LameIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LameLibraryPath">
+      <Value>$(LameLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LameLibraryNames">
+      <Value>$(LameLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LameBinaryPath">
+      <Value>$(LameBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TagLibPath">
+      <Value>$(TagLibPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TagLibIncludePath">
+      <Value>$(TagLibIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TagLibLibraryPath">
+      <Value>$(TagLibLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TagLibLibraryNames">
+      <Value>$(TagLibLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TagLibBinaryPath">
+      <Value>$(TagLibBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VMProtectPath">
+      <Value>$(VMProtectPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VMProtectIncludePath">
+      <Value>$(VMProtectIncludePath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VMProtectLibraryPath">
+      <Value>$(VMProtectLibraryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VMProtectLibraryNames">
+      <Value>$(VMProtectLibraryNames)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VMProtectBinaryPath">
+      <Value>$(VMProtectBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="WideVineBinaryPath">
+      <Value>$(WideVineBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MP4DecryptBinaryPath">
+      <Value>$(MP4DecryptBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FPCalcBinaryPath">
+      <Value>$(FPCalcBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="WinSystemBinaryPath">
+      <Value>$(WinSystemBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="WatchdogBinaryPath">
+      <Value>$(WatchdogBinaryPath)</Value>
+    </BuildMacro>    
+    <BuildMacro Include="QTDIR">
+      <Value>$(QTDIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

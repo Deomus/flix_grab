@@ -1,0 +1,24 @@
+﻿@model PagedList.IPagedList<Licensing.Web.Models.LicenseKey>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>License Keys</h2>
+
+@if (User.IsInRole("Administrators"))
+{
+    <p>
+        @Html.ActionLink("Add License Key", "Create")
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Start Date:&nbsp;@Html.TextBox("StartDate", ViewBag.StartDate.ToString("MM/dd/yyyy") as string, new { style="width: 10ex" })&nbsp;End Date:&nbsp;@Html.TextBox("EndDate", ViewBag.EndDate.ToString("MM/dd/yyyy") as string, new { style="width: 10ex" })&nbsp;Product:&nbsp;@Html.DropDownList("SelectedProduct","All")
+        &nbsp;<input type="submit" value="Filter" />
+    </p>
+}
+
+@Html.Partial("_LicenseKeyListPartial", Model, new ViewDataDictionary() { {"startDate", ViewBag.StartDate }, {"endDate", ViewBag.EndDate }, {"selectedProduct", ViewBag.SelectedProduct.SelectedValue} })

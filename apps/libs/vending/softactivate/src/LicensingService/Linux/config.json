@@ -1,0 +1,28 @@
+﻿{
+    "sdk": {
+        "licenseKey": "VC43R-EW9NJ-L35XH-MMGPF-AVTQ7"
+    },
+    "web": { 
+        "httpPort":  80
+    },
+    "db": {
+        "name": "licensingservice",
+        "host": "localhost",
+        "user": "root",
+        "password": "P@ssw0rd",
+        "connectionLimit": 25
+    },
+    "email": {
+        "smtpHost": "localhost",
+        "smtpPort": "25",
+        "smtpUser": "",
+        "smtpPassword": "",
+        "smtpSecure": true,
+        "from": "YourCompany Support <support@company.com>",
+        "bcc": "support@company.com",
+        "downloadNotifications": "support@company.com"
+    },
+    "download": { 
+        "folder": ""  
+    }
+}

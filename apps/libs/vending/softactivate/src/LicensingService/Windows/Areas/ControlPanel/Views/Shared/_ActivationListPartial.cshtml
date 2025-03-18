@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<Licensing.Web.Models.Activation>
+
+<div class="dbtablewrap">
+    <table class="dbtable">
+        <tr>
+            <th>
+                @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Product", "Index", new { sortOrder = ViewBag.ProductSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Customer Name", "Index", new { sortOrder = ViewBag.CustomerNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Company", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.ProductSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("License Key", "Index", new { sortOrder = ViewBag.LicenseKeySortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Hardware Id", "Index", new { sortOrder = ViewBag.CustomerNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Activation Key", "Index", new { sortOrder = ViewBag.CustomerNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey.OrderItem.Order.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.LicenseKey.OrderItem.Order.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey.OrderItem.Order.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey.OrderItem.Order.CountryCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey.Key)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardwareId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivationKey)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Activation", new { id = item.Id }, null)
+
+                    @if (User.IsInRole("Administrators"))
+                    {
+                        @:|
+                        @Html.ActionLink("Edit", "Edit", "Activation", new { id = item.Id }, null)
+                        @:|
+                        using (Html.BeginForm("Delete/" + item.Id, "Activation", FormMethod.Post, new { id = "deleteForm_" + item.Id }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:if (confirm('Are you sure you want to delete this activation record ?')) {document.getElementById('deleteForm_@item.Id').submit()}">Delete</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="activationlist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="activationlist" })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="activationlist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="activationlist" })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

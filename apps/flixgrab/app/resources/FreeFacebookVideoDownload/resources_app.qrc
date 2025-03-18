@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="/img">
+    <file>flix_splash.png</file>
+    <file>system-tray-logo.ico</file>
+    <file>icon.ico</file>
+    <file>netflix-logo-small.png</file>
+  </qresource>
+  <qresource prefix="/tutorial">
+    <file>browser-crop.png</file>
+  </qresource>
+</RCC>

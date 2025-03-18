@@ -1,0 +1,82 @@
+﻿@model Licensing.Web.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Event Details</h2>
+
+<fieldset>
+    <legend>Event Details</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type)
+    </div>
+    <div class="display-field">
+          @{
+            switch (Model.Type)
+            {
+                case 0:
+                    <text><span style="color: blue">Information</span></text>
+                    break;
+                
+                case 1:
+                    <text><span style="color: yellow">Warning</span></text>
+                    break;
+                
+                case 2:
+                    <text><span style="color: red">Error</span></text>
+                    break;
+            
+                default:
+                    <text>Unknown</text>
+                    break;
+            }  
+        }
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Message)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UrlParams)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UrlParams)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IPAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IPAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LicenseTemplate version='3'>
+  <LicenseKey encoding='BASE32X' characterGroups='5' charactersPerGroup='6' groupSeparator='-' header='' footer=''>
+    <Data>
+      <DataFields>
+        <Field name='ExpirationDate' type='Date14' size='14' offset='8' />
+        <Field name='ProductId' type='Integer' size='8' offset='0' />
+      </DataFields>
+      <ValidationFields>
+        <Field name='RegistrationEmail' type='String' size='400' offset='0' />
+      </ValidationFields>
+    </Data>
+    <Signature size='109'>
+      <SignaturePublicKey>APf+DQELd0mRIGPb4ElujAqSACGXuFDMn/u8SihCSJ0ra6AUCgE=</SignaturePublicKey>
+      <SignaturePrivateKey>AQlf30iV29Tt0gs=</SignaturePrivateKey>
+      <SigningServiceUrl>http://vending.freegrabapp.com</SigningServiceUrl>
+      <SigningServiceTemplateId>95</SigningServiceTemplateId>
+    </Signature>
+  </LicenseKey>
+  <Properties>
+    <General>
+      <CompanyName>FreeGrabApp</CompanyName>
+      <ProductName>FreeYouTubeToMP3Converter</ProductName>
+      <ProductSupportUrl>https://freegrabapp.com</ProductSupportUrl>
+    </General>
+    <Trial>
+      <TrialKeyValidationData>VFJJQUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</TrialKeyValidationData>
+      <TrialLicenseKey>NJAAAA-AA4257-EESRU2-5LPKY3-KW53R9</TrialLicenseKey>
+    </Trial>
+    <UserInterface onlineRegistrationEnabled='1' offlineRegistrationEnabled='0' />
+  </Properties>
+</LicenseTemplate>

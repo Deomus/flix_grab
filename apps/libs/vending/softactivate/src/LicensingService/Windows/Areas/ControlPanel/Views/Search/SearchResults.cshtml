@@ -1,0 +1,31 @@
+﻿@model Licensing.ControlPanel.Models.SearchResultsModel
+
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<h2>Search Results</h2>
+
+@if (Model.OrderList != null) {
+
+<h3>Orders</h3>
+
+@Html.Partial("_OrderListPartial", Model.OrderList)
+
+}
+  
+@if (Model.LicenseKeyList != null) {
+
+<h3>License Keys</h3>
+
+@Html.Partial("_LicenseKeyListPartial", Model.LicenseKeyList)
+
+}
+ 
+@if (Model.ActivationList != null) {
+   
+<h3>Activations</h3>
+
+@Html.Partial("_ActivationListPartial", Model.ActivationList)
+
+}

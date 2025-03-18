@@ -1,0 +1,18 @@
+ffmpeg version N-94883-g1faedb9a11 Copyright (c) 2000-2019 the FFmpeg developers
+built with Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27030.1 for x86
+configuration: --toolchain=msvc --prefix=ffmpeg/ --enable-shared --disable-static --disable-doc --arch=x86_32
+libavutil      56. 35.100 / 56. 35.100
+libavcodec     58. 56.101 / 58. 56.101
+libavformat    58. 32.104 / 58. 32.104
+libavdevice    58.  9.100 / 58.  9.100
+libavfilter     7. 58.102 /  7. 58.102
+libswscale      5.  6.100 /  5.  6.100
+libswresample   3.  6.100 /  3.  6.100
+
+  configuration:
+    --toolchain=msvc
+    --prefix=ffmpeg/
+    --enable-shared
+    --disable-static
+    --disable-doc
+    --arch=x86_32

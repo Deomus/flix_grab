@@ -1,0 +1,335 @@
+SoftActivate Licensing SDK Changelog
+====================================
+
+V3.9.5 - released September 2, 2015
+
+- Improved Control Panel IP Address access security
+- Control Panel is now only accessible from local networks by default
+- Fixed bug in PayPal integration
+
+V3.9.1 - released August 21, 2015
+
+- Visual Studio 2015 support including static C++ libraries
+- Windows 10 support
+- Portable Class Library (PCL) available (BETA). This means support for almost every platform supporting .NET
+- Xamarin/Android and Xamarin/iOS support (BETA) (only in Ultimate Edition)
+- Hardware Id improvements
+- NuGet package available in NuGet's official repository (BETA)
+- Various bug fixes in Control Panel
+- Various overall bug fixes
+
+NOTE: Server database schema has changed, upgrading to this version requires 
+      upgrading your existing database by running the includes SQL scripts (LicensingService.sql) against it
+
+V3.6.3 - released March 11, 2015
+
+- Fixed ShareIt integration issue when license templates use registration name as a validation field
+
+v3.6.2 - released March 4. 2015
+
+- Visual Studio 2013 C++ static libraries (re)included in SDK
+- Small bug fixes for the Linux licensing server
+- Updated documentation regarding Linux licensing server installation
+
+v3.6.1 - released February 27, 2015
+
+- Major bug fixes for the (BETA) Linux licensing server
+
+v3.6 - released February 24, 2015
+
+- LINUX (Node.js + MySQL) licensing server ! (ALPHA for now)
+
+- Available Linux licensing server functionality:
+	- Activation
+	- PayPal support (RegNow, ShareIt, FastSpring will be included shortly)
+	- Download manager 
+
+- Missing Linux licensing server functionality:
+	- Web Control Panel (it will take a while until a basic control panel will be implemented)
+	- Events are not written in the EventLog table
+	- RegNow, ShareIt and FastSprint support
+	- IP address access restrictions
+
+- Many completions to the pure C client API - needed for proper Linux licensing server operation 
+
+- One major bug fix in the C++ native licensing library
+
+v3.5.6 - released January 29, 2015
+
+- added some missing licensing server dependencies (System.Web.Http.WebHost.dll was missing)
+- bug fix in .NET licensing library causing activation failure when using custom hardware id strings of certain lengths
+- bug fixes in C API enabling better interoperation between non-Unicode and Unicode APIs
+
+v3.5.5 - released January 5, 2015
+
+- Small bug fixes
+
+v3.5.4 - released November 2, 2014
+
+- Updated samples
+- Updated sample license templates
+- Updated default databases and database scripts
+  to more easily work with the included samples when the trial feature is used
+
+v3.5.3 - released October 27, 2014
+
+- UILicenseManager source code now available to Enterprise for .Net and Ultimate edition customers.
+  Full licensing GUI customization possible by editing the LicensingForm.htm HTML file (carefully to not break integration) 
+
+v3.5.2 - released October 23, 2014
+
+- Binaries are now compiled with Visual Studio 2013
+- Visual Studio 2013 C++ static libraries available
+- Small bug fixes
+
+
+v3.5.0 - released October 16, 2014
+
+- New .NET customizable license manager class (UILicenseManager) with included GUI - customize colors, logo images, text
+- Licensing Tool is now updated to be able to customize the GUI for the UILicenseManager class
+- New C# and VB.NET samples to illustrate using the new UILicenseManager class 
+- Minor bug fixes
+
+v3.2.7 - released June 2, 2014
+
+- Apple OS X application licensing suppport (beta). Both 32 and 64-bit. 
+  Only available in  'Enterprise for x86/x64' and 'Ultimate' editions.
+- Linux application licensing support (beta). Both 32-bit and 64-bit. 
+  Only available in  'Enterprise for x86/x64' and 'Ultimate' editions.
+- Improvements in C++ library to improve portability and C++ standard compliance
+
+v3.2.1 - released May 29, 2014 
+
+- LINUX client support (beta). Only available in 'Enterprise for x86/x64' and 'Ultimate' editions.
+- most C++ samples are now portable and compilable on Linux
+- Very easy to port on MacOS  / OS X (official support coming soon)
+- Renamed KeyTemplate to LicenseTemplate in C++ client library
+
+v3.2.0  - released May 12, 2014
+
+- New feature in licensing service: download manager - restrict your downloads with license keys (please see documentation)
+- Improved Hardware Id in virtual machines (especially Hyper-V)
+- DetectClockManipulation() routine now completes much faster in many cases
+- Fixed bug causing the server to allow a smaller than allowed number of activations   per license key in some instances
+- Other minor fixes
+
+v3.1.19 - released May 4, 2014
+
+- Improved SQL Server Compact Support (it now works on most systems)
+- Fixed locale issues preventing some licensing service control panel operations
+- Small bug fixes in licensing service control panel
+
+v3.1.18 - released April 24, 2014
+
+- Fixed Web Control Panel order section bugs
+
+v3.1.17 - released April 2, 2014
+
+- Fixed some issues preventing license template field edit/delete in Licensing Tool
+- LicensingClient.IsLicenseValid() now throws an exception in certain scenarios
+- Small Licensing Tool cosmetic modifications
+
+v3.1.16 - released March 19, 2014
+
+- Broader default proxy support, includes ISA/Forefront sever with NTLM
+- Fixed issue causing extended delays for LicensingClient.IsLicenseValid() if
+TimeValidationMethod was set to PreferInternetTime
+- Updated documentation
+- Small bug fixes in the new UILicenseManager easy licensing class (still in beta)
+
+v3.1.15 - released February 25, 2014
+
+- Add licensing to your .NET application with one line of source code (see EasyLicensingCS sample) !
+- [BETA] New built-in licensing user interface and management layer with customizable 
+         HTML-based user interface
+- [BETA] New .NET assembly LicensingUI.Net.dll providing an extremely easy to use licensing layer
+- [BETA] New UILicenseManager class with only one method: Run()
+- New sample EasyLicensingCS demonstrating the new easy to use licensing layer 
+- Small changes to the licensing template format - will not affect anything
+- Small bug fixes
+
+v3.0.14 - released January 21, 2014
+
+- Fixed a small bug in the static C++ library when used from non-unicode apps
+
+v3.0.12 - released January 20, 2014
+
+- Fixed a static library linker bug in VS2008/VS2010 (did not affect VS2012)
+- Additional checks for random input in the static x86/x64 library
+- Added more information in the LicenseKeys section of the web control panel
+- Improved activation algorithm, additional database statistics updates
+
+v3.0.11 - released January 12, 2014
+
+- Many bug fixes in Licensing Control Panel
+- Fixed a bug regarding multiple orders in database on PayPal retry
+- Better Visual Studio 2010 support for the Ultimate/Enterprise Editions
+- Improved database schema. You need to re-run LicensingService.sql database script 
+  (it will alter some columns, add some indexes)
+
+v3.0.8 - released January 6, 2014
+
+- The licensing server now uses SQL Server Compact (included) as default.
+  What this means is that it works out of the box, no initial web.config tweaking necessary
+- The SDK now installs in Program Files folder (defaulted to Desktop before)
+- Bug fixes in licensing server payment service integration support regarding 
+  wrong expiration date calculation for license keys for certain license key templates 
+  (bug not present in v2.x)
+
+v3.0.6 - released December 16, 2013
+
+- Many Web Control Panel fixes when editing orders/license keys
+- Web Control Panel CSS fixes 
+- Guest users cannot modify anything (are read only)
+- Updated documentation with v2 - to - v3 upgrade information
+
+v3.0 Final - released December 12, 2013
+
+- The LicensingClient class can now optionally connect and retrive the current time from a pre-defined time server instead of using
+  the system clock. This increases the security of license validation.
+- Hardware id is now more reliable in virtual machines and multiprocessor machines
+- Still some known issues regarding the usage of the Licensing Control Panel web interface
+- Lots of bug fixes
+
+v3.0.4 BETA 4 - released November 4, 2013
+
+- Worked out medium trust issues (so it now works with shared hosting providers)
+- Fixed some download manager bugs
+- Web UI speed improvement
+- Other minor bug fixes
+
+v3.0.0 BETA 1 - released October 15, 2013
+
+- Rewritten licensing server, which now includes a comprehensive web-based UI
+- Web Control Panel for managing orders, licenses, products, etc.
+- Note: existing customers you may have, work correctly with the new server (aside from the inherent Beta bugs) !
+- Redesigned database - just run the LicensingService.sql script on your existing database to upgrade (backup first !)
+- FastSpring payment service support (set the keygen URL in FastSpring control panel to http://[your_licensing_service_url]/api/FastSpring/KeyGenerator)
+- You can now provide your own custom hardware id if you wish
+- Multiple license keys in the same order support
+- Small external changes to the programming API (but huge internal changes)
+- Some concept changes: public keys are now "public key certificates" because they include some extra info besides the public key
+- Projects using the 2.x SDK need some slight modifications to compile again. Please see the samples until documentation is ready.
+- New installer
+
+v2.3.1 - released April 9, 2013
+
+- Small bug fixes
+
+v2.3.0 - released April 8, 2013
+
+- Windows RT preliminary (beta) support (AnyCpu binaries)
+- WinRT C# library source code (beta) available in Professional Edition
+- Full Visual Studio 2012 support
+- Separate static C++ libraries for Visual Studio 2008, 2010 and 2012
+- Changes to XML template handling in C++ library (maintains full compatibility)
+
+v2.2.6 - released February 5, 2013
+
+- The C and C++ source code are now up to date with the C# source code
+- Improvements and bug fixes to the Licensing Tool
+
+v2.2.5 - released January 31, 2013
+
+- Fixed an endianess problem related to the new Date14 data type
+
+v2.2.4 - released  January 19, 2013
+
+- Minor bug fixes 
+
+v2.2.3 - released January 11, 2013
+
+- Fixed the UI appearance when Large Fonts option on Windows XP is used
+- Fixed a problem when deleting fields in the UI
+
+v2.2.1 - released January 8, 2013
+
+- Added an additional constructor to the .NET LicensingClient class which accepts a hardware id
+
+v2.2   - released January 7, 2013
+
+- Vastly improved Licensing Tool. 
+- Added some new helpful data types: Date14 (14-bit dates), and Date16 (16-bit dates)
+- Other minor bug fixes
+
+v2.0.4 - released October 19, 2012
+
+- Fixed some licensing service locale-related problems causing an SQL Server exception for some languages 
+  (notably the German version of SQL Server).
+
+v2.0.3 - released October 16, 2012
+
+- v2.0 is now out of beta
+
+v2.0.1 - released October 8, 2012
+
+- Trial versions support (see the WinFormsAppCS and WinFormsAppVB samples, 
+  as well as the dedicated section inside the updated documentation)
+- Clock manipulation detection for trial version support
+- While the web protocol for activation has not changed, some code inside the server 
+  and the client libraries is modified/renamed.
+- More flexible multi-user support. One license key can be used for 
+  multiple computers inside a company.
+- Enhanced multi-product support (per-product settings)
+- Updated database schema (see the documentation on the licensing service)
+- LicenseActivationClient class is now renamed into LicensingClient class
+- Some method renames inside LicenseActivationClient class (IsLicenseActivated() is now IsLicenseValid(),
+  ActivateLicense() is now AcquireLicense() )
+- The LicenseKeys table was renamed to LicenseKeysPool, while
+  the LicenseKeys table now has a different meaning than before (see documentation)
+
+v1.8.6 - released August 28, 2012
+
+- Changed some database handling routines for more robustness
+- Improved error reporting
+
+v1.8.5 - released August 12, 2012
+
+- Improved support for multi-user licenses using a single license key. The LicenseKeys table now includes
+an additional integer column named "MaxActivations" which can be used to set the number of allowed activations 
+for a particular license key, which takes precedence over the global "MaximumAllowedActivationPerLicenseKey" 
+setting in web.config. To use this feature on a license key, you must insert the particular license key into the LicenseKeys 
+table and set the appropriate MaxActivations value (recommended to set to at least 2 * [number of users]). If a license key 
+is not found in this table, the default web.config setting is used.
+
+- Added an SQL in App_Data folder to help create the licensing service database from scratch
+
+- Database schema was slightly altered, you must also upgrade the database before using v1.8.5 licensing server.
+
+v1.8.4  - released August 10, 2012
+
+- Fixed a problem appearing when certain Unicode charcters were used as data or validation fields
+
+v1.8.1  - released July 31, 2012
+
+- Changes to the way the SDK is initialized. These changes are backwards compatible, 
+but it is recommended to implement them. Please read the updated documentation 
+for the SDKRegistration::SetLicenseKey() method.
+
+v1.7.16 - released July 24, 2012
+
+- Fixed some issues in the native (win32/x64) library regading hardware enumeration 
+  for hardware id generation purposes
+
+v1.7.14 - released July 11, 2012
+
+- Minor bug fixes
+
+v1.7.12 - released July 10, 2012
+
+- Added Windows Forms samples (written in C# and VB.NET)
+- Fixed an activation expiration date checking bug in the native version of the SDK
+
+v1.7.5 - released May 24, 2012
+
+- PayPal, RegNow and ShareIt payment services integration support
+
+v1.6.2 - released Nov. 30, 2011
+
+- Visual Studio 2008 and 2008 SP1 support
+- Fixed bug in the C API regarding hardware id matching. This bug only affected the C-style API
+
+v1.6.0
+
+- Full .NET support
+- License activation support with included activation server

@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VideoControl</class>
+ <widget class="QWidget" name="VideoControl">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>251</width>
+    <height>167</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>16</horstretch>
+    <verstretch>9</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>251</width>
+    <height>167</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Video Control Widget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#VideoControl {
+    background-color:transparent;
+}
+
+/*#VideoControl[color=&quot;darkened&quot;]{
+background-color:rgba(0, 0, 0, 128);
+}
+*/
+
+/*
+QPushButton:hover {
+    background-color: rgba(192, 192, 192, 200);
+    border-style: inset;
+}
+
+QPushButton:hover[inverted=true] {
+    background-color: rgba(64,64, 64, 200);
+    border-style: inset;
+}
+
+
+
+QPushButton:pressed[inverted=true] {
+    background-color:  rgba(160, 160, 160, 200);
+    border-style: inset;
+}
+*/
+QPushButton::menu-indicator {
+    image: url();
+}</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="topWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:transparent;
+QPushButton {
+    padding: 7,7,7,7;
+    border: none;
+    background-color: transparent;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>1</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>1</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QWidget" name="wgtTopLeft" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>65</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="OpacityButton" name="btnOptions">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>31</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#btnOptions {
+    background-color:  transparent;
+    image: url(:/buttons/video_controls/tools/options.png);
+}
+
+#btnOptions[inverted=true] {
+    image: url(:/buttons/video_controls/tools/options-white.png);
+}
+
+#btnOptions:hover {
+    image: url(:/buttons/video_controls/tools/options-white-active.png);
+}
+
+#btnOptions:pressed {
+    image: url(:/buttons/video_controls/tools/options-white-active.png);
+    background-color:  #2A2E3A;
+}</string>
+             </property>
+             <property name="text">
+              <string notr="true"/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>31</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:  transparent;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>5</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QWidget" name="wgtPlaylist" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>119</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Tahoma</family>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>1</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>2</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="OpacityButton" name="btnPlaylist">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Tahoma</family>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <italic>false</italic>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#btnPlaylist {
+    font: bold 9pt &quot;Tahoma&quot;;
+    color:rgba(0,0,0,150);
+    /*background-color:  transparent;
+    background-image: url(:/buttons/video_controls/tools/playlist.png);
+    background-repeat:no-repeat;
+    background-position:left;*/
+    text-align:center;
+   padding-left:3px;
+    padding-right:3px;
+    background-color: transparent;
+}
+
+#btnPlaylist[inverted=true] {
+    color:rgba(255,255,255,140);
+    /*background-image: url(:/buttons/video_controls/tools/playlist-white.png);*/
+}
+
+#btnPlaylist:hover {
+    color: #F2F3F3;
+    /*background-image: url(:/buttons/video_controls/tools/playlist-white-active.png);*/
+}
+
+#btnPlaylist:pressed {
+    color: #F2F3F3;
+    background-color:  #2A2E3A;
+    /*background-image: url(:/buttons/video_controls/tools/playlist-white-active.png);
+    background-repeat:no-repeat;
+    background-position:left;
+    text-align: left;*/
+}</string>
+             </property>
+             <property name="text">
+              <string>Playlist</string>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>2</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+         <widget class="QWidget" name="wgtTopRight" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>65</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>5</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="OpacityButton" name="btnSettings">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>31</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#btnSettings {
+    background-color: transparent;
+    image: url(:/buttons/video_controls/tools/settings.png);
+}
+
+#btnSettings[inverted=true] {
+    image: url(:/buttons/video_controls/tools/settings-white.png);
+}
+
+#btnSettings:hover {
+    image: url(:/buttons/video_controls/tools/settings-white-active.png);
+}
+
+#btnSettings:pressed {
+    image: url(:/buttons/video_controls/tools/settings-white-active.png);
+    background-color:  #2A2E3A;
+    /*border-bottom: 1px solid #2A2E3A;*/
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="OpacityButton" name="btnRemove">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>31</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#btnRemove {
+    background-color: transparent;
+    image: url(:/buttons/video_controls/tools/close.png);
+}
+
+#btnRemove[inverted=true] {
+    image:url(:/buttons/video_controls/tools/close-white.png);
+}
+
+#btnRemove:hover {
+    image: url(:/buttons/video_controls/tools/close-white-active.png);
+}
+
+#btnRemove:pressed {
+    image: url(:/buttons/video_controls/tools/close.png);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="centerWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>64</number>
+      </property>
+      <item>
+       <widget class="OpacityButton" name="btnCenter">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>42</width>
+          <height>42</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <stylestrategy>PreferAntialias</stylestrategy>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#btnCenter {
+    image: url(:/buttons/video_controls/download.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(:/buttons/video_controls/tools/paste.png);
+    border:0.1px solid transparent;
+    background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(212, 43, 24, 200), stop:1 rgba(212, 43, 24, 72));
+    border-radius: 20px;
+}
+
+#btnCenter:hover {
+    background-image: url(:/buttons/video_controls/tools/paste_hover.png);
+}
+
+#btnCenter:pressed {
+    background-color: #421412;
+}
+
+#btnCenter[ inverted=true] {
+    image: url(:/buttons/video_controls/download-white.png);
+
+}
+
+#btnCenter[state=&quot;Return&quot;] {
+    image: url(:/buttons/video_controls/stop.png);
+
+}
+
+#btnCenter[state=&quot;Return&quot;][ inverted=true] {
+    image: url(:/buttons/video_controls/stop-white.png);
+}
+
+#btnCenter[state=&quot;Pause&quot;] {
+    image:url(:/buttons/video_controls/pause.png);
+
+}
+
+#btnCenter[state=&quot;Pause&quot;][ inverted=true] {
+    image: url(:/buttons/video_controls/pause-white.png);
+}
+
+
+#btnCenter[state=&quot;Resume&quot;] {
+    image: url(:/buttons/video_controls/continue-circle.png);
+}
+
+#btnCenter[state=&quot;Resume&quot;][ inverted=true] {
+    image: url(:/buttons/video_controls/continue-circle-white.png);
+}
+
+
+#btnCenter[state=&quot;Play&quot;] {
+    image: url(:/buttons/video_controls/play.png);
+}
+
+#btnCenter[state=&quot;Play&quot;][ inverted=true] {
+    image: url(:/buttons/video_controls/play-white.png);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OpacityButton</class>
+   <extends>QPushButton</extends>
+   <header>opacity_button.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

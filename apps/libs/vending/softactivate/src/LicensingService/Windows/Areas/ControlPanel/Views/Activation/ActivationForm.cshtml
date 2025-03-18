@@ -1,0 +1,88 @@
+﻿@model Licensing.Web.Models.Activation
+
+@{
+    ViewBag.Title = "Add, Edit or View Activation Record";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.LicenseKeyId)
+    
+    <fieldset>
+        <legend>Activation</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActivationKey)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ActivationKey)
+            @Html.ValidationMessageFor(model => model.ActivationKey)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LicenseKey)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LicenseKey)
+            @Html.ValidationMessageFor(model => model.LicenseKey)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HardwareId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HardwareId)
+            @Html.ValidationMessageFor(model => model.HardwareId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpirationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpirationDate)
+            @Html.ValidationMessageFor(model => model.ExpirationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActivationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ActivationDate)
+            @Html.ValidationMessageFor(model => model.ActivationDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IPAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IPAddress)
+            @Html.ValidationMessageFor(model => model.IPAddress)
+        </div>
+
+        @if (!(ViewBag.IsReadOnly == true))
+        {
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        }
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ExpirationDate").datepicker();
+        });
+    </script>
+}

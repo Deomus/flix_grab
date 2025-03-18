@@ -1,0 +1,13 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: TagLib C Bindings
+Description: Audio meta-data library (C bindings)
+Requires: taglib
+Version: 1.13
+Libs: "-L${prefix}/lib" -ltag_c
+Cflags: "-I${prefix}/include/taglib"
+

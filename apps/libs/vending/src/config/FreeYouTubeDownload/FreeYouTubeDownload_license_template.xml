@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LicenseTemplate version='3'>
+  <LicenseKey encoding='BASE32X' characterGroups='5' charactersPerGroup='6' groupSeparator='-' header='' footer=''>
+    <Data>
+      <DataFields>
+        <Field name='ExpirationDate' type='Date14' size='14' offset='8' />
+        <Field name='ProductId' type='Integer' size='8' offset='0' />
+      </DataFields>
+      <ValidationFields>
+        <Field name='RegistrationEmail' type='String' size='400' offset='0' />
+      </ValidationFields>
+    </Data>
+    <Signature size='109'>
+      <SignaturePublicKey>ABYPDQELEGAIuRIyiXlrYhGSAIuEKdeNUINcwpQEtrhFq6lOlwE=</SignaturePublicKey>
+      <SignaturePrivateKey>AQluV26yPpeyo14=</SignaturePrivateKey>
+      <SigningServiceUrl>http://vending.freegrabapp.com</SigningServiceUrl>
+      <SigningServiceTemplateId>98</SigningServiceTemplateId>
+    </Signature>
+  </LicenseKey>
+  <Properties>
+    <General>
+      <CompanyName>FreeGrabApp</CompanyName>
+      <ProductName>FreeYouTubeDownload</ProductName>
+      <ProductSupportUrl>https://freegrabapp.com</ProductSupportUrl>
+    </General>
+    <Trial>
+      <TrialKeyValidationData>VFJJQUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</TrialKeyValidationData>
+      <TrialLicenseKey>AEAMW-FS7L5-2QSMC-AN4QH-8CMPS</TrialLicenseKey>
+    </Trial>
+    <UserInterface onlineRegistrationEnabled='1' offlineRegistrationEnabled='0' />
+  </Properties>
+</LicenseTemplate>

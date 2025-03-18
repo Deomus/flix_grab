@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LicenseTemplate version='3'>
+  <LicenseKey encoding='BASE32X' characterGroups='5' charactersPerGroup='6' groupSeparator='-' header='' footer=''>
+    <Data>
+      <DataFields>
+        <Field name='ExpirationDate' type='Date14' size='14' offset='8' />
+        <Field name='ProductId' type='Integer' size='8' offset='0' />
+      </DataFields>
+      <ValidationFields>
+        <Field name='RegistrationEmail' type='String' size='400' offset='0' />
+      </ValidationFields>
+    </Data>
+    <Signature size='109'>
+      <SignaturePublicKey>AAf/DQELVosizZEfptzUuxWSAGZ1s62m5pUvHjba/ESa7YTIKwA=</SignaturePublicKey>
+      <SignaturePrivateKey>AQntK5VobAsseSc=</SignaturePrivateKey>
+      <SigningServiceUrl>http://vending.freegrabapp.com</SigningServiceUrl>
+      <SigningServiceTemplateId>94</SigningServiceTemplateId>
+    </Signature>
+  </LicenseKey>
+  <Properties>
+    <General>
+      <CompanyName>FreeGrabApp</CompanyName>
+      <ProductName>FreeFacebookVideoDownload</ProductName>
+      <ProductSupportUrl>https://freegrabapp.com</ProductSupportUrl>
+    </General>
+    <Trial>
+      <TrialKeyValidationData>VFJJQUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</TrialKeyValidationData>
+      <TrialLicenseKey>NAAAAA-AAGUV6-XS3F86-QJJ3TT-P7YXWH</TrialLicenseKey>
+    </Trial>
+    <UserInterface onlineRegistrationEnabled='1' offlineRegistrationEnabled='0' />
+  </Properties>
+</LicenseTemplate>

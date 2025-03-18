@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9ACD3329-B301-4C4F-9358-35D50F2811E5}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftActivate.Licensing</RootNamespace>
+    <AssemblyName>SoftActivate.Licensing</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Managed\Debug\Pcl\Android\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Managed\Release\Pcl\Android\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SoftActivate.Licensing\Base32.cs">
+      <Link>Base32.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\BigInt.cs">
+      <Link>BigInt.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\BitStream.cs">
+      <Link>BitStream.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\BitStream2.cs">
+      <Link>BitStream2.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\BitStruct.cs">
+      <Link>BitStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Certificate.cs">
+      <Link>Certificate.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Crc32.cs">
+      <Link>Crc32.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\EC2M.cs">
+      <Link>EC2M.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\ECC.cs">
+      <Link>ECC.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Generator.cs">
+      <Link>Generator.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\LicensingClient.cs">
+      <Link>LicensingClient.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\NTPClient.cs">
+      <Link>NTPClient.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\PropertyCollection.cs">
+      <Link>PropertyCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Registration.cs">
+      <Link>Registration.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\SHA1CryptoServiceProvider.cs">
+      <Link>SHA1CryptoServiceProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Template.cs">
+      <Link>Template.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Validator.cs">
+      <Link>Validator.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftActivate.Licensing\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

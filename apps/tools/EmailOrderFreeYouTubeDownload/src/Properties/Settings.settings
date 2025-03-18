@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EmailOrder.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ImapHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">imap.gmail.com</Value>
+    </Setting>
+    <Setting Name="EmailName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">license11.pp@gmail.com</Value>
+    </Setting>
+    <Setting Name="EmailPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Z-7eG*hP=HpNM65-</Value>
+    </Setting>
+    <Setting Name="ImapPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">993</Value>
+    </Setting>
+    <Setting Name="FromAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">paypal</Value>
+    </Setting>
+    <Setting Name="DeliveredAfter" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2018-06-20</Value>
+    </Setting>
+    <Setting Name="ProductName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FreeYouTubeDownload</Value>
+    </Setting>
+    <Setting Name="ProductId" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">98</Value>
+    </Setting>
+    <Setting Name="SignatureKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FreeYouTubeDownload.Signature</Value>
+    </Setting>
+    <Setting Name="OrderUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:60001/Api/Order/KeyGenerator</Value>
+    </Setting>
+    <Setting Name="FallbackEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">siadmitriy@mail.ru</Value>
+    </Setting>
+    <Setting Name="TestMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

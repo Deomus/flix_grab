@@ -1,0 +1,166 @@
+﻿@model Licensing.Web.Models.OrderItem
+
+@{
+    ViewBag.Title = "Add, Edit or View Order";
+}
+
+<h2>Order Details</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Order</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.TotalPrice)
+        @Html.HiddenFor(model => model.Order.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SelectedProduct")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.TransactionId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.TransactionId)
+            @Html.ValidationMessageFor(model => model.Order.TransactionId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.Date)
+            @Html.ValidationMessageFor(model => model.Order.Date)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.FirstName)
+            @Html.ValidationMessageFor(model => model.Order.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.LastName)
+            @Html.ValidationMessageFor(model => model.Order.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.Company)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.Company)
+            @Html.ValidationMessageFor(model => model.Order.Company)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.Address)
+            @Html.ValidationMessageFor(model => model.Order.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.Order.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.Email)
+            @Html.ValidationMessageFor(model => model.Order.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.CountryCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.CountryCode)
+            @Html.ValidationMessageFor(model => model.Order.CountryCode)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.OrderTotal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.OrderTotal)
+            @Html.ValidationMessageFor(model => model.Order.OrderTotal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order.Currency)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order.Currency)
+            @Html.ValidationMessageFor(model => model.Order.Currency)
+        </div>
+
+        <div class="editor-label">
+            License Keys
+        </div>
+        <div class="editor-field">
+            @{
+                string licenseKeyList = "";
+
+                if (Model.LicenseKeys != null)
+                {
+                    foreach (var key in Model.LicenseKeys)
+                    {
+                        licenseKeyList += (key.Key + Environment.NewLine);
+                    }
+                }
+            }
+
+            @Html.TextArea("LicenseKeys", licenseKeyList, new { @cols = "42", @rows = "5" });           
+        </div>
+
+        @if (!(ViewBag.IsReadOnly == true))
+        {
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        }
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#Order_Date').datepicker({
+            inline: true,
+            setDate: new Date()
+        });
+    });
+</script>

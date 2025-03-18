@@ -1,0 +1,17 @@
+1. Для FreeYouTubeDownload сделать clean up всех либок и самого проекта.
+
+2. Поправить BasePath в d:\fga_master\apps\common\common.props на <BasePath>$(SolutionDir)..\..\..</BasePath>
+
+3. ВЫСТАВИТЬ КЛЮЧ    WINDOWS_STORE_BACKEND   в файле purchasing_config.h
+
+4. Поднять версию приложения в config\FlixGrabMS\version.h
+
+5. Переименовать Output name проекта flixgrab при построении для магазина для RELEASE:     FlixGrab.exe -> FlixGrabMS.exe
+
+6. Сделать rebuild soulution
+
+7. Cкопировать delcert.exe в выходную папку построения и запустить в командной строке "delcert.exe *.*" в d:\fga_master\builds\Release\FlixGrabMS\ чтобы убрать цифровые подписи с файлов
+
+8. Удалить delcert.exe из выходной папки и убрать постбилд в проекте FlixGrab для Release
+
+9. Запустить создание пакета для store

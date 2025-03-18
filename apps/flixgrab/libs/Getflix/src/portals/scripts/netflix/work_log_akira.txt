@@ -1,0 +1,326 @@
+Checking for previous instance...
+Listening for:  "FreeNetflixDownload"
+""
+License product id:  97
+License Expiration date  "Fri Apr 10 00:00:00 2020"
+DecryptProvider::Constructor
+InterprocServer::Constructor 'getflix_cdm_ipc'
+BlackBone: NativeLdr: LdrpHandleTlsData not found
+BlackBone: NativeLdr: LdrpInvertedFunctionTable not found
+BlackBone: NativeLdr: RtlInsertInvertedFunctionTable not found
+ProcessInjector Constructed!
+Injector Hook: 1
+Decrypsis is initialized.
+Install intercept module status:  0
+CreateProcessW: "D:\fga_master\apps\flixgrab\app\win32\..\..\..\..\builds\Debug\FreeNetflixDownload\QtWebEngineProcess.exe" --type=renderer --disable-gpu-memory-buffer-video-frames --enable-threaded-compositing --no-sandbox --use-gl=desktop --primordial-pipe-token=134766CC70C0344E04D08C53BDE5F7D8 --lang=en-US --enable-pinch --device-scale-factor=1 --num-raster-threads=2 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=134766CC70C0344E04D08C53BDE5F7D8 --renderer-client-id=3 --mojo-platform-channel-handle=2516 /prefetch:1
+Checked remote version:  "4.4.0.301"
+License Expiration date  "Fri Apr 10 00:00:00 2020"
+new url:  "https://www.netflix.com/watch/80025313"
+QFSFileEngine::open: No file name specified
+Load url:  "https://www.netflix.com/watch/80025313"
+Page load started:  QUrl("https://www.netflix.com/watch/80025313")
+Stored url:  "https://www.netflix.com/watch/80025313"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/bck/true/none"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/signup%7CnmContent%7CnmTitle%7CnmTitleClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/l/true/none"
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/bck/true/none") ' downloaded
+Core Script  "cadmium-playercore-6.0013.245.011.js"
+Content ' QUrl("qrc:///scripts/netflix/playcore.js") ' downloaded
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/signup%7CnmContent%7CnmTitle%7CnmTitleClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/l/true/none") ' downloaded
+Script url= QUrl("qrc:///scripts/netflix/playcore.js")  result:  QVariant(Invalid)
+Page Scripts run Finished
+Page load finished requested:  QUrl("https://www.netflix.com/watch/80025313")  url:  QUrl("https://www.netflix.com/ru/title/80025172")  result:  true
+Registration Request!
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/bck/true/none")  result:  QVariant(bool, true)
+Page load started:  QUrl("https://www.netflix.com/Login")
+"EME requires that one of 'audioCapabilities' and 'videoCapabilities' must be non-empty. Non-standard support for this will be removed in M58, around April 2017. Please specify at least one valid capability for 'audioCapabilities' or 'videoCapabilities'."
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/signup%7CnmContent%7CnmTitle%7CnmTitleClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y4e4d4a13024G4I/l/true/none")  result:  QVariant(bool, true)
+Page Scripts run Finished
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/bck/true/none"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/components%7Clogin%7CloginControllerClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/l/true/none"
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/bck/true/none") ' downloaded
+Page load finished requested:  QUrl("https://www.netflix.com/Login")  url:  QUrl("https://www.netflix.com/ru/Login")  result:  true
+Login requested
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/components%7Clogin%7CloginControllerClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/l/true/none") ' downloaded
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/bck/true/none")  result:  QVariant(bool, true)
+Script blocked:  "https://connect.facebook.net/en_RU/sdk.js"
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-shakti-js-mk-v59709c4f/js/js/components%7Clogin%7CloginControllerClient.js/2/4N034o4n484q094b444u4M060o004O4t4h4w4r4F4c4v4l4y13024G4I/l/true/none")  result:  QVariant(bool, true)
+Page Scripts run Finished
+Page load started:  QUrl("https://www.netflix.com/Login")
+Core Script  "cadmium-playercore-6.0013.245.011.js"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none"
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none") ' downloaded
+Script url= QUrl("qrc:///scripts/netflix/playcore.js")  result:  QVariant(Invalid)
+Page Scripts run Finished
+Akira:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none"
+Page load finished requested:  QUrl("https://www.netflix.com/ru/Login")  url:  QUrl("https://www.netflix.com/browse")  result:  true
+Content ' QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none") ' downloaded
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none")  result:  QVariant(bool, true)
+"EME requires that one of 'audioCapabilities' and 'videoCapabilities' must be non-empty. Non-standard support for this will be removed in M58, around April 2017. Please specify at least one valid capability for 'audioCapabilities' or 'videoCapabilities'."
+Script blocked:  "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none")  result:  QVariant(bool, true)
+Page Scripts run Finished
+"Failed to set referrer policy: The value 'none' is not one of 'always', 'default', 'never', 'origin-when-crossorigin', 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', or 'unsafe-url'. The referrer policy has been left unchanged."
+Script blocked:  "https://www.googleadservices.com/pagead/conversion.js"
+Parsed JS Tracks: videos  9  audios  4
+Manifest has been detected.
+Login completed
+Page load started:  QUrl("https://www.netflix.com/watch/80025313")
+Stored url:  "https://www.netflix.com/watch/80025313"
+Core Script  "cadmium-playercore-6.0013.245.011.js"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none"
+Akira:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none"
+Script url= QUrl("qrc:///scripts/netflix/playcore.js")  result:  QVariant(Invalid)
+Page Scripts run Finished
+Page load finished requested:  QUrl("https://www.netflix.com/watch/80025313")  url:  QUrl("https://www.netflix.com/watch/80025313")  result:  true
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none")  result:  QVariant(bool, true)
+"EME requires that one of 'audioCapabilities' and 'videoCapabilities' must be non-empty. Non-standard support for this will be removed in M58, around April 2017. Please specify at least one valid capability for 'audioCapabilities' or 'videoCapabilities'."
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none")  result:  QVariant(bool, true)
+Page Scripts run Finished
+Content Metadata for id  "80025313"
+Content ' QUrl("https://www.netflix.com/api/shakti/v59709c4f/metadata?drmSystem=widevine&isWatchlistEnabled=false&isVolatileBillboardsEnabled=false&movieid=80025313&imageFormat=webp&withSize=true&materialize=true&_=1554987233383") ' downloaded
+Parsing metadata...
+Parsed Title:  "show" : ' "[S1.Ep1] Narcos - Descenso" ' Year:  2015  Duration:  3441
+Metadata intercepted
+Manifest has been detected.
+Manifest has been detected.
+Parsed JS Tracks: videos  5  audios  8
+QFSFileEngine::open: No file name specified
+CreateProcessW: "D:\fga_master\apps\flixgrab\app\win32\..\..\..\..\builds\Debug\FreeNetflixDownload\QtWebEngineProcess.exe" --type=ppapi --no-sandbox --ppapi-flash-args --lang=en-US --device-scale-factor=1 --ppapi-antialiased-text-enabled=1 --ppapi-subpixel-rendering-setting=1 --service-request-channel-token=8D214DC937A59C7382FB1F4A240F96CD --mojo-platform-channel-handle=4544 /prefetch:3
+Injection in process: 13160
+BlackBone: NativeLdr: LdrpHandleTlsData not found
+BlackBone: NativeLdr: LdrpInvertedFunctionTable not found
+BlackBone: NativeLdr: RtlInsertInvertedFunctionTable not found
+Injection Module: d:\fga_master\builds\debug\freenetflixdownload\decrypsis_d.dll
+Loader Returned Status: 0
+CreateCdmIpcInstance: com.widevine.alpha
+InterprocClient::Constructor
+[10081276] Host::Constructor
+Create Host: 8
+[159CBFB8] Cdm::Initialize allow_distinctive_identifier: 0 allow_persistent_state: 1
+[159CBFB8] Cdm::SetServerCertificate promise_id: 2 certificate_size: 707
+[159CBFB8] Cdm::CreateSessionAndGenerateRequest promise_id: 3 session_type: Temporary | init_data_type: CencFileIO::Constructor: 158B44D8
+FileIO::Open cdm : 158B44D8
+FileIO::Read  : 158B44D8
+FileIO::Close: 158B44D8
+FileIO::Destructor: 158B44D8
+Video parsing timeout! Trying  1 ...
+Page load started:  QUrl("https://www.netflix.com/watch/80025313")
+Stored url:  "https://www.netflix.com/watch/80025313"
+[159CBFB8] Cdm::Destroy
+Core Script  "cadmium-playercore-6.0013.245.011.js"
+Script intercepted:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none"
+Akira:  "https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none"
+Script url= QUrl("qrc:///scripts/netflix/playcore.js")  result:  QVariant(Invalid)
+Page Scripts run Finished
+Page load finished requested:  QUrl("https://www.netflix.com/watch/80025313")  url:  QUrl("https://www.netflix.com/watch/80025313")  result:  true
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/bootstrap.js,common%7Cbootstrap.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/bck/true/none")  result:  QVariant(bool, true)
+"EME requires that one of 'audioCapabilities' and 'videoCapabilities' must be non-empty. Non-standard support for this will be removed in M58, around April 2017. Please specify at least one valid capability for 'audioCapabilities' or 'videoCapabilities'."
+Script url= QUrl("https://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-v59709c4f/js/js/akira%7CakiraClient.js/2/4u494b0743414f4t040m004v4e474h4c4m444g09104n4p/l/true/none")  result:  QVariant(bool, true)
+Page Scripts run Finished
+Content Metadata for id  "80025313"
+Content ' QUrl("https://www.netflix.com/api/shakti/v59709c4f/metadata?drmSystem=widevine&isWatchlistEnabled=false&isVolatileBillboardsEnabled=false&movieid=80025313&imageFormat=webp&withSize=true&materialize=true&_=1554987263359") ' downloaded
+Parsing metadata...
+Parsed Title:  "show" : ' "[S1.Ep1] Narcos - Descenso" ' Year:  2015  Duration:  3441
+Metadata intercepted
+Manifest has been detected.
+Parsed JS Tracks: videos  5  audios  8
+CreateCdmIpcInstance: com.widevine.alpha
+InterprocClient::Constructor
+[10081828] Host::Constructor
+Create Host: 8
+[159CBDD8] Cdm::Initialize allow_distinctive_identifier: 0 allow_persistent_state: 1
+[159CBDD8] Cdm::SetServerCertificate promise_id: 2 certificate_size: 707
+[159CBDD8] Cdm::CreateSessionAndGenerateRequest promise_id: 3 session_type: Temporary | init_data_type: CencFileIO::Constructor: 158B44D8
+FileIO::Open cdm : 158B44D8
+FileIO::Read  : 158B44D8
+FileIO::Close: 158B44D8
+FileIO::Destructor: 158B44D8
+[159CBDD8] Cdm::UpdateSession promise_id: 4 session_id: 28FFB6455C53F1D9DF7EDE40D36D92CD
+FileIO::Constructor: 158B44D8
+FileIO::Open cdm : 158B44D8
+FileIO::Read  : 158B44D8
+FileIO::Write  : 158B44D8
+FileIO::Close: 158B44D8
+FileIO::Destructor: 158B44D8
+ key_id: 00000000044B060E0000000000000000 | key_status: Usable
+ key_id: 00000000044B060F0000000000000000 | key_status: Usable
+ key_id: 00000000044B06100000000000000000 | key_status: Usable
+key_id:     K
+key_id:     K
+key_id:     K
+QFSFileEngine::open: No file name specified
+QFSFileEngine::open: No file name specified
+Video Ready:  QUrl("https://www.netflix.com/watch/80025313")
+QFSFileEngine::open: No file name specified
+QFSFileEngine::open: No file name specified
+Show Menu: TransMenu(0x15706e40)
+Checkbox Action Toggled  true
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+QFSFileEngine::open: No file name specified
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Checkbox Clicked  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Checkbox Clicked  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Checkbox Clicked  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Checkbox Action Toggled  true
+Show Menu: TransMenu(0x15708510)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb9bf50 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Hide Menu: TransMenu(0x15708510)
+Hide Action  QAction(0x00)   (QAction(0x1571e5b0 text="Audio Tracks" toolTip="Audio Tracks" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15708510)
+Audio submenuAboutToHide
+Finish Menu:  TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0x00)   ()
+Close menu TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15706e40)
+Show Menu: TransMenu(0x15707b10)
+Hide Menu: TransMenu(0x15706e40)
+Hide Action  QAction(0xdb80238 text="" menuRole=TextHeuristicRole visible=true)   ()
+Detected Previous Menu:  TransMenu(0x15706e40)
+Checkbox Clicked  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Checkbox Action Toggled  false
+Checkbox Action Toggled  true
+Hide Menu: TransMenu(0x15707b10)
+Hide Action  QAction(0x00)   (QAction(0xdb55108 text="Video Track" toolTip="Video Track" menuRole=TextHeuristicRole visible=true))
+Close menu TransMenu(0x15707b10)
+Finish Menu:  TransMenu(0x15706e40)
+Temp File  "C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.tmp1"
+Temp File  "C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.tmp2"
+(15:57:7) INFO: Initialize Demuxer for file 'https://ipv4-c001-led001-retn-isp.1.oca.nflxvideo.net/?o=AQG2t32TQi3Xt6MKHZmQRSJgCoTN3gf-BxXXkMUWbuoTtvpOk1UqLDCnKomOPuhGoaVmZkiB89R4CxBru1VGUFNyltwOriPUleAkzf5KZwWQEh0gWEiHyRpkD_ICXJNIOei62y1wkD7OzOcjPP1-_nBp1xERNxnsyheDtSwbnlz2efKpEopRImcjR7xi0MriC0-MDclMDwuoz4ZYNVK8Qg&v=3&e=1555030466&t=IyTgnXaVU-VLBQgu1fpzCA_AY5U'.
+Http open url: https://ipv4-c001-led001-retn-isp.1.oca.nflxvideo.net/?o=AQG2t32TQi3Xt6MCGZyRRyRuDYfN3gf-EBXXkMUWbuoTtvpOk1UqLDCnKomOPuhGoaVmZkiB89R4CxBru1VGUFNyltwOriPUleAkzf5KZwWQEh0gWEiHyRpkD_ICXJNIOei62ylzjnGaqY8rY_dCiSVungEIOxfrzw2con4fhl3xY7ulBdhGMWQkUr5qhoXxCUe4Y8AFTAu8kMJUNVO1&v=3&e=1555030466&t=ijRmHIHkYSxIhmLWA6nqfB4dQwY
+(15:57:8) WARNING: Ignore unsupported protection scheme: piff
+x264 [info]: using SAR=1/1
+x264 [info]: using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX UnalignedStack
+x264 [info]: profile High, level 3.0
+Output #0, mp4, to 'C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.tmp1':
+    Stream #0:0(und): Video: h264, none, 768x432 [SAR 1:1 DAR 16:9], q=2-31, 1 fps, 10000k tbn
+Framerate: 23.976
+Cdm::InitializeVideoDecoder status: Success config: codec: H264 format: Yv12 size: 768x432
+(15:57:8) INFO: Edit list with media time 834167 ignored.
+Constructor Buffer
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 834167 | subsamples: 4 | data_size: 961 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4000000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 7924583 | subsamples: 2 | data_size: 34 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4010000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 4170834 | subsamples: 2 | data_size: 31 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4020000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 1251250 | subsamples: 2 | data_size: 31 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4030000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 1668333 | subsamples: 2 | data_size: 31 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4040000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 55055000 | subsamples: 2 | data_size: 31 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4830000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 68401667 | subsamples: 2 | data_size: 674 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF4A10000000000000000
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 106773333 | subsamples: 2 | data_size: 31 | key_id: 00000000044B060F0000000000000000 | iv: 4C2B40E94FDCF5000000000000000000
+Constructor Buffer
+Finished: https://ipv4-c001-led001-retn-isp.1.oca.nflxvideo.net/?o=AQG2t32TQi3Xt6MCGZyRRyRuDYfN3gf-EBXXkMUWbuoTtvpOk1UqLDCnKomOPuhGoaVmZkiB89R4CxBru1VGUFNyltwOriPUleAkzf5KZwWQEh0gWEiHyRpkD_ICXJNIOei62ylzjnGaqY8rY_dCiSVungEIOxfrzw2con4fhl3xY7ulBdhGMWQkUr5qhoXxCUe4Y8AFTAu8kMJUNVO1&v=3&e=1555030466&t=ijRmHIHkYSxIhmLWA6nqfB4dQwY
+Http close https://ipv4-c001-led001-retn-isp.1.oca.nflxvideo.net/?o=AQG2t32TQi3Xt6MCGZyRRyRuDYfN3gf-EBXXkMUWbuoTtvpOk1UqLDCnKomOPuhGoaVmZkiB89R4CxBru1VGUFNyltwOriPUleAkzf5KZwWQEh0gWEiHyRpkD_ICXJNIOei62ylzjnGaqY8rY_dCiSVungEIOxfrzw2con4fhl3xY7ulBdhGMWQkUr5qhoXxCUe4Y8AFTAu8kMJUNVO1&v=3&e=1555030466&t=ijRmHIHkYSxIhmLWA6nqfB4dQwY
+Http close https://ipv4-c001-led001-retn-isp.1.oca.nflxvideo.net/?o=AQG2t32TQi3Xt6MCGZyRRyRuDYfN3gf-EBXXkMUWbuoTtvpOk1UqLDCnKomOPuhGoaVmZkiB89R4CxBru1VGUFNyltwOriPUleAkzf5KZwWQEh0gWEiHyRpkD_ICXJNIOei62ylzjnGaqY8rY_dCiSVungEIOxfrzw2con4fhl3xY7ulBdhGMWQkUr5qhoXxCUe4Y8AFTAu8kMJUNVO1&v=3&e=1555030466&t=ijRmHIHkYSxIhmLWA6nqfB4dQwY
+ Finish Demuxer
+[10081828] Cdm::DecryptAndDecodeFrame Video Status: NeedMoreData | timestamp: 0 | subsamples: 0 | data_size: 0 | key_id:  | iv:
+x264 [info]: frame I:616   Avg QP: 1.61  size:101873
+x264 [info]: frame P:28562 Avg QP: 3.82  size: 58757
+x264 [info]: frame B:53343 Avg QP: 6.44  size: 19957
+x264 [info]: consecutive B-frames:  3.2% 20.4% 34.6% 41.8%
+x264 [info]: mb I  I16..4: 19.0% 11.9% 69.1%
+x264 [info]: mb P  I16..4:  3.2%  2.5%  8.0%  P16..4: 53.3% 12.1% 13.4%  0.0%  0.0%    skip: 7.5%
+x264 [info]: mb B  I16..4:  0.4%  0.4%  0.6%  B16..8: 32.0%  8.6%  5.3%  direct:27.8%  skip:24.9%  L0:37.9% L1:45.0% BI:17.0%
+x264 [info]: final ratefactor: 1.59
+x264 [info]: 8x8 transform intra:18.7% inter:17.4%
+x264 [info]: coded y,uvDC,uvAC intra: 86.7% 83.2% 81.3% inter: 58.1% 30.3% 26.9%
+x264 [info]: i16 v,h,dc,p: 58% 17% 17%  8%
+x264 [info]: i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 27% 26% 22%  2%  5%  4%  4%  5%  5%
+x264 [info]: i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 28% 25% 12%  2%  8%  6%  6%  5%  7%
+x264 [info]: i8c dc,h,v,p: 46% 22% 22%  9%
+x264 [info]: Weighted P-Frames: Y:1.8% UV:0.8%
+x264 [info]: ref P L0: 73.5% 20.1%  6.4%
+x264 [info]: ref B L0: 85.3% 14.7%
+x264 [info]: kb/s:6521.04
+Converting duration (secs): 803
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.tmp1':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf58.12.100
+  Duration: 00:57:21.81, start: 0.083000, bitrate: 6524 kb/s
+    Stream #0:0(und): Video: h264 (avc1 / 0x31637661), none, 768x432, 6521 kb/s, SAR 1:1 DAR 16:9, 23.98 fps, 23.98 tbr, 10000k tbn, 10000k tbc (default)
+    Metadata:
+      handler_name    : VideoHandler
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.tmp2':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isomiso2dashiso6
+    creation_time   : 2018-10-31T07:52:35.000000Z
+  Duration: 00:57:21.92, start: 0.000000, bitrate: 67 kb/s
+    Stream #0:0(und): Audio: aac (mp4a / 0x6134706D), 48000 Hz, 2 channels, 0 kb/s (default)
+    Metadata:
+      creation_time   : 2018-10-31T07:52:35.000000Z
+      handler_name    : Audio Media Handler
+Output #0, mp4, to 'C:/Users/sdepo/Videos/[S1.Ep1] Narcos - Descenso.mp4':
+    Stream #0:0(und): Video: h264, none, 768x432 [SAR 1:1 DAR 16:9], q=2-31, 23.98 fps, 10000k tbn
+    Stream #0:1(eng): Audio: aac, 48000 Hz, 2 channels, 0 kb/s
+[mp4 @ 15D537C0] track 1: codec frame size is not set
+Download Finished
+Finishing Host...
+Remove service:
+key_id:     K
+key_id:     K
+key_id:     K
+CreateProcessW: explorer.exe  /select, "C:\Users\sdepo\Videos\[S1.Ep1] Narcos - Descenso.mp4"
+License Expiration date  "Fri Apr 10 00:00:00 2020"

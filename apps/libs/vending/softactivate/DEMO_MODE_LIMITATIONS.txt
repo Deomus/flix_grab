@@ -1,0 +1,12 @@
+Note
+====
+
+When you download the SoftActivate Licensing SDK for the first time, it runs in DEMO mode.
+
+The demo mode of the SoftActivate Licensing SDK has the following limitations: 
+
+The generated license keys are random, but the public/private key pairs needed 
+to digitally sign the license keys are pre-defined and cannot be changed.
+If you try to generate public/private key pairs, the same pair is generated every time.
+
+For more information, please visit http://www.softactivate.com/

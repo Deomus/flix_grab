@@ -1,0 +1,9 @@
+Note
+====
+
+This edition of SoftActivate Licensing SDK does not include the SDK source code.
+
+In order to obtain the C#/C++ source code of the SDK, including the licensing server source code, 
+a SoftActivate Licensing SDK Enterprise or Ultimate Edition license is needed.
+
+For more information, please visit http://www.softactivate.com/

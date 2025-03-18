@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0'">
+    <VisualStudioVersion>15.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <PreBuildEvent>xcopy /s /y $(SolutionDir)$(Configuration)\Build $(ProjectDir)..\..\..\Test\</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
+  </PropertyGroup>
+  <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
+  <PropertyGroup>
+    <ProjectGuid>31dfdf46-2afe-492a-bde2-628811c342b3</ProjectGuid>
+    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PackageCertificateKeyFile>TestPackage_StoreKey.pfx</PackageCertificateKeyFile>
+    <EntryPointProjectUniqueName>..\..\win32\test.vcxproj</EntryPointProjectUniqueName>
+    <PackageCertificateThumbprint>4F7B00A6A4BD80A7D2EB6ABC74DE35D504967951</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="TestPackage_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="TestPackage_StoreKey.pfx" />
+    <Content Include="Test\D3Dcompiler_47.dll" />
+    <Content Include="Test\iconengines\qsvgicon.dll" />
+    <Content Include="Test\imageformats\qgif.dll" />
+    <Content Include="Test\imageformats\qicns.dll" />
+    <Content Include="Test\imageformats\qico.dll" />
+    <Content Include="Test\imageformats\qjpeg.dll" />
+    <Content Include="Test\imageformats\qsvg.dll" />
+    <Content Include="Test\imageformats\qtga.dll" />
+    <Content Include="Test\imageformats\qtiff.dll" />
+    <Content Include="Test\imageformats\qwbmp.dll" />
+    <Content Include="Test\imageformats\qwebp.dll" />
+    <Content Include="Test\libEGL.dll" />
+    <Content Include="Test\libGLESV2.dll" />
+    <Content Include="Test\opengl32sw.dll" />
+    <Content Include="Test\platforms\qwindows.dll" />
+    <Content Include="Test\Qt5Core.dll" />
+    <Content Include="Test\Qt5Gui.dll" />
+    <Content Include="Test\Qt5Svg.dll" />
+    <Content Include="Test\Qt5Widgets.dll" />
+    <Content Include="Test\resources\icudtl.dat" />
+    <Content Include="Test\resources\qtwebengine_devtools_resources.pak" />
+    <Content Include="Test\resources\qtwebengine_resources.pak" />
+    <Content Include="Test\resources\qtwebengine_resources_100p.pak" />
+    <Content Include="Test\resources\qtwebengine_resources_200p.pak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\win32\test.vcxproj" />
+  </ItemGroup>
+  <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
+</Project>

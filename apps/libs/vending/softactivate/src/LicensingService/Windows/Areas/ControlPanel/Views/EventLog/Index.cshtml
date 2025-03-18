@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<Licensing.Web.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Event Log</h2>
+
+@if (User.IsInRole("Administrators"))
+{
+    <p>
+        @using (Html.BeginForm("Delete", "EventLog", FormMethod.Post, new { id = "deleteForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:if (confirm('Are you sure you want to clear the event log ?')) {document.getElementById('deleteForm').submit()}">Clear Event Log</a>
+        }
+    </p>
+}
+
+<div class="dbtablewrap">
+    <table class="dbtable">
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                IP Address
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Date.ToLocalTime().ToString("G")
+            </td>
+            <td style="font-weight: bold">
+                @{
+                    switch (item.Type)
+                    {
+                        case 0:
+                            <text><span style="color: blue">I</span></text>
+                            break;
+                
+                        case 1:
+                            <text><span style="color: yellow">W</span></text>
+                            break;
+                
+                        case 2:
+                            <text><span style="color: red">E</span></text>
+                            break;
+            
+                        default:
+                            <text>?</text>
+                            break;
+                    }  
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter  })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

@@ -1,0 +1,5 @@
+Уcтановить Python 2.7
+Скопировать patch_chromium_5.7.0 в соответсвующие места
+Запустить qt5vars из папки исходников
+В cmd запустить buildqt5_proprietary.bat
+

@@ -1,0 +1,112 @@
+LIBRARY	"LICENSING"
+
+EXPORTS
+
+	KeyGenerator_Create                   @1
+	KeyGenerator_Destroy                  @2
+	KeyGenerator_SetKeyTemplate    @3
+	KeyGenerator_SetKeyDataA       @4
+	KeyGenerator_SetKeyDataW       @5
+	KeyGenerator_SetIntKeyDataA    @6
+	KeyGenerator_SetIntKeyDataW    @7
+	KeyGenerator_SetDateKeyDataA   @20
+	KeyGenerator_SetDateKeyDataW   @21
+	KeyGenerator_SetStringKeyDataA @8
+	KeyGenerator_SetStringKeyDataW @9
+	KeyGenerator_SetValidationDataA       @10
+	KeyGenerator_SetValidationDataW       @11
+	KeyGenerator_SetIntValidationDataA    @12
+	KeyGenerator_SetIntValidationDataW    @13	
+	KeyGenerator_SetStringValidationDataA @14
+	KeyGenerator_SetStringValidationDataW @15	
+	KeyGenerator_GenerateKeyA      @16
+	KeyGenerator_GenerateKeyW      @17
+
+	KeyValidator_Create                   @311
+	KeyValidator_Destroy                  @312
+	KeyValidator_SetKeyTemplate    @313
+	KeyValidator_SetKeyA           @314
+	KeyValidator_SetKeyW           @315	
+	KeyValidator_SetValidationDataA       @316
+	KeyValidator_SetValidationDataW       @317	
+	KeyValidator_SetIntValidationDataA    @318
+	KeyValidator_SetIntValidationDataW    @319	
+	KeyValidator_SetStringValidationDataA @320
+	KeyValidator_SetStringValidationDataW @321	
+	KeyValidator_IsKeyValid        @322
+	KeyValidator_QueryKeyDataA     @323
+	KeyValidator_QueryKeyDataW     @324
+	KeyValidator_QueryIntKeyDataA  @331
+	KeyValidator_QueryIntKeyDataW  @332
+	KeyValidator_QueryDateKeyDataA @333
+	KeyValidator_QueryDateKeyDataW @334
+
+	LicenseTemplate_Create                    @120
+	LicenseTemplate_Destroy                   @121
+	LicenseTemplate_SetVersion                @122
+	LicenseTemplate_GetVersion                @123
+	LicenseTemplate_SetNumberOfGroups         @124
+	LicenseTemplate_GetNumberOfGroups         @125
+	LicenseTemplate_SetCharactersPerGroup     @126
+	LicenseTemplate_GetCharactersPerGroup     @127
+	LicenseTemplate_SetGroupSeparatorA        @128
+	LicenseTemplate_SetGroupSeparatorW        @129	
+	LicenseTemplate_GetGroupSeparatorA        @167
+	LicenseTemplate_GetGroupSeparatorW        @168
+	LicenseTemplate_SetEncoding               @131
+	LicenseTemplate_GetEncoding               @132
+	LicenseTemplate_SetHeaderA                @133
+	LicenseTemplate_SetHeaderW                @134	
+	LicenseTemplate_GetHeaderA                @135
+	LicenseTemplate_GetHeaderW                @136	
+	LicenseTemplate_SetFooterA                @137
+	LicenseTemplate_SetFooterW                @138
+	LicenseTemplate_GetFooterA                @139
+	LicenseTemplate_GetFooterW                @140	
+	LicenseTemplate_SetDataSize               @141
+	LicenseTemplate_GetDataSize               @142
+	LicenseTemplate_AddDataFieldA             @143
+	LicenseTemplate_AddDataFieldW             @144	
+	LicenseTemplate_EnumDataFieldsA           @145
+	LicenseTemplate_EnumDataFieldsW           @146	
+	LicenseTemplate_GetDataFieldA             @157
+	LicenseTemplate_GetDataFieldW             @158
+	LicenseTemplate_SetValidationDataSize     @147
+	LicenseTemplate_GetValidationDataSize     @148
+	LicenseTemplate_AddValidationFieldA       @149
+	LicenseTemplate_AddValidationFieldW       @150	
+	LicenseTemplate_EnumValidationFieldsA     @151
+	LicenseTemplate_EnumValidationFieldsW     @152	
+	LicenseTemplate_GetValidationFieldA       @159
+	LicenseTemplate_GetValidationFieldW       @160
+	LicenseTemplate_SetSignatureSize          @153
+	LicenseTemplate_GetSignatureSize          @154
+	LicenseTemplate_LoadXml                   @155
+	LicenseTemplate_SaveXml                   @156
+
+	LicenseTemplate_SetSigningServiceUrlA     @166
+	LicenseTemplate_SetSigningServiceUrlW     @179
+	LicenseTemplate_GetSigningServiceUrlA     @180
+	LicenseTemplate_GetSigningServiceUrlW     @181
+	LicenseTemplate_SetSigningServiceTemplateId @182
+	LicenseTemplate_GetSigningServiceTemplateId @183
+
+	KeyHelper_GetCurrentHardwareIdA           @255
+	KeyHelper_GetCurrentHardwareIdW           @256
+	KeyHelper_MatchCurrentHardwareIdA         @257
+	KeyHelper_MatchCurrentHardwareIdW         @258
+
+	SDKRegistration_SetLicenseKeyA            @259
+	SDKRegistration_SetLicenseKeyW            @260
+
+	LicenseTemplate_GenerateSigningKeyPair    @270
+	LicenseTemplate_GetPublicKeyCertificateA  @271
+	LicenseTemplate_GetPublicKeyCertificateW  @272
+	LicenseTemplate_SetPublicKeyCertificateA  @273
+	LicenseTemplate_SetPublicKeyCertificateW  @274
+	LicenseTemplate_GetPrivateKeyA            @275
+	LicenseTemplate_GetPrivateKeyW            @276
+	LicenseTemplate_SetPrivateKeyA            @277
+	LicenseTemplate_SetPrivateKeyW            @278
+
+	Certificate_SignA                         @281

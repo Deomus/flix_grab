@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/scripts">
+        <file>netflix/playcore.js</file>
+        <file>pornhub/loader.js</file>
+        <file>amazon/ATVWebPlayer.js</file>
+        <file>amazon/WebLoader.js</file>
+        <file>netflix/loginControllerClient.js</file>
+        <file>hbo/hbo_app.js</file>
+    </qresource>
+</RCC>

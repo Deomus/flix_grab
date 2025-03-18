@@ -1,0 +1,1722 @@
+<html>
+	<head>
+		<title>SoftActivate Licensing SDK</title>
+		<!-- <link rel="stylesheet" href="default.css" type="text/css" media="screen,projection" /> -->
+		<style type="text/css">
+		   body 
+		   { 
+                font-family: verdana, helvetica, arial, sans-serif; 
+		        font-size: 80%;
+		   }
+        </style>
+	</head>
+	<body>
+	    <h1>SoftActivate Licensing SDK Documentation</h1>
+	    <h2>Contents</h2>
+	    <ul>
+	        <li><a href="#About">About SoftActivate Licensing SDK</a></li>
+		<li><a href="#WhatsNew3">What's New in Version 3.0</a></li>
+		<li><a href="#Upgrade_2_3">Upgrading from Licensing SDK 2.x to 3.0</a></li>
+	        <li>
+	            <a href="#Using">Using SoftActivate Licensing SDK</a>
+	            <ul>
+	                <li>
+	                    <a href="#Using_Compiling">Compiling and Linking</a>
+	                    <ul>
+	                        <li><a href="#Using_Compiling_ChoosingLibraries">Choosing the Correct Libraries</a></li>
+	                        <li><a href="#Using_Compiling_Static">Static Linking</a></li>
+	                        <li><a href="#Using_Compiling_Dynamic">Dynamic Linking</a></li>
+	                    </ul>
+	                </li>
+                    <li>
+                        <a href="#Using_LicensingServer">Installing and using SoftActivate Licensing Server</a>
+                    </li>
+	                <li><a href="#Using_Samples">Using the Samples</a></li>
+                    <li><a href="#Using_Registering">Initializing and registering the SDK</a></li>
+                    <li><a href="#Using_UILicenseManager">Adding licensing and activation to your software with only one line of source code (BETA)</a></li>
+	                <li>
+	                    <a href="#Using_CreateTemplates">Creating License Key Templates</a>
+	                    <ul>
+	                        <li><a href="#Using_Templates_Choosing">Choosing the Right Template for Your Application</a></li>
+	                        <li><a href="#Using_Templates_RegistrationName">License Keys Linked to Registration Names</a></li>
+	                        <li><a href="#Using_Templates_HardwareId">License Keys Linked to Specific Hardware</a></li>
+	                        <li><a href="#Using_Templates_XML">Using XML License Key Templates</a></li>	                        
+	                    </ul>
+	                </li>
+	                <li><a href="#Using_Generate">Generating License Keys</a></li>
+	                <li><a href="#Using_Validate">Validating License Keys</a></li>
+	                <li><a href="#Using_QueryData">Obtaining Stored Data from License Keys</a></li>
+                    <li><a href="#Using_ProductActivation">Understanding and Using Product Activation</a></li>
+                    <li><a href="#Using_HardwareId">Understanding and Using Hardware Id (Hardware Fingerprint) Strings</a></li>
+                    <li><a href="#Using_TrialVersions">Implementing Trial Versions in Your Software Application</a></li>
+                    <li><a href="#Using_DetectClockManipulation">Detecting Clock Manipulation Attempts</a></li>
+                    <li>
+	                    <a href="#Using_PaymentServiceIntegration">Integrating SoftActivate Licensing Server with Payment Services</a>
+	                    <ul>
+                            <li><a href="#Using_PayPalIntegration">PayPal Integration</a></li>
+	                        <li><a href="#Using_RegNowIntegration">RegNow Integration</a></li>
+	                        <li><a href="#Using_ShareItIntegration">ShareIt Integration</a></li>
+                            <li><a href="#Using_PreventingRemoteKeyGeneration">Preventing unauthorized parties from remotely generating license keys</a></li>
+	                    </ul>
+	                </li>
+                    <li><a href="#Using_DownloadManager">Using the Download Manager to Restrict Software Downloads</a></li>
+                    <li><a href="#Using_Security">Security Guidelines</a></li>
+	            </ul>
+	        </li>
+	        <li>
+	            <a href="#Reference">Programming Reference</a>
+	            <ul>
+	                <li>
+	                    <a href="#KeyGenerator">KeyGenerator Class</a>
+	                    <ul>
+	                        <li><a href="#KeyGenerator_Constructor">Constructor</a></li>
+	                        <li><a href="#KeyGenerator_Destructor">Destructor</a></li>
+	                        <li><a href="#KeyGenerator_SetKeyTemplate">SetKeyTemplate</a></li>
+	                        <li><a href="#KeyGenerator_SetKeyData">SetKeyData</a></li>
+	                        <li><a href="#KeyGenerator_SetValidationData">SetValidationData</a></li>
+	                        <li><a href="#KeyGenerator_GenerateKey">GenerateKey</a></li>
+	                    </ul>
+	                </li>
+	                <li>
+	                    <a href="#KeyValidator">KeyValidator Class</a>
+	                    <ul>
+	                        <li><a href="#KeyValidator_Constructor">Constructor</a></li>
+	                        <li><a href="#KeyValidator_Destructor">Destructor</a></li>
+	                        <li><a href="#KeyValidator_SetKeyTemplate">SetKeyTemplate</a></li>
+	                        <li><a href="#KeyValidator_SetKey">SetKey</a></li>
+	                        <li><a href="#KeyValidator_SetValidationData">SetValidationData</a></li>
+	                        <li><a href="#KeyValidator_IsKeyValid">IsKeyValid</a></li>
+	                        <li><a href="#KeyValidator_QueryKeyData">QueryKeyData</a></li>
+	                    </ul>
+	                </li>   
+	                <li>
+	                    <a href="#LicenseTemplate">LicenseTemplate Class</a>
+	                    <ul>
+	                        <li><a href="#LicenseTemplate_Constructor">Constructor</a></li>
+	                        <li><a href="#LicenseTemplate_SetVersion">SetVersion</a></li>
+	                        <li><a href="#LicenseTemplate_GetVersion">GetVersion</a></li>
+	                        <li><a href="#LicenseTemplate_SetNumberOfGroups">SetNumberOfGroups</a></li>
+	                        <li><a href="#LicenseTemplate_GetNumberOfGroups">GetNumberOfGroups</a></li>
+	                        <li><a href="#LicenseTemplate_SetCharactersPerGroup">SetCharactersPerGroup</a></li>
+	                        <li><a href="#LicenseTemplate_GetCharactersPerGroup">GetCharactersPerGroup</a></li>
+	                        <li><a href="#LicenseTemplate_SetGroupSeparator">SetGroupSeparator</a></li>
+	                        <li><a href="#LicenseTemplate_GetGroupSeparator">GetGroupSeparator</a></li>
+	                        <li><a href="#LicenseTemplate_SetEncoding">SetEncoding</a></li>
+	                        <li><a href="#LicenseTemplate_GetEncoding">GetEncoding</a></li>
+	                        <li><a href="#LicenseTemplate_SetHeader">SetHeader</a></li>
+	                        <li><a href="#LicenseTemplate_GetHeader">GetHeader</a></li>
+	                        <li><a href="#LicenseTemplate_SetFooter">SetFooter</a></li>
+	                        <li><a href="#LicenseTemplate_GetFooter">GetFooter</a></li>
+	                        <li><a href="#LicenseTemplate_SetDataSize">SetDataSize</a></li>
+	                        <li><a href="#LicenseTemplate_GetDataSize">GetDataSize</a></li>
+	                        <li><a href="#LicenseTemplate_AddDataField">AddDataField</a></li>
+	                        <li><a href="#LicenseTemplate_EnumDataFields">EnumDataFields</a></li>
+	                        <li><a href="#LicenseTemplate_SetValidationDataSize">SetValidationDataSize</a></li>
+	                        <li><a href="#LicenseTemplate_GetValidationDataSize">GetValidationDataSize</a></li>
+	                        <li><a href="#LicenseTemplate_AddValidationField">AddValidationField</a></li>
+	                        <li><a href="#LicenseTemplate_EnumValidationFields">EnumValidationFields</a></li>
+	                        <li><a href="#LicenseTemplate_SetSignatureSize">SetSignatureSize</a></li>
+	                        <li><a href="#LicenseTemplate_GetSignatureSize">GetSignatureSize</a></li>
+	                        <li><a href="#LicenseTemplate_LoadXml">LoadXml</a></li>
+	                        <li><a href="#LicenseTemplate_SaveXml">SaveXml</a></li>
+	                        <li><a href="#LicenseTemplate_SetPublicKey">SetPublicKey</a></li>
+	                        <li><a href="#LicenseTemplate_GetPublicKey">GetPublicKey</a></li>       
+	                        <li><a href="#LicenseTemplate_SetPrivateKey">SetPrivateKey</a></li>
+	                        <li><a href="#LicenseTemplate_GetPrivateKey">GetPrivateKey</a></li>
+	                        <li><a href="#LicenseTemplate_GenerateSigningKeyPair">GenerateSigningKeyPair</a></li>   	                                                         
+                        </ul>
+	                </li>
+	                <li>
+	                    <a href="#LicensingClient">LicensingClient Class</a>
+	                    <ul>
+	                        <li><a href="#LicensingClient_Constructor">Constructor</a></li>
+	                        <li><a href="#LicensingClient_SetActivationServiceUrl">SetActivationServiceUrl</a></li>
+	                        <li><a href="#LicensingClient_SetActivationKeyTemplate">SetActivationKeyTemplate</a></li>
+	                        <li><a href="#LicensingClient_SetLicenseKey">SetLicenseKey</a></li>
+	                        <li><a href="#LicensingClient_SetActivationKey">SetActivationKey</a></li>
+	                        <li><a href="#LicensingClient_GetActivationKey">GetActivationKey</a></li>
+	                        <li><a href="#LicensingClient_SetHardwareId">SetHardwareId</a></li>
+	                        <li><a href="#LicensingClient_GetHardwareId">GetHardwareId</a></li>
+	                        <li><a href="#LicensingClient_AcquireLicense">AcquireLicense</a></li>
+	                        <li><a href="#LicensingClient_IsLicenseValid">IsLicenseValid</a></li>
+                            <li><a href="#LicensingClient_GetLicenseActivationStatus">GetLicenseActivationStatus</a></li>
+                        </ul>
+	                </li>
+	                <li>
+	                    <a href="#KeyHelper">KeyHelper Class</a>
+	                    <ul>
+	                        <li><a href="#KeyHelper_GetCurrentHardwareId">GetCurrentHardwareId</a></li>
+	                        <li><a href="#KeyHelper_MatchCurrentHardwareId">MatchCurrentHardwareId</a></li>
+                            <li><a href="#KeyHelper_DetectClockManipulation">DetectClockManipulation</a></li>
+                        </ul>
+	                </li>
+	            </ul>
+	        </li>
+	        <li><a href="#Glossary">Glossary</a></li>
+	    </ul>
+	    <a name="About"></a>
+	    <h2>About SoftActivate Licensing SDK</h2>
+	    <p>SoftActivate Licensing SDK uses the latest advances in elliptic curve cryptography to provide you with one of the most secure and flexible license key management solutions on the market. It supports short, easy to read key generation, key validation and product activation. It has native C, C++ and .NET interfaces. 
+        	It has a fully managed implementation written in C# in addtition to the C/C++ native implementation</p>
+	    
+	    <a name="WhatsNew3"></a>
+	    <h2>What's New in Version 3.0</h2>
+	    <p>
+		SoftActivate Licensing SDK 3.0 comes with a host of new features:
+		
+		<li><b>New Web Control Panel</b> You can now view and edit products, orders, license keys, etc. without having to 
+		    access the licensing server's database using a 3rd party database editing tools.</li>
+		<li><b>Re-Written Licensing Server and Database</b>. The licensing server is now more streamlined and flexible, allowing multiple items in the same order, 
+                    better integration with payment services, more future-proof
+		<li><b>FastSpring payment service support</b>. By popular request, FastSpring support has been included in our SDK.
+		<li><b>Enhanced Hardware Id algorithms></b> Better virtual machine support and custom hardware id support
+		<li><b>License Validation via time server</b> You can now opt for the SDK to connect to a time server and read the actual time,
+                    instead of relying on system time and DetectClockManipulation() method which sometimes can be unreliable
+                <li><b>Many other bug fixes</b>
+            </p>
+
+	    <a name="Upgrade_2_3"></a>
+            <h2>Upgrading from Licensing SDK 2.x to 3.0</h2>
+
+	    <p><b>Compatibility</b>. Please note that although the v2.x client SDK (which you may have deployed to your customers) is protocol-compatible to the v3.0 server,
+               the v2.0 and v3.0 client APIs are slightly different and not binary compatible. This means that if/when you update your customers
+               with the 3.0 SDK, you must also update any other binaries using the SDK.<p>
+
+	    <p><b>License Key Templates</b>. Even more important is the fact that the public/private key pairs, although containing the same binary secret or public numbers, use a 
+               different internal format between v2.0 and v3.0. This means that you need to upgrade your existing XML license key templates that you 
+	       are using for your products. In order to upgrade, you must simply load your existing XML templates into the Licensing Tool, and then save them.
+               You will notice that the XML strings for the public/private key pairs will be different between the v2.0 and v3.0 XML files.
+	       When the licensing tool determines that it must convert a v2.0 license key template to a v3.0 template, it will connect to SoftActivate once
+               and counter-sign the v2.0 public key for use with the v3.0 SDK. 
+	       The private key will not be sent to SoftActivate and it will just be re-packed locally to the new format.<p>
+            <p>However, the v2.0 to v3.0 conversion process is done very transparently and it is not necessary to know all these details</p>
+	    <p><b>Database Compatibility</b>. Although the v3 server database is incompatible to the v2 server database, we have made it
+	       extremely simple to upgrade. Just open your existing v2 database in SQL Server Management Studio Express, and run the 
+               LicensingService.sql script (found in App_Data folder) against your database. It will convert your v2 database to the v3 format without losing your existing data.
+               <b>Please backup your existing database first !</b>
+	    </p>
+
+	    <a name="Using"></a>
+	    <h2>Using SoftActivate Licensing SDK</h2>
+	    <p></p>
+	    <a name="Using_Compiling"></a>
+	    <h3>Compiling and Linking</h3>
+	    <a name="Using_Compiling_ChoosingLibraries"></a>
+	    <h4>Choosing the Correct Libraries</h4>
+	    <p>
+	        The following libraries are provided by the SoftActivate Licensing SDK for each of the Win32, x64, and .NET platforms:
+	    </p>
+	    <ul>
+	        <li>
+	            <strong>Dynamic library (DLL) Debug (bin\Win32|x64\Debug\licensing.dll)</strong><br />
+	            This is a dynamically linked library with license key generation/validation and activation support. This library is intended to be used mainly for debugging purposes.
+	            This is not intended nor allowed to redistribute with your applications. 
+	            A corresponding import library is supplied, named <strong>lib\win32|x64\Debug\licensing.lib</strong>.
+	        </li>
+	        <li>
+	            <strong>Dynamic library (DLL) Release (bin\Win32|x64\Debug\licensing.dll)</strong><br />
+	            This is a dynamically linked library containing support for license key generation/validation and activation. It should only be used in-house for license key generation/validation and server-side product activation.
+                A corresponding import library is supplied, named <strong>lib\win32|x64\Release\licensing.lib</strong>.
+	        </li>
+	        <li>
+	            <strong>Static library using the C runtime as static library (lib\win32|x64\Static Release MT\licensing.lib)</strong><br />
+	            This is the recommended way to embed the Licensing SDK into your application, because it will be directly embedded into your main binary (or you could embed the relevant source code directly). 
+                Licensing code should never be put in a separate binary, like a DLL, for entry point security purposes. This library is intended to use when you are linking your application with the static version of CRT libraries ( the /MT compiler option ).
+	        </li>
+	        <li>
+	            <strong>Static library using the C runtime as shared DLL (lib\win32|x64\Static Release MD\licensing.lib</strong><br />
+	            This is the recommended way to embed the Licensing SDK into your application, because it will be directly embedded into your main binary (or you could embed the relevant source code directly). 
+                Licensing code should never be put in a separate binary, like a DLL, for entry point security purposes. This library is intended to use when you are linking your application with the dynamic version of CRT libraries ( the /MD compiler option ).
+	        </li>
+	        <li>
+	            <strong>.NET library (bin\Managed\Release\Licensing.Net.dll)</strong><br />
+                This library contains the pure .NET code for the library. It supports key generation, validation and product activation. However, this is not a recommended and secure way to include the Licensing SDK in your .NET application.
+                The most secure way is to embed the source code of the SDK directly into the source tree for your main executable. The .NET SDK source code is lightweight enough to not add significant bulk or complexity to your application.
+	        </li>            
+	    </ul>
+	    <a name="Using_Compiling_Static"></a>
+	    <h4>Static Linking</h4>
+	    <p>
+	        Static Linking refers to using the static Licensing SDK libraries in your application. In Visual Studio, you can accomplish this by editing your project properties and adding the library to Linker->Input->Additional Dependencies. 
+	        Also, you have to define the preprocessor symbol <strong>LICENSING_STATIC</strong>. To do this, edit your application properties by going to C/C++->Preprocessor->Preprocessor Definitions and add the <strong>LICENSING_STATIC</strong> symbol.
+            Static linking is the preferred way to use SoftActivate Licensing SDK libraries in your applications. Another secure way is to embed the SDK source code directly into your application.
+	    </p>
+	    <a name="Using_Compiling_Dynamic"></a>
+	    <h4>Dynamic Linking</h4>
+	    <p>
+	        Dynamic linking refers to using the DLL versions of the Licensing SDK libraries. It is the easiest and the most compatible way to use the SDK libraries. You just have to link with the corresponding import library.
+	        In Visual Studio, you can accomplish this by editing your project properties and adding the import library to Linker->Input->Additional Dependencies.
+	    </p>
+        <a name="Using_LicensingServer"></a>
+        <h3>Installing and Using the Licensing Server</h3>
+        <p>
+                    SoftActivate Licensing Server is a web service which processes product activation requests sent by the products at activation time. It also generates and sends emails with license keys. It includes a web control panel for managing products, orders, license keys, etc.
+            It has two versions. The LINUX version is written in Javascript / Node.js and requires MySQL as the database. The Windows version is written in ASP.NET/C# and can be installed on either Windows shared hosting accounts (eg. GoDaddy Economy Windows) or full servers running Microsoft Internet Information Services 7.0. The server requires .NET Framework 4.0 or newer.
+            The server's database requires SQL Server 2005 Express/Standard/Enterprise or a newer version.
+        </p>
+        <h4>Installing the SoftActivate Licensing Server on Windows (IIS)</h4>
+        <p>
+            To install the server, simply create a new web application in IIS (or in the shared hosting control panel), pointing to a folder in which you copy the contents of the "\bin\LicensingService" subfolder of the SDK. 
+            The server comes bundled with an SQL Server Compact database for testing and demo purposes, and on full-servers it shouldn't need any other modification to work. 
+            But in shared hosting environments (or in production environments) SQL Server Compact is usually not allowed, so make sure to modify the database connection string from the web.config file in order to reflect the location where you installed the database and the database credentials. 
+            From the list of 4 sample connectin strings, the second one (commented from factory) is usually the most widely used.
+            In the server's App_Data subfolder you can find an SQL Server Compact demo/development database (LicensingService.sdf), an SQL Server pre-setup database (LicensingService.mdf) that you can attach an SQL Server to, and an SQL Server script (LicensingService.sql) that you should run on a newly created database in order to prepare it for use.
+            Running the LicensingService.sql script (using either Microsoft SQL Server Management Studio Express or a shared hosting SQL management control panel) is the most widely used method to prepare a newly created database for server use.
+            When upgrading database, the same script must be run over an existing database to upgrade it to the latest version (it will preserve existing data, however, please do a backup first).
+        </p>
+        <p>
+            In the server's web.config file, you will have to enter your purchased SDK license key (or leave the included demo key).
+        </p>
+        <p>
+            In order to test that the server was installed successfully, point a web browser to the server's web address. The web control panel's logon page should appear. 
+            Default username/password is "admin/SoftActivate". Please change the password immediately after logon by clicking on the "admin" link in the 
+            upper right corner of the web control panel.
+        </p>
+        <h4>Installing SoftActivate Licensing Server on LINUX (Node.js)</h4>
+        <p>SoftActivate Licensing SDK now includes a Linux-compatible licensing server. The Linux licensing server is written in Javascript/Node.js and requires MySQL as the database. 
+           Please note that this is in BETA stage and has significant limitations compared to the Windows version (most notably lack of a web control panel - you must use a database editor to add/modify/inspect the database records in case you need it - for example when adding a new product). 
+           Also, please note that as always on Linux, a significant level of Linux systems administration knowledge is required.
+           <br /> 
+           Server installation steps on Linux (our example assumes a fresh instance of Amazon Linux - a popular choice for Amazon EC2 Linux virtual machines):
+            <ul>
+                <li>Install Node.js and NPM on the Linux machine. On Amazon Linux, use the following command: 'sudo yum install nodejs npm --enablerepo=epel'</li>
+                <li>Give the node executable the right to listen to ports < 1024 (such as 80 and 443 for HTTP and HTTPS) without running as root: 'sudo setcap cap_net_bind_service=+ep /usr/bin/node'</li>
+                <li>Place the contents of the <i>/LicensingService/Linux</i> folder from the SDK folder into the <i>/var/www/licensingservice</i> folder of the Linux machine (create folders if necessary)</li>
+                <li>From the /var/www/licensingservice current folder, run the command 'npm install'. This will download and install the Node.js packages required by the licensing server</li>
+                <li>Move the file 'nodejs' (the startup script) from the /var/www/licensingservice folder to /etc/init.d folder and give it execute permissions with the command 'sudo chmod 0755 /etc/init.d/nodejs'</li>
+                <li>Enable the node.js server with the command 'sudo chkconfig nodejs on'</li>
+                <li>If you don't have a dedicated database server, install MySQL on the server using the MySQL part of <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html">this</a> Amazon AWS tutorial</li>
+                <li>Using a database editor of your choice, create a database called 'licensingservice' (or other name) and a username/password with access to the database</li>
+                <li>Create a database called 'licensingservice' (or other name) and a username/password with access to the database</li>
+                <li>Run the /var/www/licensingservice/licensingservice.mysql script against the database in order to create and populate the tables</li>
+                <li>Edit the /var/www/licensingservice/config.json configuration file and set your SDK license key (leave the existing if using trial version) and database and email parameters (values names should be self-explanatory)</li>
+                <li>Try the licensing service by running the command 'node index.js' from the /var/www/licensingservice folder. If the message 'licensing service started' appears, it is a good sign that the server is correctly set up.</li>
+                <li>Using the SoftActivate Licensing Tool on a Windows machine (or by modifying and recompiling one of the SDK C++ samples on Linux) load a sample license template and point the licensing service URL to your server URL and perform a sample activation from the Activations tab</li>
+                <li>If an activation key is received, the server works correcly. If not, please look for any errors from the SSH console where you started the licensing service</li>
+                <li>Reboot the machine and repeat the last 2 steps in order to check that the server starts correctly after machine reboot</li>
+                <li>This should be it.</li>
+            </ul>
+        </p>
+        <p>
+            The samples "ActivationCS", "ActivationCPP", "EasyLicensingCS", "WinFormsAppCS" and "WinFormsAppVB" from the Licensing SDK connect to the server and perform sample product activations and show how to use the trial versions feature. For more information about how the activation is performed, please see the section "Understanding and Using Product Activation" in this document.
+        </p>
+	    <a name="Using_Samples"></a>
+	    <h3>Using the Samples</h3>
+	    <p>Many sample applications are provided with SoftActivate Licensing SDK in order to help you use the technology correctly and efficiently.</p>
+	    <ul>
+	        <li>
+	            <strong>Key generators and validators in C, C++, and C#</strong><br />
+	        </li>
+	        <li>
+	            <strong>Activation samples in C++ and C#</strong><br />
+	        </li>
+	        <li>
+	            <strong>Hardware Id generation samples</strong><br />
+	        </li>
+	    </ul>
+        <p>The samples are found in the <strong>Samples\C</strong>, <strong>Samples\C++</strong> and <strong>Samples\C#</strong> folders</p>
+        <a name="Using_Registering">Initializing and registering the SDK</a>
+        <h3>Initializing and Registering the SDK</h3>
+        <p>
+            There is no initialization required (and neither is it recommended) for the SDK if it will be used for license key validation, or client-side product activation. Thus, in your end-user application there is no initialization required.
+            If the SDK will be used for license key generation or public/private key generation (for example in your key generator application),the first required step is initializing the SDK by entering the purchased SDK license key. This is done via <a href="#SDKRegistration_SetLicenseKey"><b>SDKRegistration::SetLicenseKey()</b></a>. If this license key is not entered, the SDK will function in demo mode. This means that only certain, pre-defined private/public keys for license key generation are generated/accepted for use by the SDK.
+            Since the predefined private keys are known by anyone and can be generated by anyone, these cannot be securely used to sign the generated license keys.
+            Initializing the SDK by calling SDKRegistration::SetLicenseKey() and setting your purchased developer license key into your end-user application is NOT recommended.
+        </p>
+        <a name="Using_UILicenseManager">Adding licensing and activation to your software with only one line of source code (BETA)</a>
+        <h3>Adding licensing and activation to your software with only one line of source code (BETA)</h3>
+        <p>
+            Starting with version 3.1, SoftActivate Licensing SDK includes a new .NET component called UILicenseManager and located in LicensingUI.Net.dll assembly.
+            This component provides all the registration logic, including a customizable HTML-based user interface.
+            This component has only one method: UILicenseManager.Run(). 
+            For more information, please see the EasyLicensingCS sample in the SDK's Samples\CS subfolder.
+            Unfortunately, this new feature is not yet available in the native (x86/x64) version of the SDK.
+        </p>
+	    <a name="Using_CreateTemplates"></a>
+	    <h3>Creating License Key Templates</h3>
+	    <p>
+	        SoftActivate license keys are very flexible in their format, security and contents. You can choose your own format for your application, based on your needs.
+	        A license key template is a collection of properties used to define a license key's format, security and contents.
+	    </p>
+	    <p>Currently, the following properties are available in a license key template:</p>
+	    <ul>
+	        <li>
+	            <strong>License Key Format</strong>
+	            <ul>
+	                <li><strong>Number of character groups</strong>.This is the number of groups of characters a license key has. The key <i>3XTZWJ-V5N4JB-MXDBAA-K9CYK7-2XUWSU</i> has 5 character groups.</li>
+	                <li><strong>Number of characters per group</strong>.This is the number of characters contained by each character group. The key <i>3XTZWJ-V5N4JB-MXDBAA-K9CYK7-2XUWSU</i> has 6 characters per group.</li>
+	                <li><strong>Group separator</strong>.This is a string of characters used to separate character groups. The key <i>3XTZWJ-V5N4JB-MXDBAA-K9CYK7-2XUWSU</i> has uses "-" as string separator. The new line character can also be used, causing key groups to be split one on each line. This is useful for very long license keys.</li>
+	                <li>
+	                    <strong>Character encoding</strong>.This specifies what encoding is used to convert the license keys from their binary format into an easy to handle text format. Currently two encodings are available: BASE32X and BASE64X. 
+	                    The BASE32X encoding is a variation of the BASE32 with some modifications in order to ensure that license key's characters are not confused. The BASE64X format is a variation of BASE64, and it's typically used in very long license keys, like this:<br /><br />
+--BEGIN LICENSE--<br />
+XUWCNDfqhlzPxhAnr<br />
+sdvPOCf77FgGfP4ip<br />
+BwnruQKOQjJdIftPQ<br />
+0topIPEJcWtPLhbVE<br />
+fF8Wy/V7W69qAocpU<br />
+--END LICENSE-- <br />
+
+	                </li>
+	                <li><strong>License Key Header</strong>. This is a line of text preceding the actual license key. See "--BEGIN LICENSE--" from the above example. It is typically used on very long license keys.</li>
+	                <li><strong>License Key Header</strong>. This is a line of text ending the actual license key. See "--END LICENSE--" from the above example. It is typically used on very long license keys.</li>
+	            </ul>
+	        </li>
+	        <li>
+	            <strong>License Key Security</strong>
+	            <ul>
+	                <li>
+	                    <strong>Signature size</strong>. This parameter chooses the license key signature size in bits, and thus is has an impact on key security. The allowed sizes are currently between 76 and 322. The bigger the signature size, the stronger the key security.
+	                    But also the bigger the signature size, the longer the license key must be. So you must make a compromise here (see below).
+	                </li>
+	            </ul>
+	        </li>
+	        <li>
+	            <strong>License Key Data Contents</strong><br />
+	            <ul>
+	                <li>
+	                    <strong>Embedded Data</strong>
+	                    A license key can contain various informations. The information is divided into fields. Each field can contain one of three types of data: integer, string or raw. It is up to the developer's choice what data fields does a key contain.
+	                    The key contents are digitally signed, so they cannot be altered. The embedded data size is limited by the license key size.
+	                </li>
+	                <li>
+	                    <strong>Validation Data</strong>
+	                    In addition to the data embedded in the license key, supplemental information can be used to validate a license key. This information is not embedded in the key. For example, you may want to use a registration name or a hardware id to validate a license key against. The registration name is regarded as validation data.
+	                    The validation data is not embedded in the key, so it can be any information, of any size or type.
+	                </li>
+	            </ul>
+	        </li>
+	    </ul>
+        <a name="Using_Templates_Choosing"></a>
+        <h4>Choosing the Right Template for Your Application</h4>
+        <p>
+            Since not any combination of license key length, license key security and license key contents can be used (due to size constrains), you must make a compromise between license key ease of use, security and the contained information.
+            The BASE32X format stores 5 bits for each license key character (excluding separators), so the license key <i>3XTZWJ-V5N4JB-MXDBAA-K9CYK7-2XUWSU</i> can store 150 bits. From these, a part is taken up by the digital signature, 
+            and the remaining part can be used to store various information. For example, if you choose a 130-bit signature (which is quite secure), you have 20 bits left to store data.
+        </p>
+	    <a name="Using_Templates_RegistrationName"></a>
+	    <h4>License Keys Linked to Registration Names</h4>
+	    <p>
+	        Often, in order to limit illegal license key distribution developers opt to require the registration name used when purchasing in order to validate the license key. 
+	        Thus, if someone distributes a license key, he must also distribute the registration name together with the key (otherwise the key would be useless since it could not be validated by others). 
+	        This creates an additional barrier for potential software pirates, because no one wants his name associated with violating the law.
+	        With SoftActivate Licensing SDK, linking lincese keys to registration names can be done by adding a validation field of type string to the license key template.
+	        Linking license keys to registration names has some drawbacks, however. You cannot generate license keys to be used for retail boxes or printing on CD's, for example, because you don't know in advance the name of the customer who buys a particular box. 
+	        Thus, this approach is mostly used for online distribution.
+	    </p>
+	    <a name="Using_Templates_HardwareId"></a>
+	    <h4>License Keys Linked to Specific Hardware</h4>
+	    <p>
+	        Sometimes, in order to drastically limit illegal license key distribution or using a license key on more than one computer, developers may want particular license keys to only validate on particular computers. 
+	        Each key is generated for a specific computer, and it cannot be used on other computers.
+	        With SoftActivate Licensing SDK, linking license keys to particular computers can be done by adding a validation field of type string (or binary) to the license key template.
+	        The Licesing SDK includes a helper API to help you determine a unique hardware id for a computer in the form of a string. This id can then be used to generate a license key, and to validate it.
+	        Linking license keys to specific hardware id's requires knowing the hardware id at key generation time. So a customer must supply his hardware id, the software vendor must generate the license key and send it back to the customer.
+	        In order for the customer to supply his hardware id, the software vendor must make available a tool by which the customer can find his computer's hardware id. This tool can use SoftActivate Licensing SDK helper API for hardware id management.
+	        Linking license keys to specific hardware has some drawbacks, since the customer must take additional steps to purchase a product. Also, keys of this type cannot be distributed in large quantities, like in retail boxes or CD prints.
+	    </p>
+	    <a name="Using_Templates_XML"></a>
+	    <h4>Using XML License Key Templates</h4>
+	    <p>
+	        SoftActivate Licensing SDK provides a convenient way to store license key validation/generation information in XML templates. 
+	    </p>
+	    <a name="Using_Generate"></a>
+	    <h3>Generating License Keys</h3>
+	    <p>The following steps must be taken in order to generate license keys:</p>
+	    <ul>
+	        <li>Create a license key template object.</li>
+	        <li>Initialize the license key template object either from an XML template or programatically. Specify the license key format, security, content fields and optionally validation fields.</li>
+	        <li>Create a license key generator object.</li>
+	        <li>Specify the template to the license key generator object.</li>
+	        <li>Set license key content data.</li>
+	        <li>Optionally, set license key validation data (for example, if you need to link the license key to a registration name).</li>
+	        <li>Generate the license key</li>
+	    </ul>
+	    <a name="Using_Validate"></a>
+	    <h3>Validating License Keys</h3>
+	    <p>The following steps must be taken in order to validate license keys:</p>
+	    <ul>
+	        <li>Create a license key template object.</li>
+	        <li>Initialize the license key template object either from an XML template or programatically. Specify the license key format, security, content fields and optionally validation fields.</li>
+	        <li>Create a license key validator object.</li>
+	        <li>Specify the template to the license key validator object.</li>
+            <li>Set the license key to the validator object</li>
+	        <li>Optionally, set license key validation data (for example, if the key was linked to a registration name or email).</li>
+	        <li>Validate the license key (by calling KeyValidator::IsKeyValid() )</li>
+            <li>If the key is valid, retrieve the data from the license key and also validate this data (for example, check if the product id from the key matches your product)</li>
+	    </ul>
+	    <a name="Using_QueryData"></a>
+	    <h3>Obtaining Stored Data from License Keys</h3>
+	    <p>Embedded key data can be read using LicenseKeyValidator::QueryKeyData method</p>
+        <a name="Using_ProductActivation"></a>
+        <h3>Understanding and Using Product Activation</h3>
+        <p>Product activation is a way to make sure that a software product can only be used on a specific computer. It involves an activation server to which your software connects (once) in order to activate the product.</p>
+        <p>
+           The activation server receives the product key (issued when the user purchased the product) and a hardware id  (a special string generated by the Licensing SDK which is unique to each computer) and returns an activation key. 
+           The activation key si a signed piece of information, similar to a license key except for the fact that it can only be validated in the presence of the hardware id string used to generate it. When checking if a product is activated, 
+           the <strong>LicensingClient</strong> class first makes sure that the activation key is valid and was signed by the activation server, and then compares the hardware id with the actual computer's hardware id. The activation key 
+           also contains an expiration date information, which is also checked. If all three conditions are met (signature verification, hardware id match, current date earlier than the expiration date) then the product is considered activated. Please note that the activation
+           verification does not involve connecting to the activation server because it is not necessary. Since the public verification key is embedded into the product, the activation key signature can be validated using the stored public key.
+           Activation by phone is also possible: the customer transmits the license key and hardware id to the phone operator, and the phone operator generates the activation key and transmits it to the customer. The customer enters this activation key 
+           into the product, and the product is activated. The license key, hardware id and activation key are all easy to read strings that can easily be transmitted in a phone conversation.
+         </p>
+         <p>
+            In summary, there are three pieces of information that make up the activation data: license key, hardware id and activation key. The <strong>LicensingClient</strong> class is used to verify the product activation status and perform activation if necessary.
+         </p>
+        <a name="Using_HardwareId"></a>
+        <h3>Understanding and Using Hardware Id (Hardware Fingerprint) Strings</h3>
+        <p>Sometimes the need arises to generate strings that uniquely identify the hardware configuration of a computer. One such example is product activation. 
+           SoftActivate Licensing SDK makes it possible to generate such strings, called hardware id strings.
+        </p>
+        <p>
+           SoftActivate Licensing SDK generates hardware id strings taking into consideration the following computer parameters: MAC addresses, fixed disk serial numbers, processor type and the amount of RAM memory.
+           All this information is combined into an easy to use/type/dictate string, of the form XXXXX-XXXXX-XXXXX-XXXXX-XXXXX (5 character groups of 5 characters each). 
+           This string can then be matched to a computer in order to find out if the computer is the same computer for which the hardware id string was previously generated.
+           The <strong>KeyHelper</strong> class contains methods for both hardware id generation and verification (matching).
+        </p>
+        <a name="Using_TrialVersions"></a>
+        <h3>Implementing Trial Versions in Your Software Application</h3>
+        <p>
+            A common scenario in commercial software development is the one in which a trial version of an application must be provided to customers so that they can try the application first before purchasing it.
+            You may want your potential customers to be able to try the product at no charge for a certain number of days.
+        </p>
+        <p>
+            SoftActivate Licensing SDK achieves this by using online software activation. This is a very secure process which does not involve hiding the product expiration date on a computer.
+            Basically, your product includes a "trial license key" which is specially marked as such on the licensing service database. After installing a product on a certain computer, when a user presses the "Start Trial" button, the licensing server receives the trial license key and hardware id of the computer, 
+            and it will issue a digitally signed activation key containing the absolute (not relative) expiration date of the trial version. This activation key is also linked to the hardware id of that computer. 
+            At each startup, the product verifies the license key, activation key and hardware id using the <b>LicensingClient</b> class. After the activation key is deemed valid, the product can query the 
+            trial expiration date of the product. If the expiration date is less than the current date, the product is allowed to run. If not, a message can be displayed to the user informing that the trial period
+            has expired and he needs to enter a purchased license key, etc.
+        </p>
+        <p>With SoftActivate Licensing SDK, you can achieve this goal via the following steps:</p>
+        <ul>
+            <li>Designate a certain license key as a "trial license key". Usually, this license key is a regular license key, it does not need to contain certain bits of data to mark it as trial.</li>
+            <li>Using SQL Server Management Studio or other similar tool, enter this license key into the LicenseKeys table of the licensing service, and set the database columns for this key as follows:
+            <ul>
+                <li>Set <b>MaxUniqueHardwareIds</b> to 0. This means that any number of computers can activate this key (this trial key will be used by all your potential customers).</li>
+                <li>Set <b>MaxActivationsPerHardwareId</b> to 1. This means that each computer can activate this license key only once.</li>
+                <li>Set <b>MaxActivations</b> to 0. This means that there is no limit of overall activation count for this license key</li>
+                <li>Set <b>LicenseDuration</b> to the number of trial days that you desire (example: use "30" for one-month trial).</li>
+                <li>Set <b>LicenseHistoryDuration</b> to a number of days after which you want to allow a computer to trial your product again after the initial trial period expires. Example: you may want that after 12 months (365 days) a computer to 
+                be allowed again to trial your product for one month. If you set this column to 0 or NULL, a computer is never allowed again to trial your product after the trial period expires. This is not recommended.</li>
+            </ul>
+            </li>
+        </ul>
+        <a name="Using_DetectClockManipulation"></a>
+        <h3>Detecting Clock Manipulation Attempts</h3>
+        <p>SoftActivate Licensing SDK provides specific methods for detecting clock manipulation attempts. The SDK scans the system for evidence that the system clock was deliberately turned back in order to avoid license expiration.</p>
+        <p>The specific method to call is <b>KeyHelper::DetectClockManipulation()</b>. This method is usually called after the IsLicenseValid() method returns true (whether in "trial" or "full" licenses) in order to ensure that the clock was not deliberately changed in order to extend the license validity interval.</p>
+        <p>For more information, please see the sample code included in the <b>ActivationCPP</b>, <b>ActivationCS</b>, <b>WinFormsAppCS</b> and <b>WinFormsAppVB</b> samples</p>
+	    <a name="Using_PaymentServiceIntegration"></a>
+	    <h3>Integrating SoftActivate Licensing Server with Payment Services</h3>
+	    <p>SoftActivate Licensing Server now fully supports integration with the most popular payment services: PayPal, RegNow, ShareIt. What does this mean ? It means that the server can be used to automatically generate license keys for the products sold via these payment services. 
+           Each payment service has a method to call a specified URL (sometimes called "CGI") to generate license keys for a particular product.
+           Since PayPal does not support sending emails with license keys to customers, SoftActivate Licensing Server can send customizable emails to customers, containing automatically generated license keys.
+           The LicensingService.mdf database contains some new tables:
+        </p>
+        <ul>
+            <li>
+                The <b>Products</b> table contains information about your products. You can edit this table and add one row for each product sold.
+                Each row contains the following columns:
+                <ul>
+                    <li><b>Id</b>. This column specifies the product id. This id can optionally be embedded in the generated license keys</li>
+                    <li><b>PayPalId</b>. This column specifies the item number from the PayPal "Buy Now" button used to sell this product. When you create a PayPal "Buy Now" button to sell a product,
+                    PayPal asks for an optional "item number". The item number you enter when creating the button must also be inserted in this column.
+                    </li>
+                    <li><b>RegNowId</b>. This column specifies the RegNow product identifier for your product (eg. "12168-5"). You can get this identifier from the RegNow control panel.</li>
+                    <li><b>ShareItId</b>. This column specifies the ShareIt product identifier for your product (eg. "300001285"). You can get this identifier from the ShareIt control panel.</li>
+                    <li><b>ProductName</b>. This column specifies the name of your product</li>
+                    <li><b>LicenseExpirationDays</b>. If you want your license keys to include an expiration date, set this integer to the number of days after which the license keys will expire. Setting it to 365 means 1 year.
+                        The generated license keys will contain an expiration date obtained by adding this number of days to the current date. Note that in order to use this feature you must also 
+                        insert an appropriate license key template in the <b>LicenseKeyTemplate</b> column: the license key template must contain a data field named "ExpirationDate" with a size of at least 14 bits.
+                    </li>
+                    <li><b>LicenseKeyTemplate</b>. This field specifies the XML license key template used for generating license keys. The XML template must be on one line of text, so remove all the newlines from the XML before inserting it into the database. This template's fields specify what is included in the generated license keys. 
+                        <ul>
+                            <li>If a ProductId integer data field is present, then the Id column value is embedded in the generated license keys.</li>
+                            <li>If an "ExpirationDate" named integer data field at least 14 bits long is present, then an expiration date (between 01/01/2010 and 12/31/2041) is included in the license key.
+                                This expiration date is calculated by adding the value from the <b>LicenseExpirationDays</b> column to the current date. For information about how the expiration date is packed into the 14-bit value and how it can be unpacked, please see samples KeyGenCS (C#) or KeyGenCPP (C++).
+                            </li>
+                            <li>If a "RegistrationName" validation field is present, then the customer name (first name + " " + last name) is used as validation data for key generation, and therefore must be provided at validation time for successful license key validation (for more information please see the documentation for license key validation fields).</li>
+                            <li>If a "RegistrationEmail" validation field is present, then the customer email (trimmed and lowercased) is used as validation data for key generation, and therefore must be provided at validation time for successful license key validation.</li>
+                        </ul>
+                    </li>
+                    <li><b>SupportEmail</b>. In PayPal integration, all the email messages sent to customers appear to come from this email address.</li>
+                </ul>
+            </li>
+            <li>The <b>Purchases</b> table contains logged information about each product sale. Logged information includes product id, license key, license expiration date, customer name, customer email, customer country, payment amount and payment currency. This table can be used to create sales statistics, to run email marketing campaigns for existing customers, etc.</li>
+            <li>
+                <p>The <b>LicenseKeys</b> table contains information about how certain license keys are behaving when they are used for activation.</p>
+                <p>The following columns are included in this table:</p>
+                <ul>
+                    <li><b>Id</b>. Self-incrementing counter for referencing this column.</li>
+                    <li><b>ProductId</b>. The product id for which this license key is generated. When a license key is sent from an application to the licensing server, the corresponding product information is looked up using this column.</li>
+                    <li><b>LicenseKey</b>. The license key</li>
+                    <li><b>MaxUniqueHardwareIds</b>. This specifies the maximum number of distinct computers which can use this license key for activation purposes. Usually best set to NULL for commercial, non-trial license keys (and let the <b>MaxActivations</b> column enforce this limit) and 0 for trial keys, since a trial key is used by many computers. Setting it to 0 means unlimted computers, setting it to NULL causes the <b>DefaultMaxUniqueHardwareIdsPerLicenseKey</b> column for the corresponding product from the <b>Products</b> table to be govern this limit.</li>
+                    <li><b>MaxActivationsPerHardwareId</b>. This specifies the maximum number of activations allowed for the same computer. Usually best set to NULL for non-trial license keys (and let the <b>MaxActivations</b> column enforce the limit), and "1" for trial keys. Setting it to 0 means unlimited activations for the same computer, setting it to NULL causes the <b>DefaultMaxUniqueHardwareIdsPerHardwareId</b> for the corresponding product from the <b>Products</b> table to govern this limit.</li>
+                    <li><b>MaxActivations</b>. This specifies the maximum total number of activations for a license key, regardless of which computer. Best set to 5-10 for commercial, non-trial license keys (in order to allow for a small number of product and OS reinstallations), and "0" for trial license keys. Setting it to 0 means unlimited number of activations, setting to NULL causes the <b>DefaultMaxActivationsPerLicenseKey</b> column for the corresponding product from the <b>Products</b> table to govern this limit.</li>
+                    <li><b>LicenseDuration</b>. This specifies the number of days after which an activation key issued for this license key, expires. For trial keys, set it to the number of trial days (eg. "30"). For commercial keys, set it to how long should this license be valid (eg. "365"). Setting it to 0 means the license will never expire. Setting it to NULL means the <b>DefaultLicenseDuration</b> column for the corresponding product from the <b>Products</b> table to govern this limit.</li>
+                    <li><b>LicenseHistoryDuration</b>. This specifies the number of days after which an expired license is not taken into account anymore when limits are calculated (even if a record if this license is still kept in the <b>Activations</b> table). For example, if for a trial license key we set this column to "180" (days) it means that even if that license key was activated once for a certain computer, it will still be allowed a new activation after 180 days (even if the MaxActivationsPerHardwareId was set to "1").</li>
+                </ul>
+            </li>
+            <li>The <b>LicenseKeysPool</b> table. In case you don't want the license keys to be automatically generated by the licensing server for each sale, you can insert a list of license keys here and for each sale a license key is removed from this table and returned to the payment service (or in the PayPal case, emailed to the customer).
+                This table can be of use if license key generation is very strictly controlled within a company and keys are generated on a secure server not connected to the Internet. 
+                If the <i>LicenseKeyTemplate</i> column does not contain a license key template (value is NULL), the server tries to get the license keys from this table.
+            </li>
+        </ul>
+
+        <a name="Using_PayPalIntegration"></a>
+        <h4>PayPal Integration</h4>
+        <p>
+            The SoftActivate Licensing Server uses PayPal IPN (Instant Payment Notification) API to both generate license keys for products sold via PayPal, and also send these license keys to customers via customizable email templates.
+            In order to have the SoftActivate Licensing Server automatically generate license keys for your PayPal product:
+        </p>
+        <ul>
+            <li>Using the licensing server's web control panel, add a new product into the licensing server's database with a chosen product id, product name, license key template, order email template etc.</li>
+            <li>Create a "Buy Now" button in your PayPal account, setting the item number to the same product id inserted in the <i>Products</i> table;</li>
+            <li>Set the "notify_url" custom variable of the Buy Now button to the following URL: &lt;licensing server url&gt;\PayPal.ashx (example: http://www.mycompany.com/licensingservice/PayPal.ashx )</li>
+            <li>Replace the sample SMTP settings with valid settings in the web.config file of the licensing server (set server, port, username, password, ssl yes/no)</li>
+            <li>Test the system by setting the product price of the Buy Now button to 0.01 USD (also set the same price of 0.01 in the PaymentAmount of the Products table, don't forget to set the PaymentCurrency column to 'USD') and then place the button on a test web page and effectively press the button and complete a transaction. You should receive an email with a license key.</li>
+            <li>Look for any exceptions in the Event Log section of the licensing server's web control panel.</li>
+        </ul>
+        <a name="Using_RegNowIntegration"></a>
+        <h4>RegNow Integration</h4>
+        <p>
+            In order to have the SoftActivate Licensing Server automatically generate license keys for your RegNow products, simply edit the product properties in the RegNow control panel and select the remote CGI license generator option, setting the license key generator URL to:
+            &lt;licensing server url&gt;\RegNow.ashx (example: http://www.mycompany.com/licensingservice/RegNow.ashx ). You must also insert a corresponding row into the <i>Products</i> table of the licensing server database (see the <i>Products</i> table description above).
+            You can then complete a test order and check if everything works. Look for any exeptions in the Event Log section of the licensing server's web control panel.
+        </p>
+	    <a name="Using_ShareItIntegration"></a>
+	    <h4>ShareIt Integration</h4>
+        <p>
+            In order to have the SoftActivate Licensing Server automatically generate license keys for your ShareIt products, simply edit the product properties in the ShareIt control panel and select the remote CGI license generator option, setting the license key generator URL to:
+            &lt;licensing server url&gt;\ShareIt.ashx (example: http://www.mycompany.com/licensingservice/ShareIt.ashx ). You must also insert a corresponding row into the <i>Products</i> table of the licensing server database (see the <i>Products</i> table description above).
+            You can then complete a test order and check if everything works. Look for any exeptions in the Event Log section of the licensing server's web control panel.
+        </p>
+        <a name="Using_PreventingRemoteKeyGeneration"></a>
+	    <h4>Preventing unauthorized parties from generating license keys via the payment services handlers</h4>
+        <p>
+            Access to the pages RegNow.ashx and ShareIt.ashx should be restricted in web.config file to only certain IP addresses (see ASP.NET documentation for how to achieve this). Only the authorized IP addresses of the RegNow and ShareIt servers should be allowed to access these pages.
+            These payment services publish their IP addresses in their respective documentation.
+            PayPal already supports a reliable authentication mechanism so accessing the PayPal.ashx page by unauthorized parties is not possible.
+            We will develop this section more in the near future.
+        </p>
+	    <a name="Using_DownloadManager"></a>
+	    <h3>Using the Download Manager to Restrict Software Downloads</h3>
+        <p>SoftActivate Licensing SDK includes a download manager which helps you control access to your file downloads. For example, you may want the full version of your software to only be downloadable by your customers and not by everyone.</p>
+        <p>In order to add a restricted file download:
+            <ul>
+                <li>Place your file into the licensing service's App_Downloads folder</li>
+                <li>Edit licensing service's web.config in the "handlers" section and add a block handler for your file (there are already two samples there). This transfers the access control from IIS to the licensing service.</li>
+                <li>In the licensing control panel, add a new download and select the associated product from the drop-down list</li>
+            </ul>
+        </p>
+        <p>Currently, a restricted download can be accessed by specifying the license key in the download URL. Example: http://[licensing_service_url]/downloads/[file_name.extension]?licenseKey=[license_key]<br />
+           You can place such an URL in your email template sent to the customer after purchase. In this case, the URL should look like this: http://[licensing_service_url]/downloads/[file_name.extension]?licenseKey=##LICENSE_KEY##. The ##LICENSE_KEY## macro
+           will be replaced by the server with the generated license key before sending the email to customer.<br />
+           In the near future a special download page will be presented to the customer which will be able to enter his license key (and optionally customer name) and start the download with a click.
+        </p>
+        <p>NOTE: Currently the restricted downloads feature is not available for license key templates containing validation fields.</p>
+	    <a name="Using_Security"></a>
+	    <h3>Security Guidelines</h3>
+	    <p>Using SoftActivate Licensing SDK does not guarantee a complete stop of software piracy or complete license enforcement if some basic security guidelines are not followed. 
+	       Make sure you follow these guidelines in order to make you application as secure as possible:</p>
+	    <ul>
+	        <li>
+	            <strong>Keep the signing private keys secret</strong>.
+	            By knowing the private keys used to generate license keys, an unauthorized party can generate keys for your products. It is important to keep your private keys secret, 
+	            and only distribute you public keys with your application for license key validation purposes.
+	        </li>	    
+	        <li>
+	            <strong>Make sure your executable code cannot be altered</strong>.
+	            By altering your executable code, a malicious user can completely bypass your licensing mechanism. This is a rule to be followed for any licensing solution you would use.
+	            There are some professionally available tools that can help in this regard by making it very difficult for unauthorized users to alter the code, but the security is not 100% guaranteed. 
+	            However, with the arrival of the new hardware-based trusted computing platforms in the near future, preventing executable code altering should become an achievable goal.
+	        </li>
+	        <li>
+	            <strong>Prefer statically linking with the SDK libraries</strong>.
+	            You should NOT keep your license management code into a separate binary module which can be targeted by malicious parties. Or, if you prefer dynamic linking, make sure you are calling a legitimate dll.
+                The most secure ways to integrate the SDK into your application is via static linking or direct source code embedding.
+	        </li>
+	        <li>
+	            <strong>Perform license checking in different parts of the code, at diffrent program execution times</strong>.
+	            Ideally, you should not keep your license management code into a separate binary module which can be targeted by hackers. Or, if you prefer dynamic linking, make sure you are calling a legitimate dll.
+	            You could, as a simple example, verify a signature of the licensing library dll before attempting library calls. Of course this rule is to be followed with any licensing solution.
+	        </li>
+	    </ul>
+
+        <a name="Reference"></a>
+        <h2>Programming Reference</h2>
+        
+        <h2>SDKRegistration Class</h2>
+        <a name="SDKRegistration_SetLicenseKey"></a>
+        <h3>SDKRegistration::SetLicenseKey</h3>
+        <p>Initalizes the SDK by entering the purchased SDK license key. 
+           This method must NOT be called if the SDK will only be used for license key validation or client-side product activation, as for example in your end-user application.
+           This should be the first method called before using the SDK for license key generation or public/private key pair generation, as for example in your key generator application.
+           If this method is not called when the SDK will be used for license key generation or public/private key pair generation, the SDK will function in DEMO mode, which means that
+           only certain private/public keys are generated and accepted by the SDK for generating license keys. Since the predefined demo private keys can be generated by anyone, these are not secure to use in generating license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>SDKRegistration::SetLicenseKey(const char_t * licenseLey);</i>(C++)</p>
+        <p><i>SDKRegistration.SetLicenseKey(string licenseKey)</i>(C#)</p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>licenseKey</strong><br />
+                [in] The purchased license key
+            </li>
+        </ul>
+
+        <h2>KeyGenerator Class</h2>
+
+        <a name="KeyGenerator_Constructor"></a>
+        <h3>KeyGenerator::KeyGenerator</h3>
+        <p>Initializes a KeyGenerator object.</p>
+        <h4>Prototype</h4>
+        <p><i>KeyGenerator::KeyGenerator();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="KeyGenerator_Destructor"></a>
+        <h3>KeyGenerator::~KeyGenerator</h3>
+        <p>Destroys a KeyGenerator object, freeing all associated resources.</p>
+        <h4>Prototype</h4>
+        <p><i>KeyGenerator::~KeyGenerator();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="KeyGenerator_SetKeyTemplate"></a>
+        <h3>KeyGenerator::SetKeyTemplate</h3>
+        <p>Sets the template used to generate license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyGenerator::SetKeyTemplate(LicenseTemplate & keyTemplate);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyTemplate</strong><br />
+                [in] The template used to generate license keys.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="KeyGenerator_SetKeyData"></a>
+        <h3>KeyGenerator::SetKeyData</h3>
+        <p>Sets the contents of a data field.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyGenerator::SetKeyData(const char_t * fieldName, const void * rawData, unsigned len);<br />
+              void KeyGenerator::SetKeyData(const char_t * fieldName, unsigned intData);<br />
+              void KeyGenerator::SetKeyData(const char_t * fieldName, const char_t * stringData);
+           </i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the field for which to set the data.
+            </li>
+            <li>
+                <strong>rawData</strong><br />
+                [in] Pointer to a buffer containing the field data.
+            </li>
+            <li>
+                <strong>len</strong><br />
+                [in] Length of the rawData buffer.
+            </li>
+            <li>
+                <strong>intData</strong><br />
+                [in] An int value to set for the field.
+            </li>
+            <li>
+                <strong>stringData</strong><br />
+                [in] A string value to set for the field.
+            </li>        
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>If the field size (as specified in the template) is smaller than the data size, the data is truncated to fit the field.</p>
+
+        <a name="KeyGenerator_SetValidationData"></a>
+        <h3>KeyGenerator::SetValidationData</h3>
+        <p>Sets the contents of a validation field.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyGenerator::SetValidationData(const char_t * fieldName, const void * rawData, unsigned len);<br />
+              void KeyGenerator::SetValidationData(const char_t * fieldName, unsigned intData);<br />
+              void KeyGenerator::SetValidationData(const char_t * fieldName, const char_t * stringData);
+           </i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the field for which to set the data.
+            </li>
+            <li>
+                <strong>rawData</strong><br />
+                [in] Pointer to a buffer containing the field data.
+            </li>
+            <li>
+                <strong>len</strong><br />
+                [in] Length of the rawData buffer.
+            </li>
+            <li>
+                <strong>intData</strong><br />
+                [in] An int value to set for the field.
+            </li>
+            <li>
+                <strong>stringData</strong><br />
+                [in] A string value to set for the field.
+            </li>            
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>If the field size (as specified in the template) is smaller than the data size, the data is truncated to fit the field.</p>
+
+        <a name="KeyGenerator_GenerateKey"></a>
+        <h3>KeyGenerator::GenerateKey</h3>
+        <p>Generates a license key.</p>
+        <h4>Prototype</h4>
+        <p><i>const char_t * LicenseTemplate::GenerateKey();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>Pointer to a NULL-terminated string containing the license key. This string is statically allocated, do not attempt to free it.</p>
+
+        <h2>KeyValidator Class</h2>
+
+        <a name="KeyValidator_Constructor"></a>
+        <h3>KeyValidator::KeyValidator</h3>
+        <p>Initializes a KeyValidator object.</p>
+        <h4>Prototype</h4>
+        <p><i>KeyValidator::KeyValidator();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="KeyValidator_Destructor"></a>
+        <h3>KeyValidator::~KeyValidator</h3>
+        <p>Destroys a KeyValidator object, freeing all associated resources.</p>
+        <h4>Prototype</h4>
+        <p><i>KeyValidator::~KeyValidator();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="KeyValidator_SetKeyTemplate"></a>
+        <h3>KeyValidator::SetKeyTemplate</h3>
+        <p>Sets the template used to generate license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyValidator::SetKeyTemplate(LicenseTemplate & keyTemplate);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyTemplate</strong><br />
+                [in] The template used to generate license keys.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="KeyValidator_SetValidationData"></a>
+        <h3>KeyValidator::SetValidationData</h3>
+        <p>Sets the contents of a validation field.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyValidator::SetValidationData(const char_t * fieldName, const void * rawData, unsigned len);<br />
+              void KeyValidator::SetValidationData(const char_t * fieldName, unsigned intData);<br />
+              void KeyValidator::SetValidationData(const char_t * fieldName, const char_t * stringData);
+           </i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the field for which to set the data.
+            </li>
+            <li>
+                <strong>rawData</strong><br />
+                [in] Pointer to a buffer containing the field data.
+            </li>
+            <li>
+                <strong>len</strong><br />
+                [in] Length of the rawData buffer.
+            </li>
+            <li>
+                <strong>intData</strong><br />
+                [in] An int value to set for the field.
+            </li>
+            <li>
+                <strong>stringData</strong><br />
+                [in] A string value to set for the field.
+            </li>            
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>If the field size (as specified in the template) is smaller than the data size, the data is truncated to fit the field.</p>
+
+        <a name="KeyValidator_SetKey"></a>
+        <h3>KeyValidator::SetKey</h3>
+        <p>Sets the license key to validate and to query data from.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyValidator::SetKey(const char_t * licenseKey);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>licenseKey</strong><br />
+                [in] A NULL-terminated string containing the license key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="KeyValidator_IsKeyValid"></a>
+        <h3>KeyValidator::IsKeyValid</h3>
+        <p>Validates the license key set using KeyValidator::SetKey().</p>
+        <h4>Prototype</h4>
+        <p><i>bool KeyValidator::IsKeyValid();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>Returns true if the license key is valid, false if not.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="KeyValidator_QueryKeyData"></a>
+        <h3>KeyValidator::QueryKeyData</h3>
+        <p>Obtains data from the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void KeyValidator::QueryKeyData(const char_t * fieldName, void * buf, unsigned * len);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the field to query the data from.
+            </li>
+            <li>
+                <strong>buf</strong><br />
+                [out] Pointer to a buffer receiving the field data.
+            </li>
+            <li>
+                <strong>len</strong><br />
+                [in, out] Pointer to an integer receiving the data size in bytes. At input, this must contain the buffer size in bytes.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <h2>LicensingClient Class</h2>
+
+        <a name="LicensingClient_Constructor"></a>
+        <h3>LicensingClient::LicensingClient</h3>
+        <p>Constructs a LicensingClient object.</p>
+        <h4>Prototype</h4>
+        <p><i>LicensingClient::LicensingClient();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_SetActivationServiceUrl"></a>
+        <h3>LicensingClient::SetActivationServiceUrl</h3>
+        <p>This method is used to set the url of the activation server.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::SetActivationServerUrl(const char * url);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>url</strong><br />
+                [in] The URL of the activation service
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_SetActivationKeyTemplate"></a>
+        <h3>LicensingClient::SetActivationKeyTemplate</h3>
+        <p>This method is used to set the template of the activation key. This MUST correspond to the server activation key template.
+           In the template, only the number of character groups in the key, number of characters per group, public key, and signature size must be set, and these
+           must be identical to the ones at the activation server.
+        </p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::SetActivationKeyTemplate(LicenseTemplate * tmpl);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>tmpl</strong><br />
+                [in] Pointer to the key template used to define the activation key
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_SetActivationKey"></a>
+        <h3>LicensingClient::SetActivationKey</h3>
+        <p>This method is used to set the activation key used in the activation verification process.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::SetActivationKey(const char * key);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>key</strong><br />
+                [in] The activation key that was returned by the activation server at activation time. 
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_GetActivationKey"></a>
+        <h3>LicensingClient::GetActivationKey</h3>
+        <p>This method is used to retrieve the activation key returned by the activation server at product activation.
+        </p>
+        <h4>Prototype</h4>
+        <p><i>const char * LicensingClient::GetActivationKey();</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>key</strong><br />
+                [in] The license key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_SetLicenseKey"></a>
+        <h3>LicensingClient::SetLicenseKey</h3>
+        <p>This method is used to set the product key (license key) of the product. The activation server needs the key in order to generate an activation key.
+           The product key is also used when validating the activation key.
+        </p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::SetLicenseKey(const char * key);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>key</strong><br />
+                [in] The license key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_SetHardwareId"></a>
+        <h3>LicensingClient::SetHardwareId</h3>
+        <p>This method is used to set the hardware id string previously saved after the product's activation process. This string is used during activation validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::SetHardwareId(const char * hwid);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>key</strong><br />
+                [in] The activation key that was returned by the activation server at activation time. 
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_GetHardwareId"></a>
+        <h3>LicensingClient::GetHardwareId</h3>
+        <p>This method is used to retrieve the hardware id generated by the SDK in order to complete the activation process. 
+        </p>
+        <h4>Prototype</h4>
+        <p><i>const char * LicensingClient::GetHardwareId();</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>hwid</strong><br />
+                [in] The hardware id string.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_AcquireLicense"></a>
+        <h3>LicensingClient::AcquireLicense</h3>
+        <p>This method sends the product key and hardware id to the activation server, and receives the signed activation key.
+        </p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::AcquireLicense();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_IsLicenseValid"></a>
+        <h3>LicensingClient::IsLicenseValid</h3>
+        <p>This method checks if the activation key signature and then checks if the hardware id matches this computer.
+        </p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::IsLicenseValid();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p><strong>true</strong> if the activation key is valid, the hardware id matches this computer and the license is not expired. <strong>false</strong> otherwise.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicensingClient_GetLicenseActivationStatus"></a>
+        <h3>LicensingClient::GetLicenseActivationStatus</h3>
+        <p>This method retrieves the activation status after a call to IsLicenseValid().
+        </p>
+        <h4>Prototype</h4>
+        <p><i>void LicensingClient::GetLicenseActivationStatus();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>An <strong>ActivationStatus</strong> value which can be: <i>Success</i>, <i>InvalidHardwareId</i>, <i>InvalidActivationKey</i>, <i>LicenseExpired</i></p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <h2>LicenseTemplate Class</h2>
+
+        <a name="LicenseTemplate_Constructor"></a>
+        <h3>LicenseTemplate::LicenseTemplate</h3>
+        <p>Constructs a LicenseTemplate object.</p>
+        <h4>Prototype</h4>
+        <p><i>LicenseTemplate::LicenseTemplate();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_Destructor"></a>
+        <h3>LicenseTemplate::~LicenseTemplate</h3>
+        <p>Destroys a LicenseTemplate object freeing all associated resources.</p>
+        <h4>Prototype</h4>
+        <p><i>LicenseTemplate::~LicenseTemplate();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_SetNumberOfGroups"></a>
+        <h3>LicenseTemplate::SetNumberOfGroups</h3>
+        <p>This method is used to set the number of character groups a license key contains.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetNumberOfGroups(unsigned numGroups);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>numGroups</strong><br />
+                [in] The number of character groups in the license key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+        
+        <a name="LicenseTemplate_GetNumberOfGroups"></a>
+        <h3>LicenseTemplate::GetNumberOfGroups</h3>
+        <p>Gets the number of character groups contained by a license key.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetNumberOfGroups();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The number of groups.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>        
+
+        <a name="LicenseTemplate_SetCharactersPerGroup"></a>
+        <h3>LicenseTemplate::SetCharactersPerGroup</h3>
+        <p>Sets the number of characters in each license key character group.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetCharactersPerGroup(unsigned charsPerGroup);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>charsPerGroup</strong><br />
+                [in] The number of characters per group.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_GetCharactersPerGroup"></a>
+        <h3>LicenseTemplate::GetCharactersPerGroup</h3>
+        <p>Gets the number of characters in each license key character group.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetCharactersPerGroup();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The number of characters per group.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_SetVersion"></a>
+        <h3>LicenseTemplate::SetVersion</h3>
+        <p>Sets the license key template version.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetVersion(unsigned version);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>version</strong><br />
+                [in] The template version.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The default version is 1. In this SDK version, specifying any other version than 1 will cause an exception to be thrown.</p>
+
+        <a name="LicenseTemplate_GetVersion"></a>
+        <h3>LicenseTemplate::GetVersion</h3>
+        <p>Retrieves the license key template version.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetVersion();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The license key template version. Currently, a value of 1 is returned.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+        
+        <a name="LicenseTemplate_SetGroupSeparator"></a>
+        <h3>LicenseTemplate::SetGroupSeparator</h3>
+        <p>Sets the string or character that separates license key character groups.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetGroupSeparator(const char_t * groupSeparator);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>groupSeparator</strong><br />
+                [in] The group separator string.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The default group separator is the character '-'.</p>
+
+        <a name="LicenseTemplate_GetGroupSeparator"></a>
+        <h3>LicenseTemplate::GetGroupSeparator</h3>
+        <p>Sets the string or character that separates license key character groups.</p>
+        <h4>Prototype</h4>
+        <p><i>const char_t * LicenseTemplate::GetGroupSeparator();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>Pointer to a string containing the license key group separator string.</p>
+        <h4>Remarks</h4>
+        <p>The returned string is statically allocated and must not be freed.</p>
+
+        <a name="LicenseTemplate_SetEncoding"></a>
+        <h3>LicenseTemplate::SetEncoding</h3>
+        <p>Sets the character encoding for the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetEncoding(LICENSE_KEY_ENCODING encoding);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>encoding</strong><br />
+                [in] The character encoding. This can be on of ENCODING_BASE32X or ENCODING_BASE64X.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_GetEncoding"></a>
+        <h3>LicenseTemplate::GetEncoding</h3>
+        <p>Gets the encoding used for the license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>LICENSE_KEY_ENCODING LicenseTemplate::GetEncoding();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The encoding used. This can be either ENCODING_BASE32X or ENCODING_BASE64X.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_SetHeader"></a>
+        <h3>LicenseTemplate::SetHeader</h3>
+        <p>Sets the contents of an optional line of text preceding the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetHeader(const char_t * header);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>header</strong><br />
+                [in] The header string.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_GetHeader"></a>
+        <h3>LicenseTemplate::GetHeader</h3>
+        <p>Gets the encoding used for the license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>const char_t * LicenseTemplate::GetHeader();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The license key header.</p>
+        <h4>Remarks</h4>
+        <p>The returned string is statically allocated and must not be freed.</p>
+
+        <a name="LicenseTemplate_SetFooter"></a>
+        <h3>LicenseTemplate::SetFooter</h3>
+        <p>Sets the contents of an optional line following the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetFooter(const char_t * header);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>header</strong><br />
+                [in] The header string.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_GetFooter"></a>
+        <h3>LicenseTemplate::GetFooter</h3>
+        <p>Gets the encoding used for the license keys.</p>
+        <h4>Prototype</h4>
+        <p><i>const char_t * LicenseTemplate::GetFooter();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The license key footer.</p>
+        <h4>Remarks</h4>
+        <p>The returned string is statically allocated and must not be freed.</p>
+
+        <a name="LicenseTemplate_SetDataSize"></a>
+        <h3>LicenseTemplate::SetDataSize</h3>
+        <p>Sets the size of data embedded in the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetDataSize(unsigned dataSize);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>dataSize</strong><br />
+                [in] The size of data in bits.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>This method could throw an exception if the data size is too big for the chosen key format parameters and signature size.</p>
+
+        <a name="LicenseTemplate_GetDataSize"></a>
+        <h3>LicenseTemplate::GetDataSize</h3>
+        <p>Retrieves the size of data embedded in the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetDataSize();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The size in bits of the embedded license key data.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_AddDataField"></a>
+        <h3>LicenseTemplate::AddDataField</h3>
+        <p>Adds a field of data which will be included in the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::AddDataField(const char_t * fieldName, FIELD_TYPE fieldType, unsigned sizeInBits, unsigned startPos = -1);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the data field.
+            </li>
+            <li>
+                <strong>fieldType</strong><br />
+                [in] The type of the data field. It can be one of FIELD_TYPE_INTEGER, FIELD_TYPE_STRING, FIELD_TYPE_RAW.
+            </li>
+            <li>
+                <strong>sizeInBits</strong><br />
+                [in] The size of the data field in bits.
+            </li>
+            <li>
+                <strong>startPos</strong><br />
+                [in] The starting position (relative to bit 0) of the field in the license key data. Omitting this value adds the field to the next available position.
+            </li>                     
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>This method could throw an exception if the field size is too big for the chosen data size.</p>
+
+        <a name="LicenseTemplate_EnumDataFields"></a>
+        <h3>LicenseTemplate::EnumDataFields</h3>
+        <p>Enumerates license key data fields.</p>
+        <h4>Prototype</h4>
+        <p><i>bool EnumDataFields(void **enumHandle, char_t * fieldName, unsigned * fieldNameSize, FIELD_TYPE * fieldType, unsigned * fieldSize, unsigned * startPos);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>enumHandle</strong><br />
+                [in, out] Pointer to a pointer used to store a handle to the enumeration state. A pointer to a NULL handle must be passed at the first call.
+            </li>
+            <li>
+                <strong>fieldName</strong><br />
+                [in, out] Pointer to a buffer which will be filled with the field name.
+            </li>
+            <li>
+                <strong>fieldNameSize</strong><br />
+                [in, out] Pointer to an unsigned which will receive the size of the field name string. At input this must contain the size of the buffer.
+            </li>
+            <li>
+                <strong>fieldType</strong><br />
+                [out] Pointer who will receive the type of the field.
+            </li>
+            <li>
+                <strong>fieldSize</strong><br />
+                [out] Pointer to an unsigned who will receive the field size in bits.
+            </li>
+            <li>
+                <strong>startPos</strong><br />
+                [out] Pointer to an unsigned who will receive the field start position in license key data.
+            </li>                                            
+        </ul>
+        <h4>Return Values</h4>
+        <p>If the enumeration is over, returns false and the output parameters are not filled. Otherwise returns true.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_SetValidationDataSize"></a>
+        <h3>LicenseTemplate::SetValidationDataSize</h3>
+        <p>Sets the size of the data used to validate the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetValidationDataSize(unsigned sizeInBits);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>sizeInBits</strong><br />
+                [in] The size of validation data in bits.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_GetValidationDataSize"></a>
+        <h3>LicenseTemplate::GetValidationDataSize</h3>
+        <p>Retrieves the size of the data used to validate the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetValidationDataSize();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The size in bits of the validation data.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_AddValidationDataField"></a>
+        <h3>LicenseTemplate::AddValidationDataField</h3>
+        <p>Adds a field of data used for license key validation. Validation fields are not included in the license key, but they are used for validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::AddValidationDataField(const char_t * fieldName, FIELD_TYPE fieldType, unsigned sizeInBits, unsigned startPos = -1);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>fieldName</strong><br />
+                [in] The name of the data field.
+            </li>
+            <li>
+                <strong>fieldType</strong><br />
+                [in] The type of the field. It can be one of FIELD_TYPE_INTEGER, FIELD_TYPE_STRING, FIELD_TYPE_RAW.
+            </li>
+            <li>
+                <strong>sizeInBits</strong><br />
+                [in] The size of the field in bits.
+            </li>
+            <li>
+                <strong>startPos</strong><br />
+                [in] The starting position (relative to bit 0) of the field in the license key validation data. Omitting this value adds the field to the next available position.
+            </li>                     
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>This method could throw an exception if the field size is too big for the chosen validation data size.</p>
+
+        <a name="LicenseTemplate_EnumDataFields"></a>
+        <h3>LicenseTemplate::EnumDataFields</h3>
+        <p>Enumerates the fields of data used for license key validation.</p>
+        <h4>Prototype</h4>
+        <p><i>bool EnumValidationFields(void **enumHandle, char_t * fieldName, unsigned * fieldNameSize, FIELD_TYPE * fieldType, unsigned * fieldSize, unsigned * startPos);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>enumHandle</strong><br />
+                [in, out] Pointer to a pointer used to store a handle to the enumeration state. A pointer to a NULL handle must be passed at the first call.
+            </li>
+            <li>
+                <strong>fieldName</strong><br />
+                [in, out] Pointer to a buffer which will be filled with the field name.
+            </li>
+            <li>
+                <strong>fieldNameSize</strong><br />
+                [in, out] Pointer to an unsigned which will receive the size of the field name string. At input this must contain the size of the buffer.
+            </li>
+            <li>
+                <strong>fieldType</strong><br />
+                [out] Pointer who will receive the type of the field.
+            </li>
+            <li>
+                <strong>fieldSize</strong><br />
+                [out] Pointer to an unsigned who will receive the field size in bits.
+            </li>
+            <li>
+                <strong>startPos</strong><br />
+                [out] Pointer to an unsigned who will receive the field start position in license key data.
+            </li>                                            
+        </ul>
+        <h4>Return Values</h4>
+        <p>If the enumeration is over, returns false and the output parameters are not filled. Otherwise returns true.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_SetSignatureSize"></a>
+        <h3>LicenseTemplate::SetSignatureSize</h3>
+        <p>This method is used to set the license key signature size.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetSignatureSize(unsigned size);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>size</strong><br />
+                [in] The desired size for the license key signature. The size must be in the 76-322 range.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The license key signature size governs license key security. Care must be taken when choosing the signature size.</p>
+
+        <a name="LicenseTemplate_GetSignatureSize"></a>
+        <h3>LicenseTemplate::GetSignatureSize</h3>
+        <p>Retrieves the size of the data used to validate the license key.</p>
+        <h4>Prototype</h4>
+        <p><i>unsigned LicenseTemplate::GetSignatureSize();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The signature size in bits.</p>
+        <h4>Remarks</h4>
+        <p>None.</p>
+
+        <a name="LicenseTemplate_LoadXml"></a>
+        <h3>LicenseTemplate::LoadXml</h3>
+        <p>Loads license key template parameters from an XML string.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::LoadXml(char * xmlString);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>xmlString</strong><br />
+                [in] The XML template representation string, UTF-8 encoded.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>This method throws an exception if the template string is invalid.</p>
+
+        <a name="LicenseTemplate_SaveXml"></a>
+        <h3>LicenseTemplate::SaveXml</h3>
+        <p>Saves the XML representation of the template into a string.</p>
+        <h4>Prototype</h4>
+        <p><i>const char * LicenseTemplate::SaveXml();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>Pointer to a string containing an UTF-8 encoded XML represenation of the template parameters.</p>
+        <h4>Remarks</h4>
+        <p>The returned string is statically allocated and should not be freed.</p>
+
+        <a name="LicenseTemplate_SetPublicKey"></a>
+        <h3>LicenseTemplate::SetPublicKey</h3>
+        <p>Sets the public key used for license key validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetPublicKey(const void * keyBuf, unsigned keyLen);<br />
+           	  void LicenseTemplate::SetPublicKey(const char_t * base64Key);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyBuf</strong><br />
+                [in] Pointer to a buffer containing the public key.
+            </li>
+            <li>
+                <strong>keyLen</strong><br />
+                [in] The length in bytes of the public key buffer.
+            </li>                    
+            <li>
+                <strong>base64Key</strong><br />
+                [in] The BASE64 representation of the public key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The public key is only used for license key validation. You do not have to set the public key when you use the template only for license key generation.</p>
+
+        <a name="LicenseTemplate_GetPublicKey"></a>
+        <h3>LicenseTemplate::GetPublicKey</h3>
+        <p>Sets the public key used for license key validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::GetPublicKey(const void * keyBuf, unsigned * keyLen);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyBuf</strong><br />
+                [in] Pointer to a buffer receiving the public key.
+            </li>
+            <li>
+                <strong>keyLen</strong><br />
+                [in] Pointer to an unsigned receiving the length in bytes of the public key. At input, this must contain the length of the buffer pointed to by keyBuf.
+            </li>                    
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The public key is only used for license key validation. You do not have to set the public key when you use the template only for license key generation.</p>
+
+        <a name="LicenseTemplate_SetPrivateKey"></a>
+        <h3>LicenseTemplate::SetPrivateKey</h3>
+        <p>Sets the public key used for license key validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::SetPrivateKey(const void * keyBuf, unsigned keyLen);<br />
+           	  void LicenseTemplate::SetPrivateKey(const char_t * base64Key);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyBuf</strong><br />
+                [in] Pointer to a buffer containing the public key.
+            </li>
+            <li>
+                <strong>keyLen</strong><br />
+                [in] The length in bytes of the public key buffer.
+            </li>                    
+            <li>
+                <strong>base64Key</strong><br />
+                [in] The BASE64 representation of the public key.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The public key is only used for license key validation. You do not have to set the public key when you use the template only for license key generation.</p>
+
+        <a name="LicenseTemplate_GetPrivateKey"></a>
+        <h3>LicenseTemplate::GetPrivateKey</h3>
+        <p>Gets the private key used for license key generation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::GetPrivateKey(const void * keyBuf, unsigned * keyLen);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>keyBuf</strong><br />
+                [in] Pointer to a buffer receiving the private key.
+            </li>
+            <li>
+                <strong>keyLen</strong><br />
+                [in] Pointer to an unsigned receiving the length in bytes of the private key. At input, this must contain the length of the buffer pointed to by keyBuf.
+            </li>                    
+        </ul>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The private key is only used for license key generation. You do not have to set the private key when you use the template only for license key validation (eg. on the client app).</p>
+
+        <a name="LicenseTemplate_GenerateSigningKeyPair"></a>
+        <h3>LicenseTemplate::GenerateSigningKeyPair</h3>
+        <p>Generates a pair of private/public keys used for license key generation/validation.</p>
+        <h4>Prototype</h4>
+        <p><i>void LicenseTemplate::GenerateSigningKeyPair();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>None.</p>
+        <h4>Remarks</h4>
+        <p>The signing key pair is generated according to the signature size, so you must call LicenseTemplate::SetSignatureSize() first. You can retrieve the generated keys using LicenseTemplate::GetPrivateKey(), LicenseTemplate::GetPublicKey() or LicenseTemplate::SaveXml().</p>
+
+        <h2>KeyHelper Class</h2>
+
+        <a name="KeyHelper_GetCurrentHardwareId"></a>
+        <h3>KeyHelper::GetCurrentHardwareId</h3>
+        <p>Returns a string which uniquely identifies the device (computer) on which the method is called.</p>
+        <h4>Prototype</h4>
+        <p><i>static string KeyHelper::GetCurrentHardwareId();</i></p>
+        <h4>Parameters</h4>
+        <p>None.</p>
+        <h4>Return Values</h4>
+        <p>The hardware id string.</p>
+        <p>Note that this method is not thread safe.</p>
+
+        <a name="KeyHelper_MatchCurrentHardwareId"></a>
+        <h3>KeyHelper::MatchCurrentHardwareId</h3>
+        <p>Checks if the supplied harware id string matches this computer. Note that there are certain hardware components changes permitted until this method returns false.</p>
+        <h4>Prototype</h4>
+        <p><i>static bool KeyHelper::MatchCurrentHardwareId(string hardwareId);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>hardwareId</strong><br />
+                [in] The hardware id to be matched to the current hardware state of this computer.
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>A bool value specifying if the computer matches the supplied hardware id</p>
+
+        <a name="KeyHelper_DetectClockManipulation"></a>
+        <h3>KeyHelper::DetectClockManipulation</h3>
+        <p>This method is used to find evidence that the clock was deliberately turned back with the purpose of prolonging license validity.</p>
+        <h4>Prototype</h4>
+        <p><i>bool KeyHelper::DetectClockManipulation(DateTime thresholdDate);</i></p>
+        <h4>Parameters</h4>
+        <ul>
+            <li>
+                <strong>thresholdDate</strong><br />
+                [in] The method searches for evidence that the system time was once set after the threshold date
+            </li>
+        </ul>
+        <h4>Return Values</h4>
+        <p>A bool value indicating if evidence was found that the system clock was deliberately turned back.</p>
+        <h4>Remarks</h4>
+        <p>This method may take a few seconds to complete so it is best to call it on a worker thread.</p>
+
+        <h2>Glossary</h2>
+	</body>
+</html>

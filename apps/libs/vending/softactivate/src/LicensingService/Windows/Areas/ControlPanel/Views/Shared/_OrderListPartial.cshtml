@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<Licensing.Web.Models.OrderItem>
+
+<div class="dbtablewrap">
+    <table class="dbtable">
+        <tr>
+            <th>
+                @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Product", "Index", new { sortOrder = ViewBag.ProductNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Quantity", "Index", new { sortOrder = ViewBag.QuantitySortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.CustomerNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Company", "Index", new { sortOrder = ViewBag.CompanyNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.OrderTotal)&nbsp;@Html.DisplayFor(modelItem => item.Order.Currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.CountryCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.Order.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.Company)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Order", new { id = item.Id }, null)
+                                       
+                    @if (User.IsInRole("Administrators"))
+                    {
+                        @:|
+                        @Html.ActionLink("Edit", "Edit", "Order", new { id = item.Id }, null) 
+                        @:|
+                        using (Html.BeginForm("Delete/" + item.OrderId, "Order", FormMethod.Post, new { id = "deleteForm_" + item.OrderId }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:if (confirm('Are you sure you want to delete this order ?')) {document.getElementById('deleteForm_@item.OrderId').submit()}">Delete</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", null, new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="orderlist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", null, new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="orderlist"  })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", null, new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="orderlist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", null, new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="orderlist" })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

@@ -1,0 +1,55 @@
+{
+    "manifest_version": 2,
+    "name": "Netflix 1080p",
+    "description": "Forces 1080p and 5.1 playback for Netflix.",
+    "version": "1.9",
+    "author": "truedread",
+    "browser_action": {
+        "default_icon": {
+            "128": "img/icon128.png"
+        }
+    },
+    "icons": {
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://assets.nflxext.com/*/ffe/player/html/*",
+                "*://www.assets.nflxext.com/*/ffe/player/html/*",
+                "*://netflix.com/*",
+                "*://www.netflix.com/*"
+            ],
+            "js": [
+                "content_script.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "background": {
+        "page": "background.html",
+        "persistent": true
+    },
+    "web_accessible_resources": [
+        "get_manifest.js",
+        "cadmium-playercore-6.0009.457.011-1080p.js",
+        "cadmium-playercore-6.0009.457.031.js",
+        "cadmium-playercore-6.0009.457.031-formatted.js",
+        "bootstrap.js",
+        "akiraclient.js"
+    ],
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "*://assets.nflxext.com/*/ffe/player/html/*",
+        "*://www.assets.nflxext.com/*/ffe/player/html/*",
+        "*://netflix.com/*",
+        "*://www.netflix.com/*",
+        "*://codex.nflxext.com/%5E2.0.0/truthBundle/webui/0.0.1-akira-js-mk-*"
+    ],
+    "-ms-preload": {
+        "backgroundScript": "backgroundScriptsAPIBridge.js",
+        "contentScript": "contentScriptsAPIBridge.js"
+    }
+}

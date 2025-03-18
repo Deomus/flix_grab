@@ -1,0 +1,184 @@
+﻿@model PagedList.IPagedList<Licensing.Web.Models.LicenseKey>
+
+<div class="dbtablewrap">
+    <table class="dbtable">
+        <tr>
+            <th>
+                @Html.ActionLink("License Key", "Index", new { sortOrder = ViewBag.LicenseKeySortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.ProductNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Customer Name", "Index", new { sortOrder = ViewBag.CustomerNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Company Name", "Index", new { sortOrder = ViewBag.CompanyNameSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Date Added", "Index", new { sortOrder = ViewBag.DateAddedSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Activation Count / Limit / Per Device Limit", "Index", new { sortOrder = ViewBag.ActivationCountSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Device Count / Limit", "Index", new { sortOrder = ViewBag.DeviceCountSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Last Activation", "Index", new { sortOrder = ViewBag.LastActivationSortParam, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Key)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderItem.Order.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.OrderItem.Order.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderItem.Order.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderItem.Order.CountryCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td style="text-align: center">
+                    @if (item.ActivationCount == null) {
+                        @:0
+                    } else {
+                        @Html.DisplayFor(modelItem => item.ActivationCount)
+                    }
+
+                    &nbsp;/&nbsp;
+
+                    @if (item.ActivationLimit == null) {
+                        @:&lt;inherited&gt;
+                    } else {
+                        if (item.ActivationLimit == 0) {
+                            @:&#8734;
+                        } else {
+                            @Html.DisplayFor(modelItem => item.ActivationLimit)
+                        }
+                    }
+
+                    &nbsp;/&nbsp;
+
+                    @if (item.PerDeviceActivationLimit == null) {
+                        @:&lt;inherited&gt;
+                    } else {
+                        if (item.PerDeviceActivationLimit == 0) {
+                            @:&#8734;
+                        } else {
+                            @Html.DisplayFor(modelItem => item.PerDeviceActivationLimit)
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.DeviceCount == null) {
+                        @:&lt;inherited&gt;
+                    } else {
+                        if (item.DeviceCount == 0) {
+                            @:&#8734;
+                        } else {
+                            @Html.DisplayFor(modelItem => item.DeviceCount)
+                        }
+                    }
+                    
+                    &nbsp;/&nbsp;
+                    
+                    @if (item.DeviceLimit == null) {
+                         @:&lt;inherited&gt;
+                    } else {
+                        if (item.DeviceLimit == 0) {
+                            @:&#8734;
+                        } else {
+                            @Html.DisplayFor(modelItem => item.DeviceLimit)
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.LastActivationTime == null) {
+                        @:&lt;never&gt;
+                    } else {
+                        @Html.DisplayFor(modelItem => item.LastActivationTime)
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "LicenseKey", new { id = item.Id }, null)
+                    
+                    @if (User.IsInRole("Administrators"))
+                    {
+                        @:|
+                        @Html.ActionLink("Edit", "Edit", "LicenseKey", new { id = item.Id }, null)
+                        @:|
+                        using (Html.BeginForm("Delete/" + item.Id, "LicenseKey", FormMethod.Post, new { id = "deleteForm_" + item.Id }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:if (confirm('Are you sure you want to delete this license key ?')) {document.getElementById('deleteForm_@item.Id').submit()}">Delete</a>
+                        }
+                        @:|      
+                        if (item.Active)
+                        {                 
+                            using (Html.BeginForm("Block/" + item.Id, "LicenseKey", FormMethod.Post, new { id = "blockForm_" + item.Id }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:if (confirm('Are you sure you want to block this license key ?')) {document.getElementById('blockForm_@item.Id').submit()}">Block</a>
+                            }
+                        } else
+                        {
+                            using (Html.BeginForm("Unblock/" + item.Id, "LicenseKey", FormMethod.Post, new { id = "unblockForm_" + item.Id }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:if (confirm('Are you sure you want to unblock this license key ?')) {document.getElementById('unblockForm_@item.Id').submit()}">Unblock</a>
+                            }                            
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="licensekeylist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="licensekeylist" })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="licensekeylist" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedProduct = ViewData["selectedProduct"], startDate = ViewData["startDate"], endDate = ViewData["endDate"], pagedctl="licensekeylist" })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

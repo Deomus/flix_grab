@@ -1,0 +1,98 @@
+﻿@model Licensing.Web.Models.LicenseKey
+
+@{
+    ViewBag.Title = "License Key Details";
+}
+
+<h2>License Key Details</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LicenseKey</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DateAdded)
+        @Html.HiddenFor(model => model.OrderItemId)
+        @Html.HiddenFor(model => model.ActivationCount)
+        @Html.HiddenFor(model => model.LastActivationTime)
+
+        <div class="editor-label">
+            Product:
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SelectedProduct")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Key)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Key)
+            @Html.ValidationMessageFor(model => model.Key)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeviceLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeviceLimit)
+            @Html.ValidationMessageFor(model => model.DeviceLimit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PerDeviceActivationLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PerDeviceActivationLimit)
+            @Html.ValidationMessageFor(model => model.PerDeviceActivationLimit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActivationLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ActivationLimit)
+            @Html.ValidationMessageFor(model => model.ActivationLimit)
+        </div>
+
+        <div class="editor-label">
+            License Duration in Days (0 for infinite)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LicenseDuration)
+            @Html.ValidationMessageFor(model => model.LicenseDuration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LicenseHistoryDuration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LicenseHistoryDuration)
+            @Html.ValidationMessageFor(model => model.LicenseHistoryDuration)
+        </div>
+        <div class="editor-label">
+            Key Is Active
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Active)
+        </div>
+    </fieldset>
+
+    if (!(ViewBag.IsReadOnly == true))
+    {
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

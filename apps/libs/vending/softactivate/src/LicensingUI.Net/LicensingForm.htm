@@ -1,0 +1,935 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Main</title>
+        <script type="text/javascript">
+            //<![CDATA[
+            (function (win, doc) {
+                var BoxSizingBorderBox = win['BoxSizingBorderBox'] || (win['BoxSizingBorderBox'] = {});
+
+                (function () {
+                    var ieVersion = 4,
+                        div = doc.createElement('div'),
+                        all = div.getElementsByTagName('i'),
+                        shape;
+                    while (
+                        div.innerHTML = '<!--[if gt IE ' + (++ieVersion) + ']><i></i><![endif]-->',
+                        all[0]
+                    ) { }
+
+                    BoxSizingBorderBox.ieVersion = ieVersion;
+
+                    BoxSizingBorderBox.ieDocMode = doc.documentMode || BoxSizingBorderBox.ieVersion;
+                })();
+
+                BoxSizingBorderBox.Element = (function () {
+                    var wrappers = {};
+
+                    function Element(element) {
+                        var me = this,
+                            initialized,
+                            eventsAttached,
+                            eventListeners = [];
+
+                        me.element = element;
+
+                        function init() {
+                            var ieDocMode = BoxSizingBorderBox.ieDocMode;
+
+                            var viewportwidth = (typeof window.innerWidth != 'undefined' ? window.innerWidth : element.document.documentElement.clientWidth);
+
+                            // Shortcut for the document object
+                            var doc = element.document;
+
+                            // Buffer for multiple resize events
+                            var resizetimeout = null;
+
+                            // Don't apply box-sizing to certain elements
+                            var apply = false;
+                            switch (element.nodeName) {
+                                case '#comment':
+                                case 'HTML':
+                                case 'HEAD':
+                                case 'TITLE':
+                                case 'SCRIPT':
+                                case 'STYLE':
+                                case 'LINK':
+                                case 'META':
+                                    break;
+
+                                default:
+                                    apply = true;
+                                    break;
+                            }
+
+                            // Run the calculations
+                            initialize();
+
+                            if (!eventsAttached) {
+                                eventsAttached = 1;
+
+                                if (ieDocMode < 9)
+                                    addListener(element, 'onmove', update);
+
+                                window.onresize = update;
+
+                                addListener(element, 'onpropertychange', checkPropertyChange);
+                                addListener(element, 'ondetach', restore);
+                            }
+
+                            /*
+                            * update gets called during resize events, then waits until there are no further resize events, and finally triggers a recalculation
+                            */
+                            function update() {
+                                if (resizetimeout !== null) {
+                                    window.clearTimeout(resizetimeout);
+                                }
+                                resizetimeout = window.setTimeout(function () {
+                                    try {
+                                        restore();
+                                        initialize();
+                                    }
+                                    catch (e) { }
+                                    resizetimeout = null;
+                                }, 100);
+                            }
+
+                            /*
+                            * restore gets called when the behavior is being detached (see event binding at the top),
+                            * resets everything like it was before applying the behavior
+                            */
+                            function restore() {
+                                if (apply) {
+                                    try {
+                                        element.runtimeStyle.removeAttribute("width");
+                                        element.runtimeStyle.removeAttribute("height");
+                                    }
+                                    catch (e) { }
+                                }
+                            }
+
+                            /*
+                            * initialize gets called once at the start and then never again, 
+                            * triggers box-sizing calculations and updates width and height
+                            */
+                            function initialize() {
+                                if (apply) {
+                                    updateBorderBoxWidth();
+                                    updateBorderBoxHeight();
+                                }
+                            }
+
+                            /*
+                            * checkPropertyChange gets called as soon as an element property changes 
+                            * (see event binding at the top), it then checks if any property influencing its 
+                            * dimensions was changed and if yes recalculates width and height 
+                            */
+                            function checkPropertyChange() {
+                                if (apply) {
+                                    var pn = event.propertyName;
+                                    if (pn === "style.boxSizing" && element.style.boxSizing === "") {
+                                        element.style.removeAttribute("boxSizing");
+                                        element.runtimeStyle.removeAttribute("boxSizing");
+                                        element.runtimeStyle.removeAttribute("width");
+                                        element.runtimeStyle.removeAttribute("height");
+                                    }
+                                    switch (pn) {
+                                        case "style.width":
+                                        case "style.minWidth":
+                                        case "style.maxWidth":
+                                        case "style.borderLeftWidth":
+                                        case "style.borderLeftStyle":
+                                        case "style.borderRightWidth":
+                                        case "style.borderRightStyle":
+                                        case "style.paddingLeft":
+                                        case "style.paddingRight":
+                                            updateBorderBoxWidth();
+                                            break;
+
+                                        case "style.height":
+                                        case "style.minHeight":
+                                        case "style.maxHeight":
+                                        case "style.borderTopWidth":
+                                        case "style.borderTopStyle":
+                                        case "style.borderBottomWidth":
+                                        case "style.borderBottomStyle":
+                                        case "style.paddingTop":
+                                        case "style.paddingBottom":
+                                            updateBorderBoxHeight();
+                                            break;
+
+                                        case "className":
+                                        case "style.boxSizing":
+                                            updateBorderBoxWidth();
+                                            updateBorderBoxHeight();
+                                            break;
+                                    }
+                                }
+                            }
+
+                            /* 
+                                * Helper function, taken from Dean Edward's IE7 framework,
+                                * added by Schepp on 12.06.2010.
+                                * http://code.google.com/p/ie7-js/
+                                *
+                                * Allows us to convert from relative to pixel-values.
+                                */
+                            function getPixelValue(value) {
+                                var PIXEL = /^\d+(px)?$/i;
+                                if (PIXEL.test(value)) return parseInt(value);
+                                var style = element.style.left;
+                                var runtimeStyle = element.runtimeStyle.left;
+                                element.runtimeStyle.left = element.currentStyle.left;
+                                element.style.left = value || 0;
+                                value = parseInt(element.style.pixelLeft);
+                                element.style.left = style;
+                                element.runtimeStyle.left = runtimeStyle;
+
+                                return value;
+                            }
+
+                            function getPixelWidth(object, value) {
+                                // For Pixel Values
+                                var PIXEL = /^\d+(px)?$/i;
+                                if (PIXEL.test(value)) return parseInt(value);
+
+                                // For Percentage Values
+                                var PERCENT = /^[\d\.]+%$/i;
+                                if (PERCENT.test(value)) {
+                                    try {
+                                        var parentPaddingLeft = getPixelWidth(object.parentElement, object.parentElement.currentStyle.paddingLeft);
+                                        var parentPaddingRight = getPixelWidth(object.parentElement, object.parentElement.currentStyle.paddingRight);
+                                        var parentBorderLeft = getPixelWidth(object.parentElement, object.parentElement.currentStyle.borderLeft);
+                                        var parentBorderRight = getPixelWidth(object.parentElement, object.parentElement.currentStyle.borderRight);
+
+                                        //var parentWidth = getPixelWidth(object.parentElement,(object.parentElement.currentStyle.width != "auto" ? object.parentElement.currentStyle.width : "100%"));
+                                        var parentWidth = object.parentElement.offsetWidth - parentPaddingLeft - parentPaddingRight - parentBorderLeft - parentBorderRight;
+                                        var value = (parseFloat(value) / 100) * parentWidth;
+                                    }
+                                    catch (e) {
+                                        var value = (parseFloat(value) / 100) * element.document.documentElement.clientWidth;
+                                    }
+                                    return parseInt(value);
+                                }
+
+                                // For EM Values
+                                var style = object.style.left;
+                                var runtimeStyle = object.runtimeStyle.left;
+                                object.runtimeStyle.left = object.currentStyle.left;
+                                object.style.left = value || 0;
+                                value = parseInt(object.style.pixelLeft);
+                                object.style.left = style;
+                                object.runtimeStyle.left = runtimeStyle;
+
+                                return value;
+                            }
+
+                            function getPixelHeight(object, value) {
+                                // For Pixel Values
+                                var PIXEL = /^\d+(px)?$/i;
+                                if (PIXEL.test(value)) return parseInt(value);
+
+                                // For Percentage Values
+                                var PERCENT = /^[\d\.]+%$/i;
+                                if (PERCENT.test(value)) {
+                                    try {
+                                        if (object.parentElement.currentStyle.height != "auto") {
+                                            switch (object.parentElement.nodeName) {
+                                                default:
+                                                    if (object.parentElement.currentStyle.height !== "auto") {
+                                                        var parentPaddingTop = getPixelWidth(object.parentElement, object.parentElement.currentStyle.paddingTop);
+                                                        var parentPaddingBottom = getPixelWidth(object.parentElement, object.parentElement.currentStyle.paddingBottom);
+                                                        var parentBorderTop = getPixelWidth(object.parentElement, object.parentElement.currentStyle.borderTop);
+                                                        var parentBorderBottom = getPixelWidth(object.parentElement, object.parentElement.currentStyle.borderBottom);
+
+                                                        var parentHeight = object.parentElement.offsetHeight - parentPaddingTop - parentPaddingBottom - parentBorderTop - parentBorderBottom;
+                                                        //var parentHeight = getPixelHeight(object.parentElement,object.parentElement.currentStyle.height);
+
+                                                        value = (parseFloat(value) / 100) * parentHeight;
+                                                    }
+                                                    else {
+                                                        value = "auto";
+                                                    }
+                                                    break;
+
+                                                case 'HTML':
+                                                    parentHeight = element.document.documentElement.clientHeight;
+                                                    if (parentHeight !== "auto") {
+                                                        value = (parseFloat(value) / 100) * parentHeight;
+                                                    }
+                                                    else {
+                                                        value = "auto";
+                                                    }
+                                                    break;
+                                            }
+                                            if (value !== "auto") value = parseInt(value);
+                                        }
+                                        else {
+                                            value = "auto";
+                                        }
+                                    }
+                                    catch (e) {
+                                        value = "auto";
+                                    }
+                                    return value;
+                                }
+
+                                // For EM Values
+                                var style = object.style.left;
+                                var runtimeStyle = object.runtimeStyle.left;
+                                object.runtimeStyle.left = object.currentStyle.left;
+                                object.style.left = value || 0;
+                                value = parseInt(object.style.pixelLeft);
+                                object.style.left = style;
+                                object.runtimeStyle.left = runtimeStyle;
+
+                                return value;
+                            }
+
+
+                            /*
+                                * getBorderWidth & friends
+                                * Border width getters
+                                */
+                            function getBorderWidth(sSide) {
+                                if (element.currentStyle["border" + sSide + "Style"] == "none") {
+                                    return 0;
+                                }
+                                var n = getPixelValue(element.currentStyle["border" + sSide + "Width"]);
+                                return n || 0;
+                            }
+                            function getBorderLeftWidth() { return getBorderWidth("Left"); }
+                            function getBorderRightWidth() { return getBorderWidth("Right"); }
+                            function getBorderTopWidth() { return getBorderWidth("Top"); }
+                            function getBorderBottomWidth() { return getBorderWidth("Bottom"); }
+
+
+                            /*
+                                * getPadding & friends
+                                * Padding width getters
+                                */
+                            function getPadding(sSide) {
+                                var n = getPixelValue(element.currentStyle["padding" + sSide]);
+                                return n || 0;
+                            }
+                            function getPaddingLeft() { return getPadding("Left"); }
+                            function getPaddingRight() { return getPadding("Right"); }
+                            function getPaddingTop() { return getPadding("Top"); }
+                            function getPaddingBottom() { return getPadding("Bottom"); }
+
+                            /*
+                                * getBoxSizing
+                                * Get the box-sizing value for the current element
+                                */
+                            function getBoxSizing() {
+                                var s = element.style;
+                                var cs = element.currentStyle
+                                if (typeof s.boxSizing != "undefined" && s.boxSizing != "") {
+                                    return s.boxSizing;
+                                }
+                                if (typeof s["box-sizing"] != "undefined" && s["box-sizing"] != "") {
+                                    return s["box-sizing"];
+                                }
+                                if (typeof cs.boxSizing != "undefined" && cs.boxSizing != "") {
+                                    return cs.boxSizing;
+                                }
+                                if (typeof cs["box-sizing"] != "undefined" && cs["box-sizing"] != "") {
+                                    return cs["box-sizing"];
+                                }
+                                return getDocumentBoxSizing();
+                            }
+
+
+                            /*
+                                * getDocumentBoxSizing
+                                * Get the default document box sizing (check for quirks mode)
+                                */
+                            function getDocumentBoxSizing() {
+                                if (doc.compatMode === null || doc.compatMode === "BackCompat") {
+                                    return "border-box";
+                                }
+                                return "content-box"
+                            }
+
+
+                            /*
+                                * setBorderBoxWidth & friends
+                                * Width and height setters
+                                */
+                            function setBorderBoxWidth(n) {
+                                element.runtimeStyle.width = Math.max(0, n - getBorderLeftWidth() -
+                                    getPaddingLeft() - getPaddingRight() - getBorderRightWidth()) + "px";
+                            }
+                            function setBorderBoxMinWidth(n) {
+                                element.runtimeStyle.minWidth = Math.max(0, n - getBorderLeftWidth() -
+                                    getPaddingLeft() - getPaddingRight() - getBorderRightWidth()) + "px";
+                            }
+                            function setBorderBoxMaxWidth(n) {
+                                element.runtimeStyle.maxWidth = Math.max(0, n - getBorderLeftWidth() -
+                                    getPaddingLeft() - getPaddingRight() - getBorderRightWidth()) + "px";
+                            }
+                            function setBorderBoxHeight(n) {
+                                element.runtimeStyle.height = Math.max(0, n - getBorderTopWidth() -
+                                    getPaddingTop() - getPaddingBottom() - getBorderBottomWidth()) + "px";
+                            }
+                            function setBorderBoxMinHeight(n) {
+                                element.runtimeStyle.minHeight = Math.max(0, n - getBorderTopWidth() -
+                                    getPaddingTop() - getPaddingBottom() - getBorderBottomWidth()) + "px";
+                            }
+                            function setBorderBoxMaxHeight(n) {
+                                element.runtimeStyle.maxHeight = Math.max(0, n - getBorderTopWidth() -
+                                    getPaddingTop() - getPaddingBottom() - getBorderBottomWidth()) + "px";
+                            }
+                            function setContentBoxWidth(n) {
+                                element.runtimeStyle.width = Math.max(0, n + getBorderLeftWidth() +
+                                    getPaddingLeft() + getPaddingRight() + getBorderRightWidth()) + "px";
+                            }
+                            function setContentBoxMinWidth(n) {
+                                element.runtimeStyle.minWidth = Math.max(0, n + getBorderLeftWidth() +
+                                    getPaddingLeft() + getPaddingRight() + getBorderRightWidth()) + "px";
+                            }
+                            function setContentBoxMaxWidth(n) {
+                                element.runtimeStyle.maxWidth = Math.max(0, n + getBorderLeftWidth() +
+                                    getPaddingLeft() + getPaddingRight() + getBorderRightWidth()) + "px";
+                            }
+                            function setContentBoxHeight(n) {
+                                element.runtimeStyle.height = Math.max(0, n + getBorderTopWidth() +
+                                    getPaddingTop() + getPaddingBottom() + getBorderBottomWidth()) + "px";
+                            }
+                            function setContentBoxMinHeight(n) {
+                                element.runtimeStyle.minHeight = Math.max(0, n + getBorderTopWidth() +
+                                    getPaddingTop() + getPaddingBottom() + getBorderBottomWidth()) + "px";
+                            }
+                            function setContentBoxMaxHeight(n) {
+                                element.runtimeStyle.maxHeight = Math.max(0, n + getBorderTopWidth() +
+                                    getPaddingTop() + getPaddingBottom() + getBorderBottomWidth()) + "px";
+                            }
+
+
+                            /*
+                                * updateBorderBoxWidth & updateBorderBoxHeight
+                                * 
+                                */
+                            function updateBorderBoxWidth() {
+                                if (getDocumentBoxSizing() == getBoxSizing()) {
+                                    return;
+                                }
+
+                                var csw = element.currentStyle.width;
+                                if (csw != "auto") {
+                                    csw = getPixelWidth(element, csw);
+                                    if (getBoxSizing() == "border-box") {
+                                        setBorderBoxWidth(parseInt(csw));
+                                    }
+                                    else {
+                                        setContentBoxWidth(parseInt(csw));
+                                    }
+                                }
+
+                                csw = element.currentStyle.minWidth;
+                                if (csw != "none") {
+                                    csw = getPixelWidth(element, csw);
+                                    if (getBoxSizing() == "border-box") {
+                                        setBorderBoxMinWidth(parseInt(csw));
+                                    }
+                                    else {
+                                        setContentBoxMinWidth(parseInt(csw));
+                                    }
+                                }
+
+                                csw = element.currentStyle.maxWidth;
+                                if (csw != "none") {
+                                    csw = getPixelWidth(element, csw);
+                                    if (getBoxSizing() == "border-box") {
+                                        setBorderBoxMaxWidth(parseInt(csw));
+                                    }
+                                    else {
+                                        setContentBoxMaxWidth(parseInt(csw));
+                                    }
+                                }
+                            }
+
+                            function updateBorderBoxHeight() {
+                                if (getDocumentBoxSizing() == getBoxSizing()) {
+                                    return;
+                                }
+
+                                var csh = element.currentStyle.height;
+                                if (csh != "auto") {
+                                    csh = getPixelHeight(element, csh);
+                                    if (csh !== "auto") {
+                                        if (getBoxSizing() == "border-box") {
+                                            setBorderBoxHeight(parseInt(csh));
+                                        }
+                                        else {
+                                            setContentBoxHeight(parseInt(csh));
+                                        }
+                                    }
+                                }
+
+                                csh = element.currentStyle.minHeight;
+                                if (csh != "none") {
+                                    csh = getPixelHeight(element, csh);
+                                    if (csh !== "none") {
+                                        if (getBoxSizing() == "border-box") {
+                                            setBorderBoxMinHeight(parseInt(csh));
+                                        }
+                                        else {
+                                            setContentBoxMinHeight(parseInt(csh));
+                                        }
+                                    }
+                                }
+
+                                csh = element.currentStyle.maxHeight;
+                                if (csh != "none") {
+                                    csh = getPixelHeight(element, csh);
+                                    if (csh !== "none") {
+                                        if (getBoxSizing() == "border-box") {
+                                            setBorderBoxMaxHeight(parseInt(csh));
+                                        }
+                                        else {
+                                            setContentBoxMaxHeight(parseInt(csh));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        /**
+                         * Clean everything up when the behavior is removed from the element, or the element
+                         * is manually destroyed.
+                         */
+                        function destroy() {
+
+                        }
+
+                        function addListener(targetEl, type, handler) {
+                            targetEl.attachEvent(type, handler);
+                            eventListeners.push([targetEl, type, handler]);
+                        }
+
+                        me.init = init;
+                        me.destroy = destroy;
+                    }
+
+                    Element.getInstance = function (element) {
+                        var id = element['uniqueID'];
+                        return wrappers[id] || (wrappers[id] = new Element(element));
+                    };
+
+                    Element.destroy = function (el) {
+                        var id = el['uniqueID'],
+                            wrapper = wrappers[id];
+                        if (wrapper) {
+                            wrapper.destroy();
+                            delete wrappers[id];
+                        }
+                    };
+
+                    Element.destroyAll = function () {
+                        var els = [], wrapper;
+                        if (wrappers) {
+                            for (var w in wrappers) {
+                                if (wrappers.hasOwnProperty(w)) {
+                                    wrapper = wrappers[w];
+                                    els.push(wrapper.el);
+                                    wrapper.destroy();
+                                }
+                            }
+                            wrappers = {};
+                        }
+                        return els;
+                    };
+
+                    return Element;
+                })();
+
+                BoxSizingBorderBox['attach'] = function (element) {
+                    BoxSizingBorderBox.Element.getInstance(element).init();
+                }
+            })(window, document);
+            //]]>
+        </script>
+        <style type="text/css">
+            html
+            {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            body {
+                -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+                margin: 0;
+                padding: 10px 10px 10px 10px;
+                width: 100%;
+                height: 100%;
+                font-family: Arial;
+                font-size: 12px;
+                color: /*##color##*/#FFFFFF/*##*/;
+                background-color: /*##backgroundColor##*/#336699/*##*/;
+                cursor: default;
+                border: 1px solid black;
+            }
+            
+            input
+            {
+                font-size: 14px;
+            }
+            
+            select
+            {
+                font-size: 14px;
+            }
+            
+            textarea
+            {
+                font-size: 14px;
+            }
+            
+            h1
+            {
+                margin: 0;
+                padding: 0;
+                font-size: 26px;
+            }
+            
+            h2
+            {
+                margin: 0;
+                padding: 0;                
+            } 
+            
+            h3 
+            {
+                margin: 0;
+                padding: 0;
+                font-size: 16px;
+            }
+                                             
+            .button
+            {
+                display: inline-block; 
+                min-width: 70px;
+                background-color: /*##buttonColor##*/#5C85AD/*##*/;
+                padding: 6px 15px 6px 15px;
+                text-align: center;
+                font-weight: bold;
+                zoom: 1;
+                
+            }
+
+            .largetextbtn {
+                padding: 10px 15px 12px 15px;
+                font-size: medium;
+            }
+            
+            span.button:hover
+            {
+                background-color: /*##buttonHoverColor##*/#8BA8C5/*##*/;
+                cursor: pointer;
+            }
+            
+            .noselect{
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }       
+            
+            .page {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            /* a matchstick spacer */
+            .page i {
+                display: inline-block;
+                height: 100%;
+                width: 1px;
+                margin-left: -1px; /* to hide off page */
+                margin-right: -4px; /* to remove spacing between this and #middle block */
+                vertical-align: middle; /* will make inline block next to it center vertically */
+                /* background: #f00; */ /* red, not required just to see or not see it */
+            }
+
+            .page-content {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                vertical-align: middle;
+                position: relative;
+            }
+
+            .page-content { /* IE hack for inline block on block level elements */
+                *display: inline;
+            }
+
+            .page-content table {
+                margin: 0 auto;
+            }
+
+            .page-footer {
+                position: relative;
+                bottom: 10%;
+                width: 100%;
+                text-align: center;
+            }
+
+            #btnCloseWindow {
+                width: 20px;
+                height: 20px;
+                float: right;
+                cursor: default;
+            }
+
+            #btnCloseWindow:hover {
+                cursor: pointer;
+            }          
+
+            #logo {
+                width: 64px;
+                height: 64px;
+                background-image: /*##CompanyLogoImage##*/url(data:image/png;base64,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)/*##*/; 
+            }
+       </style>
+    </head>
+    <body id="main" onload="javascript:onLoad();">
+        <script type="text/javascript">
+            //<![CDATA[
+            function onLoad() {
+
+                var element = document.getElementById("main");
+
+                element.onselectstart = function () { return false; }
+                element.onmousedown = function () { return false; }
+
+                var elements = document.getElementsByTagName('input');
+
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].onselectstart = function () { window.event.cancelBubble = true; return true; }
+                    elements[i].onmousedown = function () { window.event.cancelBubble = true; return true; }
+                }
+
+                var elements = document.getElementsByTagName('textarea');
+
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].onselectstart = function () { window.event.cancelBubble = true; return true; }
+                    elements[i].onmousedown = function () { window.event.cancelBubble = true; return true; }
+                }
+            }
+
+            function startProgress(text) {
+                setPage("progressPage");
+            }
+
+            function stopProgress() {
+                setPage("mainPage");
+            }
+
+            function setControlVisibility(controlName, visible) {
+                if (visible === true)
+                    document.getElementById(controlName).style.display = "";
+                else
+                    document.getElementById(controlName).style.display = "none";
+            }
+
+            function displayError(text) {
+                if (text) document.getElementById("txtError").innerText = text;
+            }
+
+            function setPage(page) {
+                document.getElementById(page).style.display = "";
+                if (page != "trialPage") document.getElementById("trialPage").style.display = "none";
+                if (page != "mainPage") document.getElementById("mainPage").style.display = "none";
+                if (page != "progressPage") document.getElementById("progressPage").style.display = "none";
+                if (page != "errorPage") document.getElementById("errorPage").style.display = "none";
+                if (page != "successPage") document.getElementById("successPage").style.display = "none";
+            }
+
+            function setRegistrationFieldsVisibility(regNameVisible, regEmailVisible, offlineRegistration) {
+
+                var regName = document.getElementById("regNameRow"),
+                    regEmail = document.getElementById("regEmailRow"),
+                    hardwareIdRow = document.getElementById("hardwareIdRow"),
+                    offlineRegInstructionsRow = document.getElementById("offlineRegInstructionsRow"),
+                    activationKeyRow = document.getElementById("activationKeyRow"),
+                    btnRegister = document.getElementById("btnRegister"),
+                    btnRegisterOffline = document.getElementById("btnRegisterOffline"),
+                    btnCloseAndWait = document.getElementById("btnCloseAndWait");
+
+                if (regNameVisible === true) {
+                    regName.style.display = "";
+                } else
+                    regName.style.display = "none";
+
+                if (regEmailVisible === true) {
+                    regEmail.style.display = "";
+                } else
+                    regEmail.style.display = "none";
+
+                if (offlineRegistration) {
+                    hardwareIdRow.style.display = "";
+                    offlineRegInstructionsRow.style.display = "";
+                    activationKeyRow.style.display = "";
+                    btnRegisterOffline.style.display = "";
+                    btnRegister.style.display = "none";
+                    btnCloseAndWait.style.display = "";
+                } else {
+                    hardwareIdRow.style.display = "none";
+                    offlineRegInstructionsRow.style.display = "none";
+                    activationKeyRow.style.display = "none";
+                    btnRegisterOffline.style.display = "none";
+                    btnRegister.style.display = "";
+                    btnCloseAndWait.style.display = "none";
+                }
+            }
+
+            function setTrialDaysLeft(days) {
+
+                var startTrialRow = document.getElementById("startTrialRow"),
+                    continueTrialRow = document.getElementById("continueTrialRow"),
+                    exitRow = document.getElementById("exitRow"),
+                    trialMessageRow = document.getElementById("trialMessageRow");
+
+                if (days == 0) {
+                    startTrialRow.style.display = "none";
+                    continueTrialRow.style.display = "none";
+                    exitRow.style.display = "";
+                    trialMessageRow.style.display = "";
+                } else
+                    if (days > 0) {
+                        startTrialRow.style.display = "none";
+                        continueTrialRow.style.display = "";
+                        exitRow.style.display = "none";
+                        trialMessageRow.style.display = "";
+                    } else {
+                        startTrialRow.style.display = "";
+                        exitRow.style.display = "none";
+                        continueTrialRow.style.display = "none";
+                        trialMessageRow.style.display = "none";
+                    }
+
+                document.getElementById("txtTrialDaysLeft").innerText = days;
+                if (days <= 5) {
+                    document.getElementById("txtTrialDaysLeft").style.color = "#FF5F5F";
+                }
+            }
+            //]]>
+        </script>
+
+        <form action="#" style="margin: 0; padding: 0; height: 100%; position: relative">
+            <div id="header" style="width: 100%; position: absolute; left: 0px; top: 0px">
+                <div id="logo" style="float: left"></div>
+                <div style="float: left; margin-left: 10px; margin-top: 5px">
+                    <h2 id="txtCompanyName" style="font-weight: normal; margin: 0; padding: 0px 10px 0px 0px;">[Company Name]</h2>
+                    <h1 id="txtProductName">[Product Name]</h1>
+                </div>
+                <div id="btnCloseWindow" style="width: 20px; height: 20px; float: right">
+                    <!--##FormCloseButtonImage##--><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAhUExURenp6fv7+/f39/T09PX19fj4+Pr6+ujo6Pn5+ebm5v///x5o3NgAAAALdFJOU/////////////8ASk8B8gAAAGFJREFUeNqc0EkSwCAIBECispj/PzgpEXC7JHOzq4RRqIdAvbd8xSJ2puwo3JUA47owhfnMpt1iETIR47od2WxAYp074lsA4ZqxlTL1Sq1oUl3Kqypmf2YqP35px0MeAQYAofQOIQXYhG8AAAAASUVORK5CYII=" /><!--##-->
+                </div>
+            </div>
+            <div style="width: 100%; height: 100%; position: relative">
+                <div id="trialPage" class="page" style="margin-top: 30px; display: none">
+                    <i></i>
+                    <div class="page-content">
+                        <table>
+                            <tr>
+                                <td style="padding-bottom: 12px"><span id="btnBuyNow" class="button largetextbtn" style="width: 130px">Buy Now</span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px"><span id="btnRegister2" class="button largetextbtn" style="width: 130px">Register</span></td>
+                            </tr>
+                            <tr id="startTrialRow" style="display: none">
+                                <td style="padding-bottom: 12px"><span id="btnStartTrial" class="button largetextbtn" style="width: 130px;">Start Trial</span></td>
+                            </tr>
+                            <tr id="continueTrialRow" style="display: none">
+                                <td style="padding-bottom: 12px"><span id="btnContinueTrial" class="button largetextbtn" style="width: 130px;">Continue Trial</span></td>
+                            </tr>
+                            <tr id="exitRow">
+                                <td style="padding-bottom: 12px"><span id="btnExit" class="button largetextbtn" style="width: 130px;">Exit</span></td>
+                            </tr>
+                            <tr id="trialMessageRow" style="display: none">
+                                <td style="padding-top: 10px"><h3 style="color: white">You have&nbsp;<span id="txtTrialDaysLeft">?</span>&nbsp;trial days left.</h3></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="mainPage" class="page" style="display: none">
+                    <i></i>
+                    <div class="page-content">
+                        <table style="margin-top: 20px">
+                            <tr>
+                                <td style="text-align: right; padding-bottom: 5px"><span>License Key:</span></td>
+                                <td style="text-align: left; padding-bottom: 5px"><input id="txtLicenseKey" style="width: 350px" type="text" /></td>
+                            </tr>
+                            <tr id="regNameRow" style="display: none">
+                                <td style="text-align: right; padding-bottom: 5px"><span>Registration Name:</span></td>
+                                <td style="text-align: left; padding-bottom: 5px"><input id="txtRegistrationName" style="width: 350px" type="text" /></td>
+                            </tr>
+                            <tr id="regEmailRow" style="display: none">
+                                <td style="text-align: right; padding-bottom: 5px"><span style="color: white">Registration Email:</span></td>
+                                <td style="text-align: left; padding-bottom: 5px"><input id="txtRegistrationEmail" style="width: 350px" type="text" /></td>
+                            </tr>
+                            <tr id="hardwareIdRow" style="display: none">
+                                <td style="text-align: right; padding-bottom: 5px"><span style="color: white">Hardware Id:</span></td>
+                                <td style="text-align: left; padding-bottom: 5px"><input id="txtHardwareId" style="width: 350px" type="text" readonly="readonly" value="Retrieving hardware id..." /></td>
+                            </tr>
+                            <tr id="offlineRegInstructionsRow" style="display: none">
+                                <td colspan="2" style="height: 3em">Please send the data above to <b><!--##OfflineRegistrationEmail##-->email<!--##--></b> and enter the received Activation Key:</td>
+                            </tr>
+                            <tr id="activationKeyRow" style="display: none">
+                                <td style="text-align: right"><span style="color: white">Received Activation Key:</span></td>
+                                <td style="text-align: left"><input id="txtActivationKey" style="width: 350px" type="text" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="page-footer">
+                        <span id="btnRegister" class="button">Register</span>
+                        <span id="btnRegisterOffline" class="button" style="display: none">Register</span>
+                        <span id="btnCloseAndWait" class="button" style="display: none">Close &amp; Wait for Activation Key</span>
+                        <span id="btnBack2" class="button">Back</span>
+                    </div>
+                </div>
+                <div id="progressPage" class="page" style="display: none">
+                    <i></i>
+                    <div class="page-content">
+                        <h3 id="txtProgress">Please wait...</h3>
+                    </div>
+                    <div class="page-footer">
+                        <span id="btnCancel" class="button">Cancel</span>
+                    </div>
+                </div>
+                <div id="errorPage" class="page" style="display: none">
+                    <i></i>
+                    <div class="page-content">
+                        <h3>Error:&nbsp;<span id="txtError">Unspecified Error</span></h3>
+                    </div>
+                    <div class="page-footer">
+                        <span id="btnRegisterOffline2" class="button">Register Offline</span>
+                        <span id="btnContactSupport" class="button">Contact Support</span>
+                        <span id="btnBack" class="button">Back</span>
+                    </div>
+                </div>
+                <div id="successPage" class="page" style="display: none">
+                    <i></i>
+                    <div class="page-content">
+                        <h3><span id="txtSucessMessage">Thank you. You can now continue using the product.</span></h3>
+                    </div>
+                    <div class="page-footer">
+                        <span id="btnContinue" class="button">Continue</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--[if IE 7]>
+        <script type="text/javascript">
+            BoxSizingBorderBox.attach(document.getElementsByTagName("body")[0]);
+        </script>
+        <![endif]-->
+    </body>
+</html>

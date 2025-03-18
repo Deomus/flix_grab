@@ -1,0 +1,87 @@
+LIBRARY	"LICENSEKEY"
+
+EXPORTS
+
+;	LicenseKeyGenerator_Create                   @1
+;	LicenseKeyGenerator_Destroy                  @2
+;	LicenseKeyGenerator_SetLicenseKeyTemplate    @3
+;	LicenseKeyGenerator_SetLicenseKeyDataA       @4
+;	LicenseKeyGenerator_SetLicenseKeyDataW       @5
+;	LicenseKeyGenerator_SetIntLicenseKeyDataA    @6
+;	LicenseKeyGenerator_SetIntLicenseKeyDataW    @7
+;	LicenseKeyGenerator_SetStringLicenseKeyDataA @8
+;	LicenseKeyGenerator_SetStringLicenseKeyDataW @9
+;	LicenseKeyGenerator_SetValidationDataA       @10
+;	LicenseKeyGenerator_SetValidationDataW       @11
+;	LicenseKeyGenerator_SetIntValidationDataA    @12
+;	LicenseKeyGenerator_SetIntValidationDataW    @13	
+;	LicenseKeyGenerator_SetStringValidationDataA @14
+;	LicenseKeyGenerator_SetStringValidationDataW @15	
+;	LicenseKeyGenerator_GenerateLicenseKeyA      @16
+;	LicenseKeyGenerator_GenerateLicenseKeyW      @17
+
+	LicenseKeyValidator_Create                   @311
+	LicenseKeyValidator_Destroy                  @312
+	LicenseKeyValidator_SetLicenseKeyTemplate    @313
+	LicenseKeyValidator_SetLicenseKeyA           @314
+	LicenseKeyValidator_SetLicenseKeyW           @315	
+	LicenseKeyValidator_SetValidationDataA       @316
+	LicenseKeyValidator_SetValidationDataW       @317	
+	LicenseKeyValidator_SetIntValidationDataA    @318
+	LicenseKeyValidator_SetIntValidationDataW    @319	
+	LicenseKeyValidator_SetStringValidationDataA @320
+	LicenseKeyValidator_SetStringValidationDataW @321	
+	LicenseKeyValidator_IsLicenseKeyValid        @322
+	LicenseKeyValidator_QueryLicenseKeyDataA     @323
+	LicenseKeyValidator_QueryLicenseKeyDataW     @324
+
+	LicenseKeyTemplate_Create                    @120
+	LicenseKeyTemplate_Destroy                   @121
+	LicenseKeyTemplate_SetVersion                @122
+	LicenseKeyTemplate_GetVersion                @123
+	LicenseKeyTemplate_SetNumberOfGroups         @124
+	LicenseKeyTemplate_GetNumberOfGroups         @125
+	LicenseKeyTemplate_SetCharactersPerGroup     @126
+	LicenseKeyTemplate_GetCharactersPerGroup     @127
+	LicenseKeyTemplate_SetGroupSeparatorA        @128
+	LicenseKeyTemplate_SetGroupSeparatorW        @129	
+	LicenseKeyTemplate_GetGroupSeparatorA        @167
+	LicenseKeyTemplate_GetGroupSeparatorW        @168
+	LicenseKeyTemplate_SetEncoding               @131
+	LicenseKeyTemplate_GetEncoding               @132
+	LicenseKeyTemplate_SetHeaderA                @133
+	LicenseKeyTemplate_SetHeaderW                @134	
+	LicenseKeyTemplate_GetHeaderA                @135
+	LicenseKeyTemplate_GetHeaderW                @136	
+	LicenseKeyTemplate_SetFooterA                @137
+	LicenseKeyTemplate_SetFooterW                @138
+	LicenseKeyTemplate_GetFooterA                @139
+	LicenseKeyTemplate_GetFooterW                @140	
+	LicenseKeyTemplate_SetDataSize               @141
+	LicenseKeyTemplate_GetDataSize               @142
+	LicenseKeyTemplate_AddDataFieldA             @143
+	LicenseKeyTemplate_AddDataFieldW             @144	
+	LicenseKeyTemplate_EnumDataFieldsA           @145
+	LicenseKeyTemplate_EnumDataFieldsW           @146	
+	LicenseKeyTemplate_SetValidationDataSize     @147
+	LicenseKeyTemplate_GetValidationDataSize     @148
+	LicenseKeyTemplate_AddValidationFieldA       @149
+	LicenseKeyTemplate_AddValidationFieldW       @150	
+	LicenseKeyTemplate_EnumValidationFieldsA     @151
+	LicenseKeyTemplate_EnumValidationFieldsW     @152	
+	LicenseKeyTemplate_SetSignatureSize          @153
+	LicenseKeyTemplate_GetSignatureSize          @154
+	LicenseKeyTemplate_LoadXml                   @155
+	LicenseKeyTemplate_SaveXml                   @156
+	LicenseKeyTemplate_SetPublicKey              @157
+	LicenseKeyTemplate_SetStringPublicKeyA       @158
+	LicenseKeyTemplate_SetStringPublicKeyW       @159	
+	LicenseKeyTemplate_GetPublicKey              @160
+;	LicenseKeyTemplate_SetPrivateKey             @161
+;	LicenseKeyTemplate_SetStringPrivateKeyA      @162
+;	LicenseKeyTemplate_SetStringPrivateKeyW      @163	
+;	LicenseKeyTemplate_GetPrivateKey             @164
+;	LicenseKeyTemplate_GenerateSigningKeyPair    @165
+
+	LicenseKeyHelper_GetCurrentHardwareIdA       @255
+	LicenseKeyHelper_GetCurrentHardwareIdW       @256

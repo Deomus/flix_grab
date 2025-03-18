@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - SoftActivate Licensing Control Panel</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+    </head>
+    <body>
+        <div id="header">
+            <div class="center" id="center-header">
+                <div id="logoOuter">
+                    <div id="logoInner">
+                        @Html.ActionLink("SoftActivate", "Index", "Home")<br />
+                        <span style="font-size: 1em; font-weight: bold">Licensing Control Panel</span>
+                    </div>
+                </div>
+                <div id="usernav">
+                    @Html.Partial("_LoginPartial")
+                </div>
+                <div id="nav">
+                    <ul class="navlist">
+                        <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Orders", "Index", "Order")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                        <li>@Html.ActionLink("License Keys", "Index", "LicenseKey")</li>
+                        <li>@Html.ActionLink("Activations", "Index", "Activation")</li>
+                        @if (ViewBag.LicensingSDKEdition != LicensingService.Filters.LicensingSDKEdition.Standard) {
+                            <li>@Html.ActionLink("Downloads", "Index", "Download")</li>
+                        }
+                        <li>@Html.ActionLink("Event Log", "Index", "EventLog")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div id="center-content">
+                @RenderSection("featured", required: false)
+                @RenderBody()
+            </div>
+        </div>
+        <div id="footer">
+            <p>&copy; @DateTime.Now.Year - SoftActivate</p>
+        </div>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

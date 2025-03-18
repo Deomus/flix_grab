@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Dashboard</h2>
+
+<table class="proptable">
+    <tr>
+        <td>Status</td>
+        <td><strong>running</strong></td>
+    </tr>
+    <tr>
+        <td>Number of orders today</td>
+        <td>@ViewBag.DailyOrderCount</td>
+    </tr>
+    <tr>
+        <td>Number of orders yesterday</td>
+        <td>@ViewBag.YesterdayOrderCount</td>
+    </tr>
+    <tr>
+        <td>Total number of orders</td>
+        <td>@ViewBag.TotalOrderCount</td>
+    </tr>
+    <tr>
+        <td>Number of activations today</td>
+        <td>@ViewBag.DailyActivationCount</td>
+    </tr>
+    <tr>
+        <td>Number of unique activations today</td>
+        <td>@ViewBag.DailyUniqueActivationCount</td>
+    </tr>
+    <tr>
+        <td>Total number of activations</td>
+        <td>@ViewBag.TotalActivationCount</td>
+    </tr>
+    <tr>
+        <td class="last">Total number of unique activations</td>
+        <td class="last">@ViewBag.TotalUniqueActivationCount</td>
+    </tr>
+</table>
+

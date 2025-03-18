@@ -1,0 +1,36 @@
+SoftActivate Licensing SDK License
+==================================
+
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. THE AUTHOR 
+DISCLAIMS ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING THE 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. IN NO 
+EVENT SHALL THE AUTHOR OR ITS SUPPLIERS BE LIABLE FOR ANY DAMAGES 
+WHATSOEVER INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, LOSS OF 
+BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF THE AUTHOR OR ITS SUPPLIERS HAVE 
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+USAGE
+
+The source code included in the software may be used by the licensee in an unaltered or in modified form, under the terms of this agreement.
+
+RESTRICTIONS
+
+This Software may not be used to build or distribute license management or enforcement software 
+or digital rights management software without prior author consent.
+
+The C#/.NET source code included in this software may not be released to customers in unobfuscated 
+.NET assemblies. All the assemblies containing source code or parts of the source code included in 
+this software must be obfuscated. The obfuscation must change all the non-public variable and method 
+names and code structure such that the algorithms used in this software must not be recoverable from 
+the obfuscated assemblies.
+
+CONFIDENTIALITY AND PROPRIETARY
+
+Licensee agrees and acknowledges that the Source Code is proprietary, valuable, 
+and not generally known in the industry. Licensee agrees that it will maintain, 
+through reasonable means, the confidentiality of the Source Code, and will not disseminate 
+or allow unrestricted access. Licensee shall not distribute the Source Code to anyone other 
+than employees and software developers of Licensee's organization or third party contractors 
+working on behalf of Licensee’s organization with a need to know. 
+Licensee may be held legally responsible for any infringement of intellectual property rights 
+that is caused or encouraged by Licensee‘s failure to abide by this Agreement.

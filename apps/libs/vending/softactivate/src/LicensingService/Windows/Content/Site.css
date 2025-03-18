@@ -1,0 +1,211 @@
+﻿div
+{
+    /* border: 1px solid red; */
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    width: 98%;
+    margin: 0 auto;
+    color: #336699;
+}
+
+form {
+    display: inline;
+}
+
+.center {
+    margin: 0 auto;
+    max-width: 940px;
+}
+
+#center-header {
+    height: 100px;
+    position: relative;
+}
+
+#center-content {
+    text-align: left; 
+    display: inline-block;
+}
+
+#header {
+    background-color: #336699;
+    color: #FFFFFF;
+    min-width: 900px;
+}
+
+#header a, #header a:visited, #header a:hover {
+    color: #FFFFFF;
+}
+
+#logoInner a {
+    text-decoration: none;
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    text-align: center;
+    width: 100%;
+}
+
+    a {
+        color: #336699;
+        text-decoration: none;
+    }
+
+#footer {
+    height: 30px;
+    background-color: #336699;
+    color: white;
+}
+
+#logoOuter {
+    display: table; 
+    height: 100%;
+}
+
+#logoInner {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 1em;
+    color: white;
+}
+
+#nav {
+    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+#usernav {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+#usernav ul {
+    list-style-type: none;
+}
+
+#usernav ul li {
+    display: inline;
+}
+
+ul.navlist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 1.3em;
+    padding-bottom: 0.4em;
+}
+
+ul.navlist li 
+{
+    display: inline;
+}
+
+ul.navlist li a {
+    text-decoration: none;
+    padding-left: 0.8em;
+    color: white;
+}
+
+ul.navlist li a:hover {
+    color: white;
+}
+
+.dbtablewrap {
+    max-width: 940px;
+    overflow: scroll;
+}
+
+.dbtable {
+    border: 1px solid #336699;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.dbtable td {
+    margin: 0;
+    padding-right: 10px;
+    border-bottom: 1px #336699 dotted;
+}
+
+.dbtable th {
+    background-color: #336699;
+    color: white;
+    font-weight: bold;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-right: 2em;
+}
+
+.dbtable th a  {
+    color: white;
+}
+
+.dbtable tfoot td {
+    background-color: #336699;
+    color: white;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+#logoutForm {
+    display: inline;
+}
+
+/* login page */
+#loginForm ol {
+    list-style-type: none;
+}
+
+.proptable {
+    border-collapse: collapse;
+}
+
+.proptable .last {
+    border: none;
+}
+
+.proptable tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+    .proptable tr td.last {
+        border-bottom: none;
+    }
+
+.proptable td + td {
+    font-weight: bold;
+    text-align: right
+}
+
+.display-label {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.display-field {
+    padding-bottom: 15px;
+}
+
+.username {
+    text-decoration: underline;
+}

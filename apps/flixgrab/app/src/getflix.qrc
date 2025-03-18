@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/tunx">
+    <file>https_server/server.crt</file>
+	<file>https_server/server.key</file>
+  </qresource>
+</RCC>
